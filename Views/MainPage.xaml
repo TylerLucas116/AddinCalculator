@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="AddInCalculator2._0.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AddInCalculator2._0.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:AddInCalculator2._0.Converters"
+    xmlns:local2="using:AddInCalculator2._0.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.Resources>
+        <local1:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
+        <NavigationView x:Name="NavigationView" Header="" SelectionChanged="{x:Bind mainViewModel.selectionChanged, Mode=OneWay}" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
+            <NavigationView.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="20,0,0,0">
+                        <StackPanel Visibility="{Binding listsClicked}" Orientation="Horizontal">
+                            <Button Content="Food" Style="{StaticResource FoodStyle}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Nonfood" Style="{StaticResource NFRegStyle1}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Freezer" Style="{StaticResource FreezerStyle}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Cooler" Style="{StaticResource CoolerStyle}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Deli" Style="{StaticResource DeliStyle}" Margin="0,0,5,0" Height="40"/>
+                        </StackPanel>
+                        <StackPanel Visibility="{Binding addinCalculatorClicked}" Orientation="Horizontal">
+                            <Button Content="Food" Style="{StaticResource FoodStyle}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Nonfood" Style="{StaticResource NFRegStyle1}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Nonfood DF" Style="{StaticResource NFDF1}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Freezer" Style="{StaticResource FreezerStyle}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Cooler" Margin="0,0,5,0" Style="{StaticResource CoolerStyle}" Height="40"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!--<StackPanel Orientation="Horizontal">
+                        <CommandBar Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}"
+                            Visibility="{Binding listsClicked}">
+                            <AppBarButton Icon="Back" Label="Back"/>
+                        </CommandBar>
+                        <CommandBar Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}"
+                            Visibility="{Binding addinCalculatorClicked}">
+                            <AppBarButton Icon="Forward" Label="Forward"/>
+                        </CommandBar>
+                    </StackPanel>-->
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="Home" Tag="Home"  />
+                <NavigationViewItemSeparator/>
+                <NavigationViewItem Icon="Document" Content="Lists" x:Name="Lists" Tag="Lists"/>
+                <NavigationViewItem Icon="Calculator" Content="Add-In Calculator" x:Name="Calculator" Tag="Calculator" />
+                <NavigationViewItem Icon="Calculator" Content="Test Calculator" x:Name="TestCalculator" Tag="TestCalculator"/>
+            </NavigationView.MenuItems>
+
+            <Grid Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}" VerticalAlignment="Top">
+                
+
+                <Frame x:Name="ContentFrame" Margin="24">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition/>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </Grid>
+        </NavigationView>
+    </Grid>
+</Page>
