@@ -492,7 +492,7 @@ namespace AddInCalculator2._0.ViewModels
         {
             try
             {
-                walmartUrl = "http://api.walmartlabs.com/v1/items" + key.walmartKey;
+                walmartUrl = "http://api.walmartlabs.com/v1/items" + key.WalmartKey;
                 
                 url = (walmartUrl + upc);
 
