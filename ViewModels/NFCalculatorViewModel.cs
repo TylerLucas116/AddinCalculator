@@ -28,207 +28,39 @@ namespace AddInCalculator2._0.ViewModels
 {
     public class NFCalculatorViewModel :INotifyPropertyChanged
     {
+        public NFCalculatorViewModel()
+        {
+            nfButtonManager = new ButtonManager();
+            NFButtonManager.InitializeCollections();
+            NFButtonManager.UpdateNFButtons();
+        }
+
         #region Declarations
 
         HttpClient client = new HttpClient();
-        private ButtonManager nfButtonManager { get; set; }
+        ApiKey key = new ApiKey();
+        public DataPackage dataPackage = new DataPackage();
+        WebView webView = new WebView();
+        private ButtonManager nfButtonManager;
 
         private double price = new double();
+        private double onlinePrice;
         private bool operationClicked = new bool();
         private bool calculated = new bool();
+        private bool hasDecimal = new bool();
+        private string displayText;
+        private string intermediateText;
+        private string upc;
+        private string textblockPrice;
+        private string operation;
 
-        #region Calculator Declarations
+        private string url;
+        private string walmartUrl = "http://api.walmartlabs.com/v1/items";
+        private bool found;
 
-
-
-
-
-
-
-        
-
-        private bool HasDecimal = new bool();
-        public bool hasDecimal
-        {
-            get
-            {
-                return HasDecimal;
-            }
-            set
-            {
-                HasDecimal = value;
-            }
-        }
-        public string operation = "";
-
-        private string DisplayText { get; set; }
-        public string displayText
-        {
-            get
-            {
-                return DisplayText;
-            }
-            set
-            {
-                DisplayText = value;
-                OnPropertyChanged("displayText");
-            }
-        }
-
-        private string IntermediateText { get; set; }
-        public string intermediateText
-        {
-            get
-            {
-                return IntermediateText;
-            }
-            set
-            {
-                IntermediateText = value;
-                OnPropertyChanged("intermediateText");
-            }
-        }
-        private string UPC { get; set; }
-        public string upc
-        {
-            get
-            {
-                return UPC;
-            }
-            set
-            {
-                UPC = value;
-                OnPropertyChanged("upc");
-            }
-        }
-
-        private string WalmartUrl { get; set; }
-        public string walmartUrl
-        {
-            get
-            {
-                return WalmartUrl;
-            }
-            set
-            {
-                WalmartUrl = value;
-            }
-        }
-
-        private bool WalmartInformation { get; set; }
-        public bool walmartInformation
-        {
-            get
-            {
-                return WalmartInformation;
-            }
-            set
-            {
-                WalmartInformation = value;
-
-            }
-        }
-        private bool TargetInformation { get; set; }
-        public bool targetInformation
-        {
-            get
-            {
-                return TargetInformation;
-            }
-            set
-            {
-                TargetInformation = value;
-            }
-        }
-
-        private string Url { get; set; }
-        public string url
-        {
-            get
-            {
-                return Url;
-            }
-            set
-            {
-                Url = value;
-                OnPropertyChanged("url");
-            }
-        }
-
-        private double OnlinePrice { get; set; }
-        public double onlinePrice
-        {
-            get
-            {
-                return OnlinePrice;
-            }
-            set
-            {
-                OnlinePrice = value;
-                OnPropertyChanged("onlinePrice");
-            }
-        }
-
-        private string TextblockPrice { get; set; }
-        public string textblockPrice
-        {
-            get
-            {
-                return TextblockPrice;
-            }
-            set
-            {
-                TextblockPrice = value;
-                OnPropertyChanged("textblockPrice");
-            }
-        }
-        public DataPackage dataPackage = new DataPackage();
-
-        private bool Found { get; set; }
-        public bool found
-        {
-            get
-            {
-                return Found;
-            }
-            set
-            {
-                Found = value;
-            }
-        }
-
-        private string OnlineAbbrev { get; set; }
-        public string onlineAbbrev
-        {
-            get
-            {
-                return OnlineAbbrev;
-            }
-            set
-            {
-                OnlineAbbrev = value;
-            }
-        }
-
-        // webview
-        
-        private string _webViewURISource;
-        public string webViewURIsource
-        {
-            get
-            {
-                return _webViewURISource;
-            }
-            set
-            {
-                _webViewURISource = value;
-                OnPropertyChanged("webViewURIsource");
-            }
-        }
-
-        WebView webView = new WebView();
-
-        ApiKey key = new ApiKey();
+        private bool walmartInformation;
+        private bool targetInformation;
+        private string onlineAbbrev;
 
         public ButtonManager NFButtonManager
         {
@@ -241,6 +73,15 @@ namespace AddInCalculator2._0.ViewModels
             get { return price; }
             set { price = value; }
         }
+        public double OnlinePrice
+        {
+            get { return onlinePrice; }
+            set
+            {
+                onlinePrice = value;
+                OnPropertyChanged("OnlinePrice");
+            }
+        }
         public bool OperationClicked
         {
             get { return operationClicked; }
@@ -252,27 +93,96 @@ namespace AddInCalculator2._0.ViewModels
             get { return calculated; }
             set { calculated = value; }
         }
-
-        #endregion
-
-        #endregion
-
-        public NFCalculatorViewModel()
+        public bool HasDecimal
         {
-            nfButtonManager = new ButtonManager();
-            NFButtonManager.InitializeCollections();
-            NFButtonManager.UpdateNFButtons();
+            get { return hasDecimal; }
+            set { hasDecimal = value; }
         }
+        public string DisplayText
+        {
+            get { return displayText; }
+            set
+            {
+                displayText = value;
+                OnPropertyChanged("DisplayText");
+            }
+        }
+        public string IntermediateText
+        {
+            get { return intermediateText; }
+            set
+            {
+                intermediateText = value;
+                OnPropertyChanged("IntermediateText");
+            }
+        }
+        public string UPC
+        {
+            get { return upc; }
+            set
+            {
+                upc = value;
+                OnPropertyChanged("UPC");
+            }
+        }
+        public string TextblockPrice
+        {
+            get { return textblockPrice; }
+            set
+            {
+                textblockPrice = value;
+                OnPropertyChanged("TextblockPrice");
+            }
+        }
+        public string Operation
+        {
+            get { return operation; }
+            set { operation = value; }
+        }
+
+        public string URL
+        {
+            get { return url; }
+            set { url = value; }
+        }
+        public string WalmartUrl
+        {
+            get { return walmartUrl; }
+            set { walmartUrl = "http://api.walmartlabs.com/v1/items" + key.WalmartKey; }
+        }
+        public bool Found
+        {
+            get { return found; }
+            set { found = value; }
+        }
+
+        public bool WalmartInformation
+        {
+            get { return walmartInformation; }
+            set { walmartInformation = value; }
+        }
+        public bool TargetInformation
+        {
+            get { return targetInformation; }
+            set { targetInformation = value; }
+        }
+        public string OnlineAbbrev
+        {
+            get { return onlineAbbrev; }
+            set { onlineAbbrev = value; }
+        }
+
+        #endregion
 
         #region Calculation Methods
 
         public void NumberClicked(object sender, RoutedEventArgs e)
         {
-            if (displayText == "0" || (operationClicked) || (calculated))
-                displayText = "";
+            if (DisplayText == "0" || (operationClicked) || (calculated))
+                DisplayText = "";
 
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
-            displayText += b.Content;
+            DisplayText += b.Content;
             operationClicked = false;
             calculated = false;
         }
@@ -280,28 +190,28 @@ namespace AddInCalculator2._0.ViewModels
         public void ClearEntry(object sender, RoutedEventArgs e)
         {
             Price = 0;
-            displayText = "0";
-            intermediateText = "";
+            DisplayText = "0";
+            IntermediateText = "";
             hasDecimal = false;
         }
         public void Clear(object sender, RoutedEventArgs e)
         {
             Price = 0;
-            displayText = "0";
-            intermediateText = "";
+            DisplayText = "0";
+            IntermediateText = "";
             hasDecimal = false;
         }
 
         public void BackSpace(object sender, RoutedEventArgs e)
         {
             string backspaceChar = "";
-            if (displayText == "0" || displayText == "")
+            if (DisplayText == "0" || DisplayText == "")
                 return;
             else
             {
-                backspaceChar = displayText[displayText.Length - 1].ToString();
-                string backspaceString = displayText.Substring(0, (displayText.Length - 1));
-                displayText = backspaceString;
+                backspaceChar = DisplayText[DisplayText.Length - 1].ToString();
+                string backspaceString = DisplayText.Substring(0, (DisplayText.Length - 1));
+                DisplayText = backspaceString;
             }
 
             if (backspaceChar == ".")
@@ -310,73 +220,73 @@ namespace AddInCalculator2._0.ViewModels
 
         public void Divide(object sender, RoutedEventArgs e)
         {
-            if (displayText == "" || displayText == ".")
+            if (DisplayText == "" || DisplayText == ".")
                 return;
 
             operationClicked = true;
             operation = "Divide";
-            Price = Double.Parse(displayText);
-            intermediateText = Price + " /";
+            Price = Double.Parse(DisplayText);
+            IntermediateText = Price + " /";
             hasDecimal = false;
         }
 
         public void Multiply(object sender, RoutedEventArgs e)
         {
-            if (displayText == "" || displayText == ".")
+            if (DisplayText == "" || DisplayText == ".")
                 return;
 
             operationClicked = true;
             operation = "Multiply";
-            Price = Double.Parse(displayText);
-            intermediateText = Price + " *";
+            Price = Double.Parse(DisplayText);
+            IntermediateText = Price + " *";
             hasDecimal = false;
         }
 
         public void Subtract(object sender, RoutedEventArgs e)
         {
-            if (displayText == "" || displayText == ".")
+            if (DisplayText == "" || DisplayText == ".")
                 return;
 
             operationClicked = true;
             operation = "Subtract";
-            Price = Double.Parse(displayText);
-            intermediateText = Price + " -";
+            Price = Double.Parse(DisplayText);
+            IntermediateText = Price + " -";
             hasDecimal = false;
         }
 
         public void Add(object sender, RoutedEventArgs e)
         {
-            if (displayText == "" || displayText == ".")
+            if (DisplayText == "" || DisplayText == ".")
                 return;
 
             operationClicked = true;
             operation = "Add";
-            Price = Double.Parse(displayText);
-            intermediateText = Price + " +";
+            Price = Double.Parse(DisplayText);
+            IntermediateText = Price + " +";
             hasDecimal = false;
         }
 
         public void Calculate(object sender, RoutedEventArgs e)
         {
-            intermediateText = "";
+            IntermediateText = "";
 
-            if (displayText == "")
+            if (DisplayText == "")
                 return;
 
             operationClicked = false;
             switch (operation)
             {
                 case "Add":
-                    displayText = Math.Round((Price + Double.Parse(displayText)), 3).ToString();
+                    DisplayText = Math.Round((Price + Double.Parse(DisplayText)), 3).ToString();
                     break;
                 case "Subtract":
-                    displayText = Math.Round((Price - Double.Parse(displayText)), 3).ToString();
+                    DisplayText = Math.Round((Price - Double.Parse(DisplayText)), 3).ToString();
                     break;
                 case "Multiply":
-                    displayText = Math.Round((Price * Double.Parse(displayText)), 3).ToString();
+                    DisplayText = Math.Round((Price * Double.Parse(DisplayText)), 3).ToString();
                     break;
                 case "Divide":
-                    displayText = Math.Round((Price / Double.Parse(displayText)), 3).ToString();
+                    DisplayText = Math.Round((Price / Double.Parse(DisplayText)), 3).ToString();
                     break;
                 default: //No other options
                     break;
@@ -387,12 +297,12 @@ namespace AddInCalculator2._0.ViewModels
 
         public void Decimal(object sender, RoutedEventArgs e)
         {
-            if ((displayText == "0") || (operationClicked) || (calculated))
-                displayText = "";
+            if ((DisplayText == "0") || (operationClicked) || (calculated))
+                DisplayText = "";
             if (hasDecimal == false)
             {
                 Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
-                displayText += b.Content;
+                DisplayText += b.Content;
                 operationClicked = false;
                 calculated = false;
                 hasDecimal = true;
@@ -403,15 +313,15 @@ namespace AddInCalculator2._0.ViewModels
 
         public void WebsiteClick(object sender, RoutedEventArgs e)
         {
-            intermediateText = "";
-            if (displayText == "" || displayText == "0" || displayText == ".")
+            IntermediateText = "";
+            if (DisplayText == "" || DisplayText == "0" || DisplayText == ".")
                 return;
 
             operationClicked = true;
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
-            Price = Double.Parse(displayText);
-            displayText = RoundToNine(Price * (NFButtonManager.nfCollection[index].percentage / 100)).ToString();
+            Price = Double.Parse(DisplayText);
+            DisplayText = RoundToNine(Price * (NFButtonManager.nfCollection[index].percentage / 100)).ToString();
         }
 
         public double RoundToNine(double value)
@@ -472,8 +382,8 @@ namespace AddInCalculator2._0.ViewModels
                     operationClicked = false;
                     calculated = true;
                     hasDecimal = false;
-                    displayText = onlinePrice.ToString();
-                    textblockPrice = onlinePrice.ToString() + onlineAbbrev;
+                    DisplayText = OnlinePrice.ToString();
+                    TextblockPrice = OnlinePrice.ToString() + onlineAbbrev;
                 }
                 else
                 {
@@ -488,13 +398,10 @@ namespace AddInCalculator2._0.ViewModels
         public async Task searchWalmartNF()
         {
             try
-            {
-                walmartUrl = "http://api.walmartlabs.com/v1/items" + key.WalmartKey;
-                
-                url = (walmartUrl + upc);
-
+            { 
+                url = (WalmartUrl + key.WalmartKey + UPC);
                 var walmartResponse = await client.GetAsync(new Uri(url));
-                walmartResponse.EnsureSuccessStatusCode(); //added for success
+                walmartResponse.EnsureSuccessStatusCode();
 
                 if (walmartResponse.IsSuccessStatusCode)
                 {
@@ -511,13 +418,13 @@ namespace AddInCalculator2._0.ViewModels
                         double priceHolder;
                         if(Double.TryParse(jsonString, out priceHolder))
                         {
-                            onlinePrice = priceHolder;
+                            OnlinePrice = priceHolder;
                         }
 
                         bool walmartFound = false;
                         int i = 0;
                         // still need to traverse the collection to get correct percentage in case it changes in future
-                        for (i = 0; (i < NFButtonManager.nfCollection.Count() && (walmartFound == false)); ++i) //Find walmart percentage, changed from i < 49
+                        for (i = 0; (i < NFButtonManager.nfCollection.Count() && (walmartFound == false)); ++i)
                         {
                             string nfcollection = NFButtonManager.nfCollection[i].retailer;
                             if (NFButtonManager.nfCollection[i].retailer == "Walmart")
@@ -529,9 +436,9 @@ namespace AddInCalculator2._0.ViewModels
 
                         if (walmartInformation)
                         {
-                            onlineAbbrev = (" @WM $" + onlinePrice.ToString());
-                            onlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100); // added i - 1, wasn't accessing correct percentage before
-                            onlinePrice = RoundToNine(onlinePrice); // added to round to 9
+                            onlineAbbrev = (" @WM $" + OnlinePrice.ToString());
+                            OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
+                            OnlinePrice = RoundToNine(OnlinePrice);
                         }
                         else
                         {
@@ -564,7 +471,7 @@ namespace AddInCalculator2._0.ViewModels
             try
             {
                 string targetURL = "https://www.target.com/s?searchTerm=";
-                url = (targetURL + upc);
+                url = (targetURL + UPC);
 
 
                 webView.Navigate(new Uri(url));
@@ -600,7 +507,7 @@ namespace AddInCalculator2._0.ViewModels
             try
             {
                 string cvsURL = "https://www.cvs.com/search?searchTerm=";
-                url = (cvsURL + upc);
+                url = (cvsURL + UPC);
 
                 webView.Navigate(new Uri(url));
                 await Task.Delay(10000);

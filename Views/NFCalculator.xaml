@@ -28,11 +28,11 @@
 
         <StackPanel Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" Margin="0,0,0,0">
             <StackPanel HorizontalAlignment="Right" Background="{StaticResource CalculatorBackground}" Margin="0,0,5,0">
-                <TextBlock Name="IntermediateTextBlock" Height="16" Width="320" Text="{Binding intermediateText, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center"
+                <TextBlock Name="IntermediateTextBlock" Height="16" Width="320" Text="{Binding IntermediateText, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center"
                            FontWeight="ExtraLight" TextAlignment="Right" Margin="0,0,5,0" />
             </StackPanel>
             <StackPanel Background="{StaticResource CalculatorBackground}" Margin="0,0,5,0" HorizontalAlignment="Right">
-                <TextBlock Name="DisplayTextBlock" Height="75" Width="320" Text="{Binding displayText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" VerticalAlignment="Center"
+                <TextBlock Name="DisplayTextBlock" Height="75" Width="320" Text="{Binding DisplayText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" VerticalAlignment="Center"
                            FontSize="48" HorizontalAlignment="Right" Margin="0,0,5,0"/>
             </StackPanel>
 
@@ -171,8 +171,8 @@
         <Grid Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="1" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind nfViewModel.UPCSearch}" Name="UPCTextBox" Text="{Binding upc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Width="150" Margin="100,0,0,0" Text="{Binding textblockPrice, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Name="onlniePrice"/>
+                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind nfViewModel.UPCSearch}" Name="UPCTextBox" Text="{Binding UPC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="150" Margin="100,0,0,0" Text="{Binding TextblockPrice, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Name="onlniePrice"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                     <Button Name="Button1" Content="{Binding NFButtonManager.nfCollection[0].retailer}" Style="{StaticResource NFRegStyle1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind nfViewModel.WebsiteClick}" Visibility="{Binding NFButtonManager.nfCollection[0].visibility, Converter={StaticResource boolToVisibilityConverter}}"/>
