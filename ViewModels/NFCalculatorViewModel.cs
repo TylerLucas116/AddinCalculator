@@ -35,16 +35,16 @@ namespace AddInCalculator2._0.ViewModels
         public ButtonManager nfbManager { get { return NFBManager; } }
 
         #region Calculator Declarations
-        private double Price = new double();
-        public double price
+        private double price = new double();
+        public double Price
         {
             get
             {
-                return Price;
+                return price;
             }
             set
             {
-                Price = value;
+                price = value;
             }
         }
 
@@ -282,14 +282,14 @@ namespace AddInCalculator2._0.ViewModels
 
         public void ClearEntry(object sender, RoutedEventArgs e)
         {
-            price = 0;
+            Price = 0;
             displayText = "0";
             intermediateText = "";
             hasDecimal = false;
         }
         public void Clear(object sender, RoutedEventArgs e)
         {
-            price = 0;
+            Price = 0;
             displayText = "0";
             intermediateText = "";
             hasDecimal = false;
@@ -318,8 +318,8 @@ namespace AddInCalculator2._0.ViewModels
 
             operationClicked = true;
             operation = "Divide";
-            price = Double.Parse(displayText);
-            intermediateText = price + " /";
+            Price = Double.Parse(displayText);
+            intermediateText = Price + " /";
             hasDecimal = false;
         }
 
@@ -330,8 +330,8 @@ namespace AddInCalculator2._0.ViewModels
 
             operationClicked = true;
             operation = "Multiply";
-            price = Double.Parse(displayText);
-            intermediateText = price + " *";
+            Price = Double.Parse(displayText);
+            intermediateText = Price + " *";
             hasDecimal = false;
         }
 
@@ -342,8 +342,8 @@ namespace AddInCalculator2._0.ViewModels
 
             operationClicked = true;
             operation = "Subtract";
-            price = Double.Parse(displayText);
-            intermediateText = price + " -";
+            Price = Double.Parse(displayText);
+            intermediateText = Price + " -";
             hasDecimal = false;
         }
 
@@ -354,8 +354,8 @@ namespace AddInCalculator2._0.ViewModels
 
             operationClicked = true;
             operation = "Add";
-            price = Double.Parse(displayText);
-            intermediateText = price + " +";
+            Price = Double.Parse(displayText);
+            intermediateText = Price + " +";
             hasDecimal = false;
         }
 
@@ -370,16 +370,16 @@ namespace AddInCalculator2._0.ViewModels
             switch (operation)
             {
                 case "Add":
-                    displayText = Math.Round((price + Double.Parse(displayText)), 3).ToString();
+                    displayText = Math.Round((Price + Double.Parse(displayText)), 3).ToString();
                     break;
                 case "Subtract":
-                    displayText = Math.Round((price - Double.Parse(displayText)), 3).ToString();
+                    displayText = Math.Round((Price - Double.Parse(displayText)), 3).ToString();
                     break;
                 case "Multiply":
-                    displayText = Math.Round((price * Double.Parse(displayText)), 3).ToString();
+                    displayText = Math.Round((Price * Double.Parse(displayText)), 3).ToString();
                     break;
                 case "Divide":
-                    displayText = Math.Round((price / Double.Parse(displayText)), 3).ToString();
+                    displayText = Math.Round((Price / Double.Parse(displayText)), 3).ToString();
                     break;
                 default: //No other options
                     break;
@@ -413,8 +413,8 @@ namespace AddInCalculator2._0.ViewModels
             operationClicked = true;
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
-            price = Double.Parse(displayText);
-            displayText = RoundToNine(price * (nfbManager.nfCollection[index].percentage / 100)).ToString();
+            Price = Double.Parse(displayText);
+            displayText = RoundToNine(Price * (nfbManager.nfCollection[index].percentage / 100)).ToString();
         }
 
         public double RoundToNine(double value)
