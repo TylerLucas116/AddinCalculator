@@ -33,44 +33,19 @@ namespace AddInCalculator2._0.ViewModels
         HttpClient client = new HttpClient();
         private ButtonManager nfButtonManager { get; set; }
 
-        #region Calculator Declarations
         private double price = new double();
-        public double Price
-        {
-            get
-            {
-                return price;
-            }
-            set
-            {
-                price = value;
-            }
-        }
+        private bool operationClicked = new bool();
+        private bool calculated = new bool();
 
-        private bool OperationClicked = new bool();
-        public bool operationClicked
-        {
-            get
-            {
-                return OperationClicked;
-            }
-            set
-            {
-                OperationClicked = value;
-            }
-        }
-        private bool Calculated = new bool();
-        public bool calculated
-        {
-            get
-            {
-                return Calculated;
-            }
-            set
-            {
-                Calculated = value;
-            }
-        }
+        #region Calculator Declarations
+
+
+
+
+
+
+
+        
 
         private bool HasDecimal = new bool();
         public bool hasDecimal
@@ -259,6 +234,23 @@ namespace AddInCalculator2._0.ViewModels
         {
             get { return nfButtonManager; }
             set { }
+        }
+
+        public double Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
+        public bool OperationClicked
+        {
+            get { return operationClicked; }
+            set { operationClicked = value; }
+        }
+
+        public bool Calculated
+        {
+            get { return calculated; }
+            set { calculated = value; }
         }
 
         #endregion
