@@ -31,8 +31,7 @@ namespace AddInCalculator2._0.ViewModels
         #region Declarations
 
         HttpClient client = new HttpClient();
-        private ButtonManager NFBManager { get; set; }
-        public ButtonManager nfbManager { get { return NFBManager; } }
+        private ButtonManager nfButtonManager { get; set; }
 
         #region Calculator Declarations
         private double price = new double();
@@ -256,15 +255,21 @@ namespace AddInCalculator2._0.ViewModels
 
         ApiKey key = new ApiKey();
 
+        public ButtonManager NFButtonManager
+        {
+            get { return nfButtonManager; }
+            set { }
+        }
+
         #endregion
 
         #endregion
 
         public NFCalculatorViewModel()
         {
-            NFBManager = new ButtonManager();
-            nfbManager.InitializeCollections();
-            nfbManager.UpdateNFButtons();
+            nfButtonManager = new ButtonManager();
+            NFButtonManager.InitializeCollections();
+            NFButtonManager.UpdateNFButtons();
         }
 
         #region Calculation Methods
@@ -414,7 +419,7 @@ namespace AddInCalculator2._0.ViewModels
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
             Price = Double.Parse(displayText);
-            displayText = RoundToNine(Price * (nfbManager.nfCollection[index].percentage / 100)).ToString();
+            displayText = RoundToNine(Price * (NFButtonManager.nfCollection[index].percentage / 100)).ToString();
         }
 
         public double RoundToNine(double value)
@@ -520,10 +525,10 @@ namespace AddInCalculator2._0.ViewModels
                         bool walmartFound = false;
                         int i = 0;
                         // still need to traverse the collection to get correct percentage in case it changes in future
-                        for (i = 0; (i < nfbManager.nfCollection.Count() && (walmartFound == false)); ++i) //Find walmart percentage, changed from i < 49
+                        for (i = 0; (i < NFButtonManager.nfCollection.Count() && (walmartFound == false)); ++i) //Find walmart percentage, changed from i < 49
                         {
-                            string nfcollection = nfbManager.nfCollection[i].retailer;
-                            if (nfbManager.nfCollection[i].retailer == "Walmart")
+                            string nfcollection = NFButtonManager.nfCollection[i].retailer;
+                            if (NFButtonManager.nfCollection[i].retailer == "Walmart")
                             {
                                 walmartFound = true;
                                 walmartInformation = true;
@@ -533,7 +538,7 @@ namespace AddInCalculator2._0.ViewModels
                         if (walmartInformation)
                         {
                             onlineAbbrev = (" @WM $" + onlinePrice.ToString());
-                            onlinePrice *= (nfbManager.nfCollection[i - 1].percentage / 100); // added i - 1, wasn't accessing correct percentage before
+                            onlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100); // added i - 1, wasn't accessing correct percentage before
                             onlinePrice = RoundToNine(onlinePrice); // added to round to 9
                         }
                         else
