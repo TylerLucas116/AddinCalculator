@@ -178,13 +178,13 @@ namespace AddInCalculator2._0.ViewModels
 
         public void NumberClicked(object sender, RoutedEventArgs e)
         {
-            if (DisplayText == "0" || (operationClicked) || (calculated))
+            if (DisplayText == "0" || (OperationClicked) || (Calculated))
                 DisplayText = "";
 
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             DisplayText += b.Content;
-            operationClicked = false;
-            calculated = false;
+            OperationClicked = false;
+            Calculated = false;
         }
 
         public void ClearEntry(object sender, RoutedEventArgs e)
@@ -192,14 +192,14 @@ namespace AddInCalculator2._0.ViewModels
             Price = 0;
             DisplayText = "0";
             IntermediateText = "";
-            hasDecimal = false;
+            HasDecimal = false;
         }
         public void Clear(object sender, RoutedEventArgs e)
         {
             Price = 0;
             DisplayText = "0";
             IntermediateText = "";
-            hasDecimal = false;
+            HasDecimal = false;
         }
 
         public void BackSpace(object sender, RoutedEventArgs e)
@@ -215,7 +215,7 @@ namespace AddInCalculator2._0.ViewModels
             }
 
             if (backspaceChar == ".")
-                hasDecimal = false;
+                HasDecimal = false;
         }
 
         public void Divide(object sender, RoutedEventArgs e)
@@ -223,11 +223,11 @@ namespace AddInCalculator2._0.ViewModels
             if (DisplayText == "" || DisplayText == ".")
                 return;
 
-            operationClicked = true;
-            operation = "Divide";
+            OperationClicked = true;
+            Operation = "Divide";
             Price = Double.Parse(DisplayText);
             IntermediateText = Price + " /";
-            hasDecimal = false;
+            HasDecimal = false;
         }
 
         public void Multiply(object sender, RoutedEventArgs e)
@@ -235,11 +235,11 @@ namespace AddInCalculator2._0.ViewModels
             if (DisplayText == "" || DisplayText == ".")
                 return;
 
-            operationClicked = true;
-            operation = "Multiply";
+            OperationClicked = true;
+            Operation = "Multiply";
             Price = Double.Parse(DisplayText);
             IntermediateText = Price + " *";
-            hasDecimal = false;
+            HasDecimal = false;
         }
 
         public void Subtract(object sender, RoutedEventArgs e)
@@ -247,11 +247,11 @@ namespace AddInCalculator2._0.ViewModels
             if (DisplayText == "" || DisplayText == ".")
                 return;
 
-            operationClicked = true;
-            operation = "Subtract";
+            OperationClicked = true;
+            Operation = "Subtract";
             Price = Double.Parse(DisplayText);
             IntermediateText = Price + " -";
-            hasDecimal = false;
+            HasDecimal = false;
         }
 
         public void Add(object sender, RoutedEventArgs e)
@@ -259,11 +259,11 @@ namespace AddInCalculator2._0.ViewModels
             if (DisplayText == "" || DisplayText == ".")
                 return;
 
-            operationClicked = true;
-            operation = "Add";
+            OperationClicked = true;
+            Operation = "Add";
             Price = Double.Parse(DisplayText);
             IntermediateText = Price + " +";
-            hasDecimal = false;
+            HasDecimal = false;
         }
 
         public void Calculate(object sender, RoutedEventArgs e)
@@ -273,8 +273,8 @@ namespace AddInCalculator2._0.ViewModels
             if (DisplayText == "")
                 return;
 
-            operationClicked = false;
-            switch (operation)
+            OperationClicked = false;
+            switch (Operation)
             {
                 case "Add":
                     DisplayText = Math.Round((Price + Double.Parse(DisplayText)), 3).ToString();
@@ -291,21 +291,21 @@ namespace AddInCalculator2._0.ViewModels
                 default: //No other options
                     break;
             }
-            calculated = true;
-            hasDecimal = false;
+            Calculated = true;
+            HasDecimal = false;
         }
 
         public void Decimal(object sender, RoutedEventArgs e)
         {
-            if ((DisplayText == "0") || (operationClicked) || (calculated))
+            if ((DisplayText == "0") || (OperationClicked) || (Calculated))
                 DisplayText = "";
-            if (hasDecimal == false)
+            if (HasDecimal == false)
             {
                 Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
                 DisplayText += b.Content;
-                operationClicked = false;
-                calculated = false;
-                hasDecimal = true;
+                OperationClicked = false;
+                Calculated = false;
+                HasDecimal = true;
             }
             else
                 return;
@@ -317,7 +317,7 @@ namespace AddInCalculator2._0.ViewModels
             if (DisplayText == "" || DisplayText == "0" || DisplayText == ".")
                 return;
 
-            operationClicked = true;
+            OperationClicked = true;
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
             Price = Double.Parse(DisplayText);
@@ -377,11 +377,11 @@ namespace AddInCalculator2._0.ViewModels
                 }*/
 
                 // if a price was found
-                if (found)
+                if (Found)
                 {
-                    operationClicked = false;
-                    calculated = true;
-                    hasDecimal = false;
+                    OperationClicked = false;
+                    Calculated = true;
+                    HasDecimal = false;
                     DisplayText = OnlinePrice.ToString();
                     TextblockPrice = OnlinePrice.ToString() + onlineAbbrev;
                 }
@@ -392,7 +392,7 @@ namespace AddInCalculator2._0.ViewModels
                 }
 
                 // reset found
-                found = false;
+                Found = false;
             }
         }
         public async Task searchWalmartNF()
@@ -414,7 +414,7 @@ namespace AddInCalculator2._0.ViewModels
 
                     if (jsonString != "") //If there was text in salePrice
                     {
-                        found = true;
+                        Found = true;
                         double priceHolder;
                         if(Double.TryParse(jsonString, out priceHolder))
                         {
@@ -430,13 +430,13 @@ namespace AddInCalculator2._0.ViewModels
                             if (NFButtonManager.nfCollection[i].retailer == "Walmart")
                             {
                                 walmartFound = true;
-                                walmartInformation = true;
+                                WalmartInformation = true;
                             }
                         }
 
-                        if (walmartInformation)
+                        if (WalmartInformation)
                         {
-                            onlineAbbrev = (" @WM $" + OnlinePrice.ToString());
+                            OnlineAbbrev = (" @WM $" + OnlinePrice.ToString());
                             OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
                             OnlinePrice = RoundToNine(OnlinePrice);
                         }
@@ -444,7 +444,7 @@ namespace AddInCalculator2._0.ViewModels
                         {
                             var messageDialog = new MessageDialog("No Walmart information was found in the calculator");
                             await messageDialog.ShowAsync();
-                            walmartInformation = false;
+                            WalmartInformation = false;
                         }
                     }
                     else
