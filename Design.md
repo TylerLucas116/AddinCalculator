@@ -27,3 +27,5 @@ For the GUI, the user will be able to enter in a UPC barcode via a scanner. If n
 so that any employee won't be able to edit the databse.
 
 The project will leverage an MVVM design pattern. 
+
+Currently, most of the project functionality resides in NFCalculatorViewModel.cs and NFCalculator.xaml/.xaml.cs.
