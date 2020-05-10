@@ -23,7 +23,7 @@ current need for a price history or any other type of data storage.
 
 ## Proposed Design
 
-For the GUI, the user will be able to enter in a UPC barcode via a scanner. If no price is found online from the web scraper, then there will be a collapsable calcualtor that will be revealed. It will have a regular calculator, as well as buttons corresponding to the client's customizable store buttons. Users will be able to enter in some kind of identifier, such as an ID number or name. For the database in the GUI, there will be an option to add, delete, or edit grocery store buttons for each category (cooler, freezer, food, etc.). This functionality should have some sort of admin privilege
+For the GUI, the user will be able to enter in a UPC barcode via a scanner. If no price is found online from the web scraper, then there will be a collapsable calculator that will be revealed. It will have a regular calculator, as well as buttons corresponding to the client's customizable store buttons. Users will be able to enter in some kind of identifier, such as an ID number or name. For the database in the GUI, there will be an option to add, delete, or edit grocery store buttons for each category (cooler, freezer, food, etc.). This functionality should have some sort of admin privilege
 so that any employee won't be able to edit the databse.
 
 The project will leverage an MVVM design pattern. 
