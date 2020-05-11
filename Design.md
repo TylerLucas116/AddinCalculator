@@ -29,3 +29,6 @@ so that any employee won't be able to edit the databse.
 The project will leverage an MVVM design pattern. 
 
 Currently, most of the project functionality resides in NFCalculatorViewModel.cs and NFCalculator.xaml/.xaml.cs.
+
+As an additional note, the original design was sort of "Build one to throw away" mentality, however instead of
+rebuilding the entire project, I think refactoring and then building from there will work better.
