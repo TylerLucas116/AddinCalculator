@@ -33,6 +33,7 @@ namespace AddInCalculator2._0.ViewModels
             nfButtonManager = new ButtonManager();
             NFButtonManager.InitializeCollections();
             NFButtonManager.UpdateNFButtons();
+            calculator = new Calculator();
         }
 
         #region Declarations
@@ -42,17 +43,13 @@ namespace AddInCalculator2._0.ViewModels
         public DataPackage dataPackage = new DataPackage();
         WebView webView = new WebView();
         private ButtonManager nfButtonManager;
+        private Calculator calculator;
 
-        private double price = new double();
         private double onlinePrice;
-        private bool operationClicked = new bool();
-        private bool calculated = new bool();
-        private bool hasDecimal = new bool();
         private string displayText;
         private string intermediateText;
         private string upc;
         private string textblockPrice;
-        private string operation;
 
         private string url;
         private string walmartUrl = "http://api.walmartlabs.com/v1/items";
@@ -67,12 +64,12 @@ namespace AddInCalculator2._0.ViewModels
             get { return nfButtonManager; }
             set { }
         }
-
-        public double Price
+        public Calculator Calculator
         {
-            get { return price; }
-            set { price = value; }
+            get { return calculator; }
+            set { }
         }
+
         public double OnlinePrice
         {
             get { return onlinePrice; }
@@ -82,22 +79,7 @@ namespace AddInCalculator2._0.ViewModels
                 OnPropertyChanged("OnlinePrice");
             }
         }
-        public bool OperationClicked
-        {
-            get { return operationClicked; }
-            set { operationClicked = value; }
-        }
 
-        public bool Calculated
-        {
-            get { return calculated; }
-            set { calculated = value; }
-        }
-        public bool HasDecimal
-        {
-            get { return hasDecimal; }
-            set { hasDecimal = value; }
-        }
         public string DisplayText
         {
             get { return displayText; }
@@ -134,12 +116,6 @@ namespace AddInCalculator2._0.ViewModels
                 OnPropertyChanged("TextblockPrice");
             }
         }
-        public string Operation
-        {
-            get { return operation; }
-            set { operation = value; }
-        }
-
         public string URL
         {
             get { return url; }
@@ -175,154 +151,6 @@ namespace AddInCalculator2._0.ViewModels
         #endregion
 
         #region Calculation Methods
-
-        public void NumberClicked(object sender, RoutedEventArgs e)
-        {
-            if (DisplayText == "0" || (OperationClicked) || (Calculated))
-                DisplayText = "";
-
-            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
-            DisplayText += b.Content;
-            OperationClicked = false;
-            Calculated = false;
-        }
-
-        public void ClearEntry(object sender, RoutedEventArgs e)
-        {
-            Price = 0;
-            DisplayText = "0";
-            IntermediateText = "";
-            HasDecimal = false;
-        }
-        public void Clear(object sender, RoutedEventArgs e)
-        {
-            Price = 0;
-            DisplayText = "0";
-            IntermediateText = "";
-            HasDecimal = false;
-        }
-
-        public void BackSpace(object sender, RoutedEventArgs e)
-        {
-            string backspaceChar = "";
-            if (DisplayText == "0" || DisplayText == "")
-                return;
-            else
-            {
-                backspaceChar = DisplayText[DisplayText.Length - 1].ToString();
-                string backspaceString = DisplayText.Substring(0, (DisplayText.Length - 1));
-                DisplayText = backspaceString;
-            }
-
-            if (backspaceChar == ".")
-                HasDecimal = false;
-        }
-
-        public void Divide(object sender, RoutedEventArgs e)
-        {
-            if (DisplayText == "" || DisplayText == ".")
-                return;
-
-            OperationClicked = true;
-            Operation = "Divide";
-            Price = Double.Parse(DisplayText);
-            IntermediateText = Price + " /";
-            HasDecimal = false;
-        }
-
-        public void Multiply(object sender, RoutedEventArgs e)
-        {
-            if (DisplayText == "" || DisplayText == ".")
-                return;
-
-            OperationClicked = true;
-            Operation = "Multiply";
-            Price = Double.Parse(DisplayText);
-            IntermediateText = Price + " *";
-            HasDecimal = false;
-        }
-
-        public void Subtract(object sender, RoutedEventArgs e)
-        {
-            if (DisplayText == "" || DisplayText == ".")
-                return;
-
-            OperationClicked = true;
-            Operation = "Subtract";
-            Price = Double.Parse(DisplayText);
-            IntermediateText = Price + " -";
-            HasDecimal = false;
-        }
-
-        public void Add(object sender, RoutedEventArgs e)
-        {
-            if (DisplayText == "" || DisplayText == ".")
-                return;
-
-            OperationClicked = true;
-            Operation = "Add";
-            Price = Double.Parse(DisplayText);
-            IntermediateText = Price + " +";
-            HasDecimal = false;
-        }
-
-        public void Calculate(object sender, RoutedEventArgs e)
-        {
-            IntermediateText = "";
-
-            if (DisplayText == "")
-                return;
-
-            OperationClicked = false;
-            switch (Operation)
-            {
-                case "Add":
-                    DisplayText = Math.Round((Price + Double.Parse(DisplayText)), 3).ToString();
-                    break;
-                case "Subtract":
-                    DisplayText = Math.Round((Price - Double.Parse(DisplayText)), 3).ToString();
-                    break;
-                case "Multiply":
-                    DisplayText = Math.Round((Price * Double.Parse(DisplayText)), 3).ToString();
-                    break;
-                case "Divide":
-                    DisplayText = Math.Round((Price / Double.Parse(DisplayText)), 3).ToString();
-                    break;
-                default: //No other options
-                    break;
-            }
-            Calculated = true;
-            HasDecimal = false;
-        }
-
-        public void Decimal(object sender, RoutedEventArgs e)
-        {
-            if ((DisplayText == "0") || (OperationClicked) || (Calculated))
-                DisplayText = "";
-            if (HasDecimal == false)
-            {
-                Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
-                DisplayText += b.Content;
-                OperationClicked = false;
-                Calculated = false;
-                HasDecimal = true;
-            }
-            else
-                return;
-        }
-
-        public void WebsiteClick(object sender, RoutedEventArgs e)
-        {
-            IntermediateText = "";
-            if (DisplayText == "" || DisplayText == "0" || DisplayText == ".")
-                return;
-
-            OperationClicked = true;
-            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
-            int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
-            Price = Double.Parse(DisplayText);
-            DisplayText = RoundToNine(Price * (NFButtonManager.nfCollection[index].percentage / 100)).ToString();
-        }
 
         public double RoundToNine(double value)
         {
@@ -379,9 +207,6 @@ namespace AddInCalculator2._0.ViewModels
                 // if a price was found
                 if (Found)
                 {
-                    OperationClicked = false;
-                    Calculated = true;
-                    HasDecimal = false;
                     DisplayText = OnlinePrice.ToString();
                     TextblockPrice = OnlinePrice.ToString() + onlineAbbrev;
                 }
