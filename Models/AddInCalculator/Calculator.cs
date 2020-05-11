@@ -36,8 +36,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             get { return nfButtonManager; }
             set { }
         }
-
-        #region Calculator Functions
         public double Price
         {
             get { return price; }
@@ -101,9 +99,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set { operation = value; }
         }
 
-        #endregion
-
-        #region Calculation Methods
 
         public void NumberClicked(object sender, RoutedEventArgs e)
         {
@@ -258,7 +253,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             double roundedValue = Math.Round(value, 1);
             return roundedValue - 0.01;
         }
-        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
