@@ -160,7 +160,7 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE94E;" FontSize="16"
-                        Name="EqualToButton" Margin="5,5,5,5" Click="{x:Bind nfViewModel.Calculate}">
+                        Name="EqualToButton" Margin="5,5,5,5" Click="{x:Bind nfViewModel.Calculator.Calculate}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Enter" Invoked="AcceleratorEqualTo"/>
                     </Button.KeyboardAccelerators>
