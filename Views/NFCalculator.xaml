@@ -110,7 +110,7 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE949;" FontSize="16"
-                        Name="SubtractButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Subtract}">
+                        Name="SubtractButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Calculator.Subtract}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Subtract" Invoked="AcceleratorSubtract"/>
                     </Button.KeyboardAccelerators>
