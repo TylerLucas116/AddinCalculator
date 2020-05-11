@@ -48,7 +48,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" Content="CE" FontSize="16"
-                        Name="ClearEntryButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.ClearEntry}"/>
+                        Name="ClearEntryButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.ClearEntry}"/>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" Content="C" FontSize="16"
                         Name="ClearButtonButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.Clear}"/>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" FontFamily="Segoe MDL2 Assets" Content="&#xE94F;" FontSize="16"
