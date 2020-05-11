@@ -66,19 +66,19 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="7" FontSize="24"
-                        Name="SevenButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="SevenButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad7" Invoked="Accelerator7"/>
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="8" FontSize="24"
-                        Name="EightButton" Margin="5,5,0,0" AutomationProperties.AcceleratorKey="NumberPad8" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="EightButton" Margin="5,5,0,0" AutomationProperties.AcceleratorKey="NumberPad8" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad8" Invoked="Accelerator8"/>
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="9" FontSize="24"
-                        Name="NineButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="NineButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad9" Invoked="Accelerator9"/>
                     </Button.KeyboardAccelerators>
@@ -92,19 +92,19 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="4" FontSize="24"
-                        Name="FourButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="FourButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad4" Invoked="Accelerator4"/>
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="5" FontSize="24"
-                        Name="FiveButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="FiveButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad5" Invoked="Accelerator5"/>
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="6" FontSize="24"
-                        Name="SixButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="SixButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad6" Invoked="Accelerator6"/>
                     </Button.KeyboardAccelerators>
@@ -125,13 +125,13 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="2" FontSize="24"
-                        Name="TwoButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="TwoButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad2" Invoked="KeyboardAccelerator_Invoked_1"/>
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="3" FontSize="24"
-                        Name="ThreeButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="ThreeButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad3" Invoked="Accelerator3"/>
                     </Button.KeyboardAccelerators>
@@ -147,7 +147,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE94D;" FontSize="24"
                         Name="NegateButton" Margin="5,5,0,5"/>
-                <Button Height="45" Width="75" Click="{x:Bind nfViewModel.NumberClicked}" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="0" FontSize="24"
+                <Button Height="45" Width="75" Click="{x:Bind nfViewModel.Calculator.NumberClicked}" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="0" FontSize="24"
                         Name="ZeroButton" Margin="5,5,0,5">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad0"/>
