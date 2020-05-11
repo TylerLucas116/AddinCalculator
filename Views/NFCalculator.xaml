@@ -58,7 +58,7 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" FontFamily="Segoe MDL2 Assets" Content="&#xE94A;" FontSize="16"
-                        Name="DivideButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Divide}">
+                        Name="DivideButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Calculator.Divide}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Divide" Invoked="AcceleratorDivide" />
                     </Button.KeyboardAccelerators>
