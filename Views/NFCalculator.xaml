@@ -137,7 +137,7 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE948;" FontSize="16"
-                        Name="AddButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Add}">
+                        Name="AddButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Calculator.Add}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Add" Invoked="AcceleratorAdd"/>
                     </Button.KeyboardAccelerators>
