@@ -13,6 +13,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     public class Calculator
     {
 
+        private bool operationClicked = new bool();
+        private bool calculated = new bool();
+        private bool hasDecimal = new bool();
+        private string displayText;
+        private string intermediateText;
+        private string upc;
+        private string textblockPrice;
+        private string operation;
+
         #region Calculator Functions
         public string NumberClicked(object sender, RoutedEventArgs e, string displayText, bool operationClicked, bool calculated) //0-9
         {
