@@ -32,7 +32,7 @@
                            FontWeight="ExtraLight" TextAlignment="Right" Margin="0,0,5,0" />
             </StackPanel>
             <StackPanel Background="{StaticResource CalculatorBackground}" Margin="0,0,5,0" HorizontalAlignment="Right">
-                <TextBlock Name="DisplayTextBlock" Height="75" Width="320" Text="{Binding DisplayText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" VerticalAlignment="Center"
+                <TextBlock Name="DisplayTextBlock" Height="75" Width="320" Text="{Binding Calculator.DisplayText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" VerticalAlignment="Center"
                            FontSize="48" HorizontalAlignment="Right" Margin="0,0,5,0"/>
             </StackPanel>
 
@@ -119,7 +119,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="1" FontSize="24"
-                        Name="OneButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.NumberClicked}">
+                        Name="OneButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.NumberClicked}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="NumberPad1" Invoked="KeyboardAccelerator_Invoked"/>
                     </Button.KeyboardAccelerators>
