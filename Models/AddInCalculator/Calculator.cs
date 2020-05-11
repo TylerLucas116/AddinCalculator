@@ -21,10 +21,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         private ButtonManager nfButtonManager;
 
-        private double price = new double();
-        private bool operationClicked = new bool();
-        private bool calculated = new bool();
-        private bool hasDecimal = new bool();
+        private double price;
+        private bool operationClicked;
+        private bool calculated;
+        private bool hasDecimal;
         private string displayText;
         private string intermediateText;
         private string upc;
