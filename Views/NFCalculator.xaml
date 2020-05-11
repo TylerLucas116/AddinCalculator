@@ -154,7 +154,7 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" Content="." FontSize="24"
-                        Name="PeriodButton" Margin="5,5,0,5" Click="{x:Bind nfViewModel.Decimal}">
+                        Name="PeriodButton" Margin="5,5,0,5" Click="{x:Bind nfViewModel.Calculator.Decimal}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Decimal" Invoked="AcceleratorDecimal" />
                     </Button.KeyboardAccelerators>
