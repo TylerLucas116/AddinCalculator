@@ -84,7 +84,7 @@
                     </Button.KeyboardAccelerators>
                 </Button>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE947;" FontSize="16"
-                        Name="MultiplyButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Multiply}">
+                        Name="MultiplyButton" Margin="5,5,5,0" Click="{x:Bind nfViewModel.Calculator.Multiply}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Multiply" Invoked="AcceleratorMultiply" />
                     </Button.KeyboardAccelerators>
