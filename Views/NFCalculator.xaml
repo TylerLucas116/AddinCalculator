@@ -52,7 +52,7 @@
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" Content="C" FontSize="16"
                         Name="ClearButtonButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Clear}"/>
                 <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" FontFamily="Segoe MDL2 Assets" Content="&#xE94F;" FontSize="16"
-                        Name="BackspaceButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.BackSpace}">
+                        Name="BackspaceButton" Margin="5,5,0,0" Click="{x:Bind nfViewModel.Calculator.BackSpace}">
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="Delete" Invoked="AcceleratorBackspace" />
                     </Button.KeyboardAccelerators>
