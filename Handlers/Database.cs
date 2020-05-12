@@ -198,6 +198,69 @@ namespace AddInCalculator2._0.Handlers
 
             return "Button Not Found";
         }
+
+
+        #region Previous DB Code
+
+
+        #region Declarations
+        String table = "ButtonInfo";
+        String fieldname = "Button";
+        String ObjectPath = "AddInCalculator2._0.Models.AddInCalculator.Button";
+        Type obType = (typeof(Models.AddInCalculator.Button));
+        //Button button1 = new Button();
+        #endregion
+        #region Create Database
+        private void CreateDatabase2()
+        {
+            Handlers.Database db = new Handlers.Database();
+            Handlers.DatabaseField myField = db.BuildFieldObject("nvarchar", fieldname);
+        }
+
+        #endregion
+        #region Read From Database
+        private void ReturnAllRecords()
+        {
+            var myButtonList = new List<Models.AddInCalculator.Button>();
+            Handlers.Database db = new Handlers.Database();
+
+            myButtonList = db.ReturnAllRecords<Models.AddInCalculator.Button>(table, fieldname, ObjectPath);
+            /*foreach (Models.AddInCalculator.Button myButton in myButtonList)
+            {
+                lvRecords.Items.Add(myButton.retailer + "  " + myButton.label + "  " +
+                    myButton.percentage.ToString() + "  " + myButton.type + "  " + myButton.abbrev);
+            }*/
+        }
+        #endregion
+        #region Write to Database
+        private void WriteRecord()
+        {
+            Handlers.Database db = new Handlers.Database();
+            var myButton = buildButtonObject();
+
+            db.WriteRecord<Models.AddInCalculator.Button>(myButton, table, db.BuildFieldObject("nvarchar", fieldname));
+        }
+        #endregion
+        private Models.AddInCalculator.Button buildButtonObject()
+        {
+            var myButton = new Models.AddInCalculator.Button();
+
+            /*  public int ID { get; set; } //start at 1, 2, 3
+                public string retailer { get; set; }
+                public string label { get; set; } //Walmart, targer
+                public string abbrev { get; set; } //wm, tg, etc (for pasting)
+                public decimal percentage { get; set; } //75, 50, etc
+                public string type { get; set; } //food,*/
+            //myButton.retailer = tbRetailer.Text;
+            //myButton.label = tbLabel.Text;
+            //myButton.abbrev = tbAbbreviation.Text;
+            //myButton.percentage = Decimal.Parse(tbPercentage.Text);
+            //myButton.type = tbType.Text;
+
+            return myButton;
+
+        }
+        #endregion
     }
 
     #region Database Field Object Class
