@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -332,15 +333,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
         // event handling for dom content loaded
         /*
         public event TypedEventHandler<WebView, WebViewDOMContentLoadedEventArgs> DOMContentLoaded
@@ -400,5 +392,27 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         private delegate void DomLoadedEventHandler(object source, WebViewDOMContentLoadedEventArgs args);
+
+        #region Observable Objects
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        private void OnCollectionChanged(NotifyCollectionChangedEventArgs args)
+        {
+            if (this.CollectionChanged != null)
+            {
+                this.CollectionChanged(this, args);
+            }
+        }
+
+
+        #endregion
     }
 }
