@@ -8,8 +8,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     class Retailer
     {
-        private double onlinePrice;
+        private string name;
         private string websiteURL;
+        private double onlinePrice;
 
         public double OnlinePrice
         {
@@ -26,6 +27,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             {
                 websiteURL = value;
             }
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
         }
     }
 }
