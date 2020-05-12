@@ -34,8 +34,6 @@ namespace AddInCalculator2._0.ViewModels
             NFButtonManager.InitializeCollections();
             NFButtonManager.UpdateNFButtons();
             calculator = new Calculator();
-            walmart = new Retailer();
-            target = new Retailer();
             scraper = new WebScraper();
         }
 
@@ -47,8 +45,6 @@ namespace AddInCalculator2._0.ViewModels
         WebView webView = new WebView();
         private ButtonManager nfButtonManager;
         private Calculator calculator;
-        private Retailer walmart;
-        private Retailer target;
         private WebScraper scraper;
 
         private double onlinePrice;
