@@ -23,6 +23,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             nfButtonManager.InitializeCollections();
             nfButtonManager.UpdateNFButtons();
         }
+
         private ButtonManager nfButtonManager;
         HttpClient client = new HttpClient();
         ApiKey key = new ApiKey();
