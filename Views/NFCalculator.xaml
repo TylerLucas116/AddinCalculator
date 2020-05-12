@@ -171,7 +171,7 @@
         <Grid Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="1" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind nfViewModel.UPCSearch}" Name="UPCTextBox" Text="{Binding UPC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind nfViewModel.Scraper.UPCSearch}" Name="UPCTextBox" Text="{Binding Scraper.UPC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="150" Margin="100,0,0,0" Text="{Binding TextblockPrice, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Name="onlniePrice"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
