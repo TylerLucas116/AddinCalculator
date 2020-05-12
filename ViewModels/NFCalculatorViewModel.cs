@@ -36,6 +36,7 @@ namespace AddInCalculator2._0.ViewModels
             calculator = new Calculator();
             walmart = new Retailer();
             target = new Retailer();
+            scraper = new WebScraper();
         }
 
         #region Declarations
@@ -48,6 +49,7 @@ namespace AddInCalculator2._0.ViewModels
         private Calculator calculator;
         private Retailer walmart;
         private Retailer target;
+        private WebScraper scraper;
 
         private double onlinePrice;
         private double test;
@@ -73,6 +75,11 @@ namespace AddInCalculator2._0.ViewModels
         {
             get { return calculator; }
             set { }
+        }
+        public WebScraper Scraper
+        {
+            get { return scraper; }
+            set { scraper = value; }
         }
 
         public double OnlinePrice
