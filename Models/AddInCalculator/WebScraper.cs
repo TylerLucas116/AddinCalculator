@@ -16,6 +16,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     class WebScraper : INotifyPropertyChanged
     {
+        public WebScraper()
+        {
+            nfButtonManager = new ButtonManager();
+            nfButtonManager.InitializeCollections();
+            nfButtonManager.UpdateNFButtons();
+        }
+        private ButtonManager nfButtonManager;
         HttpClient client = new HttpClient();
         ApiKey key = new ApiKey();
         WebView webView = new WebView();
@@ -33,6 +40,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private bool targetInformation;
         private string onlineAbbrev;
 
+        public ButtonManager NFButtonManager
+        {
+            get { return nfButtonManager; }
+            set { }
+        }
         public string URL
         {
             get { return url; }
