@@ -8,6 +8,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     class Retailer
     {
+        private double onlinePrice;
 
+        public double OnlinePrice
+        {
+            get { return onlinePrice; }
+            set
+            {
+                onlinePrice = value;
+            }
+        }
     }
 }
