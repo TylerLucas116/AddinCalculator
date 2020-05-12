@@ -46,6 +46,7 @@ namespace AddInCalculator2._0.ViewModels
         private Calculator calculator;
 
         private double onlinePrice;
+        private double test;
         private string displayText;
         private string intermediateText;
         private string upc;
