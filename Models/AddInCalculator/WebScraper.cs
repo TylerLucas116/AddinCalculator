@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    class WebScraper : INotifyPropertyChanged
+    public class WebScraper : INotifyPropertyChanged
     {
         public WebScraper()
         {
