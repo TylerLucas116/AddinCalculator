@@ -249,65 +249,7 @@ namespace AddInCalculator2._0.ViewModels
             }
         }
 
-        // event handling for dom content loaded
-        /*
-        public event TypedEventHandler<WebView, WebViewDOMContentLoadedEventArgs> DOMContentLoaded
-        {
-
-        }*/
-        public async void DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
-        {
-            try
-            {
-                string html = await sender.InvokeScriptAsync("eval", new string[] { "document.documentElement.outerHTML;" });
-                var text = html;
-                var doc = new HtmlDocument();
-                doc.LoadHtml(text);
-
-                var price = doc.DocumentNode.SelectSingleNode("//*[@id=\"mainContainer\"]/div[3]/div[2]/div/div[1]/div[3]/div/ul/li/div/div[2]/div/div/div/div[2]/span");
-                //var price = doc.DocumentNode.SelectNodes("//div[@class='styles__StyledPricePromoWrapper-e5kry1-12 gzebgK']");
-                Debug.WriteLine("Target price found:");
-                Debug.WriteLine(price.InnerText);
-            }
-            catch (HttpRequestException httpException)
-            {
-                Debug.WriteLine("HTTP exception caught.");
-                Debug.WriteLine(httpException);
-            }
-            catch (Exception exception)
-            {
-                Debug.WriteLine("Exception caught.");
-                Debug.WriteLine(exception);
-            }
-        }
-
-        public async void NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
-        {
-            try
-            {
-                string html = await sender.InvokeScriptAsync("eval", new string[] { "document.documentElement.outerHTML;" });
-                var text = html;
-                var doc = new HtmlDocument();
-                doc.LoadHtml(text);
-
-                var price = doc.DocumentNode.SelectSingleNode("//*[@id=\"mainContainer\"]/div[3]/div[2]/div/div[1]/div[3]/div/ul/li/div/div[2]/div/div/div/div[2]/span");
-                //var price = doc.DocumentNode.SelectNodes("//div[@class='styles__StyledPricePromoWrapper-e5kry1-12 gzebgK']");
-                Debug.WriteLine("Target price found:");
-                Debug.WriteLine(price.InnerText);
-            }
-            catch (HttpRequestException httpException)
-            {
-                Debug.WriteLine("HTTP exception caught.");
-                Debug.WriteLine(httpException);
-            }
-            catch (Exception exception)
-            {
-                Debug.WriteLine("Exception caught.");
-                Debug.WriteLine(exception);
-            }
-        }
-
-        private delegate void DomLoadedEventHandler(object source, WebViewDOMContentLoadedEventArgs args);
+        
         #endregion
 
         }
