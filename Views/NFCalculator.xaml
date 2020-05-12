@@ -171,8 +171,8 @@
         <Grid Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="1" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind nfViewModel.UPCSearch}" Name="UPCTextBox" Text="{Binding UPC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Width="150" Margin="100,0,0,0" Text="{Binding TextblockPrice, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Name="onlniePrice"/>
+                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind nfViewModel.Scraper.UPCSearch}" Name="UPCTextBox" Text="{Binding Scraper.UPC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="150" Margin="100,0,0,0" Text="{Binding Scraper.TextblockPrice, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Name="onlinePrice"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                     <Button Name="Button1" Content="{Binding NFButtonManager.nfCollection[0].retailer}" Style="{StaticResource NFRegStyle1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind nfViewModel.Calculator.WebsiteClick}" Visibility="{Binding NFButtonManager.nfCollection[0].visibility, Converter={StaticResource boolToVisibilityConverter}}"/>
