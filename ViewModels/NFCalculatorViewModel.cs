@@ -49,15 +49,12 @@ namespace AddInCalculator2._0.ViewModels
         public WebScraper Scraper
         {
             get { return scraper; }
-            set { scraper = value; }
+            set { }
         }
         public ButtonManager NFButtonManager
         {
             get { return nfButtonManager; }
             set { }
         }
-
-        
-
-        }
+    }
 }
