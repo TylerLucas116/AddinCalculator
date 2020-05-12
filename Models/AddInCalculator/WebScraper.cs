@@ -411,8 +411,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 this.CollectionChanged(this, args);
             }
         }
-
-
         #endregion
     }
 }
