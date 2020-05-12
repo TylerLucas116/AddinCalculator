@@ -10,6 +10,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         private string name;
         private string websiteURL;
+        private string onlineAbbrev;
         private double onlinePrice;
 
         public double OnlinePrice
@@ -32,6 +33,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return name; }
             set { name = value; }
+        }
+        public string OnlineAbbrev
+        {
+            get { return onlineAbbrev; }
+            set { onlineAbbrev = value; }
         }
     }
 }
