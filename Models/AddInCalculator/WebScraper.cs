@@ -32,7 +32,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string walmartUrl = "http://api.walmartlabs.com/v1/items";
         private bool found;
         private double onlinePrice;
-        private double test;
         private string displayText;
         private string intermediateText;
         private string upc;
