@@ -25,9 +25,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         private ButtonManager nfButtonManager;
-        HttpClient client = new HttpClient();
-        ApiKey key = new ApiKey();
-        WebView webView = new WebView();
+        private HttpClient client = new HttpClient();
+        private ApiKey key = new ApiKey();
+        private WebView webView = new WebView();
+        private Retailer walmart = new Retailer();
+        private Retailer target = new Retailer();
+        private Retailer cvs = new Retailer();
 
         private string url;
         private string walmartUrl = "http://api.walmartlabs.com/v1/items";
@@ -109,11 +112,25 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             return roundedValue - 0.01;
         }
 
+        private void InitializeRetailers()
+        {
+            walmart.WebsiteURL = "http://api.walmartlabs.com/v1/items";
+            walmart.Name = "Walmart";
+            walmart.OnlineAbbrev = "WM";
+
+            target.WebsiteURL = "https://www.target.com/s?searchTerm=";
+            target.Name = "Target";
+            target.OnlineAbbrev = "TG";
+
+            cvs.WebsiteURL = "https://www.cvs.com/search?searchTerm=";
+            cvs.Name = "CVS";
+            cvs.OnlineAbbrev = "CVS";
+        }
+
         public async void UPCSearch(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-
                 // search Walmart
                 try
                 {
