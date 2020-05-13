@@ -37,7 +37,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private double onlinePrice;
         private string upc;
         private string textblockPrice;
-        private bool walmartInformation;
         private bool targetInformation;
         private string onlineAbbrev;
 
@@ -50,12 +49,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return found; }
             set { found = value; }
-        }
-
-        public bool WalmartInformation
-        {
-            get { return walmartInformation; }
-            set { walmartInformation = value; }
         }
         public bool TargetInformation
         {
@@ -204,10 +197,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                         double priceHolder;
                         if (Double.TryParse(jsonString, out priceHolder))
                         {
-                            OnlinePrice = priceHolder;
+                            walmart.OnlinePrice = priceHolder;
                         }
 
-                        bool walmartFound = false;
+                        bool walmartFound = false, walmartInformation = false;
                         int i = 0;
                         // still need to traverse the collection to get correct percentage in case it changes in future
                         for (i = 0; (i < NFButtonManager.nfCollection.Count() && (walmartFound == false)); ++i)
@@ -216,11 +209,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                             if (NFButtonManager.nfCollection[i].retailer == "Walmart")
                             {
                                 walmartFound = true;
-                                WalmartInformation = true;
+                                walmartInformation = true;
                             }
                         }
 
-                        if (WalmartInformation)
+                        if (walmartInformation)
                         {
                             OnlineAbbrev = (" @WM $" + OnlinePrice.ToString());
                             OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
@@ -230,7 +223,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                         {
                             var messageDialog = new MessageDialog("No Walmart information was found in the calculator");
                             await messageDialog.ShowAsync();
-                            WalmartInformation = false;
                         }
                     }
                     else
