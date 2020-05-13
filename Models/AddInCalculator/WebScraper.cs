@@ -32,7 +32,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer target = new Retailer();
         private Retailer cvs = new Retailer();
 
-        private string url;
         private string walmartUrl = "http://api.walmartlabs.com/v1/items";
         private bool found;
         private double onlinePrice;
@@ -46,11 +45,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return nfButtonManager; }
             set { }
-        }
-        public string URL
-        {
-            get { return url; }
-            set { url = value; }
         }
         public string WalmartUrl
         {
@@ -196,7 +190,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             try
             {
-                url = (WalmartUrl + key.WalmartKey + UPC);
+                var url = (WalmartUrl + key.WalmartKey + UPC);
                 var walmartResponse = await client.GetAsync(new Uri(url));
                 walmartResponse.EnsureSuccessStatusCode();
 
@@ -268,7 +262,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             try
             {
                 string targetURL = "https://www.target.com/s?searchTerm=";
-                url = (targetURL + UPC);
+                var url = (targetURL + UPC);
 
 
                 webView.Navigate(new Uri(url));
@@ -304,7 +298,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             try
             {
                 string cvsURL = "https://www.cvs.com/search?searchTerm=";
-                url = (cvsURL + UPC);
+                var url = (cvsURL + UPC);
 
                 webView.Navigate(new Uri(url));
                 await Task.Delay(10000);
