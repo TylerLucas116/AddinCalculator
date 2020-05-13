@@ -14,10 +14,18 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         private Retailer retailer;
+        private bool visibility;
+
+        public bool Visibility
+        {
+            get { return visibility; }
+            set { visibility = value; }
+        }
 
         public Retailer Retailer
         {
             get { return retailer; }
+            set { retailer = value; }
         }
     }
 }
