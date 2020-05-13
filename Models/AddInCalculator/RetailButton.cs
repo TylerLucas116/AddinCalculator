@@ -30,7 +30,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public bool Equals(RetailButton other)
         {
-            return (this.retailer.Name == other.retailer.Name);
+            return this.Retailer.Name == other.Retailer.Name;
         }
     }
 }
