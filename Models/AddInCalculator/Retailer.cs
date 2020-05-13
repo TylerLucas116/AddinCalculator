@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    class Retailer
+    public class Retailer
     {
         private string name;
         private string websiteURL;
