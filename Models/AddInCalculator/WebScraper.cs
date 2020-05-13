@@ -36,9 +36,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private bool found;
         private string onlinePrice;
         private string upc;
-        private string textblockPrice;
-        private bool targetInformation;
-        private string onlineAbbrev;
 
         public ButtonManager NFButtonManager
         {
@@ -50,16 +47,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             get { return found; }
             set { found = value; }
         }
-        public bool TargetInformation
-        {
-            get { return targetInformation; }
-            set { targetInformation = value; }
-        }
-        public string OnlineAbbrev
-        {
-            get { return onlineAbbrev; }
-            set { onlineAbbrev = value; }
-        }
         public string UPC
         {
             get { return upc; }
@@ -67,15 +54,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             {
                 upc = value;
                 OnPropertyChanged("UPC");
-            }
-        }
-        public string TextblockPrice
-        {
-            get { return textblockPrice; }
-            set
-            {
-                textblockPrice = value;
-                OnPropertyChanged("TextblockPrice");
             }
         }
         public string OnlinePrice
