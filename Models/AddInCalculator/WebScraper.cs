@@ -28,11 +28,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private HttpClient client = new HttpClient();
         private ApiKey key = new ApiKey();
         private WebView webView = new WebView();
+
         private Retailer walmart = new Retailer();
         private Retailer target = new Retailer();
         private Retailer cvs = new Retailer();
 
-        private string walmartUrl = "http://api.walmartlabs.com/v1/items";
         private bool found;
         private double onlinePrice;
         private string upc;
@@ -45,11 +45,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return nfButtonManager; }
             set { }
-        }
-        public string WalmartUrl
-        {
-            get { return walmartUrl; }
-            set { walmartUrl = "http://api.walmartlabs.com/v1/items" + key.WalmartKey; }
         }
         public bool Found
         {
@@ -190,7 +185,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             try
             {
-                var url = (WalmartUrl + key.WalmartKey + UPC);
+                var url = (walmart.WebsiteURL + key.WalmartKey + UPC);
                 var walmartResponse = await client.GetAsync(new Uri(url));
                 walmartResponse.EnsureSuccessStatusCode();
 
