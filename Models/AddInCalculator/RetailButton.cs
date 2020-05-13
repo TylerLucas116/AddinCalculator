@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    public class RetailButton
+    public class RetailButton : IEquatable<RetailButton>//For delete button
     {
         RetailButton()
         {
@@ -26,6 +26,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return retailer; }
             set { retailer = value; }
+        }
+
+        public bool Equals(RetailButton other)
+        {
+            return (this.retailer.Name == other.retailer.Name);
         }
     }
 }
