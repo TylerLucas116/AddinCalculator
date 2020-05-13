@@ -33,8 +33,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string walmartUrl = "http://api.walmartlabs.com/v1/items";
         private bool found;
         private double onlinePrice;
-        private string displayText;
-        private string intermediateText;
         private string upc;
         private string textblockPrice;
         private bool walmartInformation;
@@ -76,24 +74,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return onlineAbbrev; }
             set { onlineAbbrev = value; }
-        }
-        public string DisplayText
-        {
-            get { return displayText; }
-            set
-            {
-                displayText = value;
-                OnPropertyChanged("DisplayText");
-            }
-        }
-        public string IntermediateText
-        {
-            get { return intermediateText; }
-            set
-            {
-                intermediateText = value;
-                OnPropertyChanged("IntermediateText");
-            }
         }
         public string UPC
         {
@@ -183,7 +163,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 // if a price was found
                 if (Found)
                 {
-                    DisplayText = OnlinePrice.ToString();
                     TextblockPrice = OnlinePrice.ToString() + onlineAbbrev;
                 }
                 else
