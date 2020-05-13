@@ -34,7 +34,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer cvs = new Retailer();
 
         private bool found;
-        private double onlinePrice;
+        private string onlinePrice;
         private string upc;
         private string textblockPrice;
         private bool targetInformation;
@@ -78,7 +78,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("TextblockPrice");
             }
         }
-        public double OnlinePrice
+        public string OnlinePrice
         {
             get { return onlinePrice; }
             set
@@ -111,6 +111,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public async void UPCSearch(object sender, KeyRoutedEventArgs e)
         {
+            InitializeRetailers();
+
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 // search Walmart
@@ -158,13 +160,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Debug.WriteLine("Exception caught.");
                     Debug.WriteLine(exception);
                 }*/
-
-                // if a price was found
-                if (Found)
-                {
-                    TextblockPrice = OnlinePrice.ToString() + onlineAbbrev;
-                }
-                else
+                if (!Found)
                 {
                     var messageDialog = new MessageDialog("No price was found online.");
                     await messageDialog.ShowAsync();
@@ -180,6 +176,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             {
                 var url = (walmart.WebsiteURL + key.WalmartKey + UPC);
                 var walmartResponse = await client.GetAsync(new Uri(url));
+                
                 walmartResponse.EnsureSuccessStatusCode();
 
                 if (walmartResponse.IsSuccessStatusCode)
@@ -215,9 +212,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
                         if (walmartInformation)
                         {
-                            OnlineAbbrev = (" @WM $" + OnlinePrice.ToString());
-                            OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
-                            OnlinePrice = RoundToNine(OnlinePrice);
+                            walmart.OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
+                            walmart.OnlinePrice = RoundToNine(walmart.OnlinePrice);
+                            OnlinePrice = "@ " + walmart.OnlineAbbrev + " $" + walmart.OnlinePrice.ToString();
                         }
                         else
                         {
