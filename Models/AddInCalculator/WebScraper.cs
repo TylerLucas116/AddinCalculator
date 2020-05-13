@@ -25,55 +25,27 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         private ButtonManager nfButtonManager;
-        HttpClient client = new HttpClient();
-        ApiKey key = new ApiKey();
-        WebView webView = new WebView();
+        private HttpClient client = new HttpClient();
+        private ApiKey key = new ApiKey();
+        private WebView webView = new WebView();
 
-        private string url;
-        private string walmartUrl = "http://api.walmartlabs.com/v1/items";
+        private Retailer walmart = new Retailer();
+        private Retailer target = new Retailer();
+        private Retailer cvs = new Retailer();
+
         private bool found;
-        private double onlinePrice;
+        private string onlinePrice;
         private string upc;
-        private string textblockPrice;
-        private bool walmartInformation;
-        private bool targetInformation;
-        private string onlineAbbrev;
 
         public ButtonManager NFButtonManager
         {
             get { return nfButtonManager; }
             set { }
         }
-        public string URL
-        {
-            get { return url; }
-            set { url = value; }
-        }
-        public string WalmartUrl
-        {
-            get { return walmartUrl; }
-            set { walmartUrl = "http://api.walmartlabs.com/v1/items" + key.WalmartKey; }
-        }
         public bool Found
         {
             get { return found; }
             set { found = value; }
-        }
-
-        public bool WalmartInformation
-        {
-            get { return walmartInformation; }
-            set { walmartInformation = value; }
-        }
-        public bool TargetInformation
-        {
-            get { return targetInformation; }
-            set { targetInformation = value; }
-        }
-        public string OnlineAbbrev
-        {
-            get { return onlineAbbrev; }
-            set { onlineAbbrev = value; }
         }
         public string UPC
         {
@@ -84,16 +56,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("UPC");
             }
         }
-        public string TextblockPrice
-        {
-            get { return textblockPrice; }
-            set
-            {
-                textblockPrice = value;
-                OnPropertyChanged("TextblockPrice");
-            }
-        }
-        public double OnlinePrice
+        public string OnlinePrice
         {
             get { return onlinePrice; }
             set
@@ -109,11 +72,27 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             return roundedValue - 0.01;
         }
 
+        private void InitializeRetailers()
+        {
+            walmart.WebsiteURL = "http://api.walmartlabs.com/v1/items";
+            walmart.Name = "Walmart";
+            walmart.OnlineAbbrev = "WM";
+
+            target.WebsiteURL = "https://www.target.com/s?searchTerm=";
+            target.Name = "Target";
+            target.OnlineAbbrev = "TG";
+
+            cvs.WebsiteURL = "https://www.cvs.com/search?searchTerm=";
+            cvs.Name = "CVS";
+            cvs.OnlineAbbrev = "CVS";
+        }
+
         public async void UPCSearch(object sender, KeyRoutedEventArgs e)
         {
+            InitializeRetailers();
+
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-
                 // search Walmart
                 try
                 {
@@ -159,13 +138,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Debug.WriteLine("Exception caught.");
                     Debug.WriteLine(exception);
                 }*/
-
-                // if a price was found
-                if (Found)
-                {
-                    TextblockPrice = OnlinePrice.ToString() + onlineAbbrev;
-                }
-                else
+                if (!Found)
                 {
                     var messageDialog = new MessageDialog("No price was found online.");
                     await messageDialog.ShowAsync();
@@ -179,8 +152,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             try
             {
-                url = (WalmartUrl + key.WalmartKey + UPC);
+                var url = (walmart.WebsiteURL + key.WalmartKey + UPC);
                 var walmartResponse = await client.GetAsync(new Uri(url));
+                
                 walmartResponse.EnsureSuccessStatusCode();
 
                 if (walmartResponse.IsSuccessStatusCode)
@@ -198,10 +172,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                         double priceHolder;
                         if (Double.TryParse(jsonString, out priceHolder))
                         {
-                            OnlinePrice = priceHolder;
+                            walmart.OnlinePrice = priceHolder;
                         }
 
-                        bool walmartFound = false;
+                        bool walmartFound = false, walmartInformation = false;
                         int i = 0;
                         // still need to traverse the collection to get correct percentage in case it changes in future
                         for (i = 0; (i < NFButtonManager.nfCollection.Count() && (walmartFound == false)); ++i)
@@ -210,21 +184,20 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                             if (NFButtonManager.nfCollection[i].retailer == "Walmart")
                             {
                                 walmartFound = true;
-                                WalmartInformation = true;
+                                walmartInformation = true;
                             }
                         }
 
-                        if (WalmartInformation)
+                        if (walmartInformation)
                         {
-                            OnlineAbbrev = (" @WM $" + OnlinePrice.ToString());
-                            OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
-                            OnlinePrice = RoundToNine(OnlinePrice);
+                            walmart.OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
+                            walmart.OnlinePrice = RoundToNine(walmart.OnlinePrice);
+                            OnlinePrice = "@ " + walmart.OnlineAbbrev + " $" + walmart.OnlinePrice.ToString();
                         }
                         else
                         {
                             var messageDialog = new MessageDialog("No Walmart information was found in the calculator");
                             await messageDialog.ShowAsync();
-                            WalmartInformation = false;
                         }
                     }
                     else
@@ -251,7 +224,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             try
             {
                 string targetURL = "https://www.target.com/s?searchTerm=";
-                url = (targetURL + UPC);
+                var url = (targetURL + UPC);
 
 
                 webView.Navigate(new Uri(url));
@@ -287,7 +260,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             try
             {
                 string cvsURL = "https://www.cvs.com/search?searchTerm=";
-                url = (cvsURL + UPC);
+                var url = (cvsURL + UPC);
 
                 webView.Navigate(new Uri(url));
                 await Task.Delay(10000);
