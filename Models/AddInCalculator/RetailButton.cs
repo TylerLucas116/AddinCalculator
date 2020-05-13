@@ -8,6 +8,16 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     public class RetailButton
     {
-        
+        RetailButton()
+        {
+            retailer = new Retailer();
+        }
+
+        private Retailer retailer;
+
+        public Retailer Retailer
+        {
+            get { return retailer; }
+        }
     }
 }
