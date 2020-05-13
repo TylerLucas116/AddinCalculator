@@ -22,8 +22,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public string WebsiteURL
         {
             get { return websiteURL; }
-            set
-            { websiteURL = value; }
+            set { websiteURL = value; }
         }
         public string OnlineAbbrev
         {
@@ -33,18 +32,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public double OnlinePrice
         {
             get { return onlinePrice; }
-            set
-            {
-                onlinePrice = value;
-            }
+            set { onlinePrice = value; }
         }
         private double OnlinePercentage
         {
             get { return onlinePercentage; }
-            set
-            {
-                onlinePercentage = value;
-            }
+            set { onlinePercentage = value; }
         }
     }
 }
