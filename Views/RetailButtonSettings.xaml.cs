@@ -83,7 +83,6 @@ namespace AddInCalculator2._0.Views
                     ButtonSettingsViewModel.BManager.Retailer = button.retailer;
                     ButtonSettingsViewModel.BManager.Abbrev = button.abbrev;
                     ButtonSettingsViewModel.BManager.Percentage = button.percentage;
-                    ButtonSettingsViewModel.BManager.Type = button.type;
 
                     if (EditFrame.CurrentSourcePageType == typeof(EditButton))
                     {
