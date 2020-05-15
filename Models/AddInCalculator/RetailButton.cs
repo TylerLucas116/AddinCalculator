@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    public abstract class RetailButton
+    public class RetailButton
     {
         RetailButton()
         {
