@@ -8,7 +8,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     public class RetailButton
     {
-        RetailButton()
+        public RetailButton()
         {
             retailer = new Retailer();
         }
