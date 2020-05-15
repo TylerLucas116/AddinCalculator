@@ -51,7 +51,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Content="Retailer" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="Name"/>
                                 <Button Content="Abbreviation" Width="100" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
-                                <Button Content="Percentage" Width="90" Background="Transparent" Foreground="Black" Name="bPercent"/>
+                                <Button Content="Food %" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
