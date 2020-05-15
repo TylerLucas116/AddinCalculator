@@ -6,38 +6,56 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    class Retailer
+    public class Retailer
     {
-        private string name;
-        private string websiteURL;
-        private string onlineAbbrev;
-        private double onlinePrice;
+        private string name = "";
+        private string websiteUrl = "";
+        private string onlineAbbrev = "";
+        private double foodPercentage = 0;
+        private double nonfoodPercentage = 0;
+        private double nonfoodDfPercentage = 0;
+        private double freezerPercentage = 0;
+        private double coolerPercentage = 0;
 
-        public double OnlinePrice
-        {
-            get { return onlinePrice; }
-            set
-            {
-                onlinePrice = value;
-            }
-        }
-        public string WebsiteURL
-        {
-            get { return websiteURL; }
-            set
-            {
-                websiteURL = value;
-            }
-        }
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
+        public string WebsiteURL
+        {
+            get { return websiteUrl; }
+            set { websiteUrl = value; }
+        }
         public string OnlineAbbrev
         {
             get { return onlineAbbrev; }
             set { onlineAbbrev = value; }
+        }
+        public double FoodPercentage
+        {
+            get { return foodPercentage; }
+            set { foodPercentage = value; }
+        }
+        public double NonfoodPercentage
+        {
+            get { return nonfoodPercentage; }
+            set { nonfoodPercentage = value; }
+        }
+        public double NonfoodDfPercentage
+        {
+            get { return nonfoodDfPercentage; }
+            set { nonfoodDfPercentage = value; }
+        }
+        public double FreezerPercentage
+        {
+            get { return freezerPercentage; }
+            set { freezerPercentage = value; }
+        }
+        public double CoolerPercentage
+        {
+            get { return coolerPercentage; }
+            set { coolerPercentage = value; }
         }
     }
 }

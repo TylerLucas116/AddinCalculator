@@ -63,6 +63,23 @@ namespace AddInCalculator2._0.Handlers
             }
             return objectList;
         }
+        public List<objectType> ReturnAllRetailers<objectType>(String tableName, String FieldName, String objectPath)
+        {
+            var objectList = new List<objectType>();
+
+            String objectString = "";
+
+            String sSql = String.Format(@"SELECT * FROM {0};", tableName);
+
+            ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
+
+            while (cnStatement.Step() == SQLiteResult.ROW)
+            {
+                objectString = cnStatement[FieldName].ToString(); //[FieldName] == Button
+                objectList.Add(ConvertStringToObject<objectType>(objectString, objectPath));
+            }
+            return objectList;
+        }
         #endregion
         #region Search Records
         public objectType SearchRecords<objectType>(String tableName, String FieldName, String objectPath, String FieldToSearch, String SearchString)
