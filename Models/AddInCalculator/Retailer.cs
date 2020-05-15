@@ -38,27 +38,27 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             get { return onlinePrice; }
             set { onlinePrice = value; }
         }
-        private double FoodPercentage
+        public double FoodPercentage
         {
             get { return foodPercentage; }
             set { foodPercentage = value; }
         }
-        private double NonfoodPercentage
+        public double NonfoodPercentage
         {
             get { return nonfoodPercentage; }
             set { nonfoodPercentage = value; }
         }
-        private double NonfoodDfPercentage
+        public double NonfoodDfPercentage
         {
             get { return nonfoodDfPercentage; }
             set { nonfoodDfPercentage = value; }
         }
-        private double FreezerPercentage
+        public double FreezerPercentage
         {
             get { return freezerPercentage; }
             set { freezerPercentage = value; }
         }
-        private double CoolerPercentage
+        public double CoolerPercentage
         {
             get { return coolerPercentage; }
             set { coolerPercentage = value; }
