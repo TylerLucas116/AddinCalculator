@@ -14,7 +14,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private double onlinePrice;
         private double foodPercentage = 0;
         private double nonfoodPercentage = 0;
-        private double nonfoodDFPercentage = 0;
+        private double nonfoodDfPercentage = 0;
         private double freezerPercentage = 0;
         private double coolerPercentage = 0;
 
@@ -48,10 +48,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             get { return nonfoodPercentage; }
             set { nonfoodPercentage = value; }
         }
-        private double NonfoodDFPercentage
+        private double NonfoodDfPercentage
         {
-            get { return nonfoodDFPercentage; }
-            set { nonfoodDFPercentage = value; }
+            get { return nonfoodDfPercentage; }
+            set { nonfoodDfPercentage = value; }
         }
         private double FreezerPercentage
         {
