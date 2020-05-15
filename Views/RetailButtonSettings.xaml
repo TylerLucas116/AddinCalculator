@@ -53,6 +53,7 @@
                                 <Button Content="Abbreviation" Width="100" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
                                 <Button Content="Food %" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
                                 <Button Content="Nonfood %" Width="90" Background="Transparent" Foreground="Black" Name="NonfoodPercentage"/>
+                                <Button Content="Nonfood DF %" Width="120" Background="Transparent" Foreground="Black" Name="NonfoodDfPercentage"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
