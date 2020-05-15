@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddInCalculator2._0.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,72 @@ namespace AddInCalculator2._0.Views
         public RetailButtonSettings()
         {
             this.InitializeComponent();
+            ButtonSettingsViewModel btnViewModel = new ButtonSettingsViewModel();
+            lvButton.ItemsSource = ButtonSettingsViewModel.BManager.allbuttons;
+            EditFrame.Navigate(typeof(BlankPage));
+        }
+
+        private void BackBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
+        private void AddBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EditFrame.CurrentSourcePageType == typeof(AddButton) || (EditFrame.CurrentSourcePageType == typeof(EditButton)))
+            {
+                if (EditFrame.CanGoBack)
+                {
+                    EditFrame.GoBack();
+                }
+            }
+            else
+            {
+                EditFrame.Navigate(typeof(AddButton));
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonSettingsViewModel.BManager.DeleteButton();
+        }
+
+        private void LvButton_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                foreach (var item in e.AddedItems)
+                {
+                    Models.AddInCalculator.Button button = (Models.AddInCalculator.Button)item;
+                    ButtonSettingsViewModel.BManager.Retailer = button.retailer;
+                    ButtonSettingsViewModel.BManager.Label = button.label;
+                    ButtonSettingsViewModel.BManager.Abbrev = button.abbrev;
+                    ButtonSettingsViewModel.BManager.Percentage = button.percentage;
+                    ButtonSettingsViewModel.BManager.Type = button.type;
+
+                    if (EditFrame.CurrentSourcePageType == typeof(EditButton))
+                    {
+                        // Views.EditButton.tbEditRetailer.Text = ButtonSettingsViewModel.BManager.Retailer;
+                    }
+                }
+            }
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EditFrame.CurrentSourcePageType == typeof(AddButton) || (EditFrame.CurrentSourcePageType == typeof(EditButton)))
+            {
+                if (EditFrame.CanGoBack)
+                {
+                    EditFrame.GoBack();
+                }
+            }
+            else
+            {
+                EditFrame.Navigate(typeof(EditButton));
+            }
         }
     }
 }
