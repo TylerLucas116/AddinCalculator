@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
+    public class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
     {
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
 
@@ -17,6 +17,16 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return retailButtons; }
             set { retailButtons = value; }
+        }
+
+        public void InitializeRetailButtons() //Call at beginning of program once
+        {
+            RetailButton newButton = new RetailButton();//Blank button to initialize each collection
+
+            for (int i = 0; i < 50; ++i) // 50 button limit for UI
+            {
+                RetailButtons.Add(newButton);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
