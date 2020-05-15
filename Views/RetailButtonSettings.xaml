@@ -50,7 +50,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button Content="Retailer" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="bRetailer"/>
-                                <Button Content="Abbrev" Width="75" Background="Transparent" Foreground="Black" Name="bAbbrev"/>
+                                <Button Content="Abbreviation" Width="90" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
                                 <Button Content="Percentage" Width="90" Background="Transparent" Foreground="Black" Name="bPercent"/>
                                 <Button Content="Type" Width="90" Background="Transparent" Foreground="Black" Name="bType"/>
                             </StackPanel>
