@@ -12,7 +12,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string websiteURL;
         private string onlineAbbrev;
         private double onlinePrice;
-        private double onlinePercentage;
+        private double foodPercentage = 0;
+        private double nonfoodPercentage = 0;
+        private double nonfoodDFPercentage = 0;
+        private double freezerPercentage = 0;
+        private double coolerPercentage = 0;
 
         public string Name
         {
@@ -34,10 +38,30 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             get { return onlinePrice; }
             set { onlinePrice = value; }
         }
-        private double OnlinePercentage
+        private double FoodPercentage
         {
-            get { return onlinePercentage; }
-            set { onlinePercentage = value; }
+            get { return foodPercentage; }
+            set { foodPercentage = value; }
+        }
+        private double NonfoodPercentage
+        {
+            get { return nonfoodPercentage; }
+            set { nonfoodPercentage = value; }
+        }
+        private double NonfoodDFPercentage
+        {
+            get { return nonfoodDFPercentage; }
+            set { nonfoodDFPercentage = value; }
+        }
+        private double FreezerPercentage
+        {
+            get { return freezerPercentage; }
+            set { freezerPercentage = value; }
+        }
+        private double CoolerPercentage
+        {
+            get { return coolerPercentage; }
+            set { coolerPercentage = value; }
         }
     }
 }
