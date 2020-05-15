@@ -12,6 +12,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     public class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
     {
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
+        private string table = "ButtonInfo";
+        private string fieldname = "Button";
+        private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Button";
+        Type obType = (typeof(Models.AddInCalculator.Button));
 
         public ObservableCollection<RetailButton> RetailButtons
         {
@@ -25,6 +29,23 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             for (int i = 0; i < 50; ++i) // 50 button limit for UI
             {
+                RetailButtons.Add(newButton);
+            }
+        }
+
+        public void UpdateRetailButtons()
+        {
+            Handlers.Database db = new Handlers.Database();
+            var retailerList = db.ReturnAllRecords<Models.AddInCalculator.Retailer>(table, fieldname, objectPath);
+
+            SortByName(retailerList);
+
+            RetailButtons.Clear();
+
+            foreach (Retailer item in retailerList)
+            {
+                RetailButton newButton = new RetailButton();
+                newButton.Retailer = item;
                 RetailButtons.Add(newButton);
             }
         }
