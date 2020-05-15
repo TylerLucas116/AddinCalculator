@@ -27,7 +27,7 @@ namespace AddInCalculator2._0.Views
         {
             this.InitializeComponent();
             ButtonSettingsViewModel btnViewModel = new ButtonSettingsViewModel();
-            lvButton.ItemsSource = ButtonSettingsViewModel.BManager.allbuttons;
+            Retailers.ItemsSource = ButtonSettingsViewModel.BManager.allbuttons;
             EditFrame.Navigate(typeof(BlankPage));
         }
 
@@ -58,7 +58,22 @@ namespace AddInCalculator2._0.Views
             ButtonSettingsViewModel.BManager.DeleteButton();
         }
 
-        private void LvButton_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EditFrame.CurrentSourcePageType == typeof(AddButton) || (EditFrame.CurrentSourcePageType == typeof(EditButton)))
+            {
+                if (EditFrame.CanGoBack)
+                {
+                    EditFrame.GoBack();
+                }
+            }
+            else
+            {
+                EditFrame.Navigate(typeof(EditButton));
+            }
+        }
+
+        private void Retailers_OnSelectionChanged_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
             {
@@ -76,21 +91,6 @@ namespace AddInCalculator2._0.Views
                         // Views.EditButton.tbEditRetailer.Text = ButtonSettingsViewModel.BManager.Retailer;
                     }
                 }
-            }
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (EditFrame.CurrentSourcePageType == typeof(AddButton) || (EditFrame.CurrentSourcePageType == typeof(EditButton)))
-            {
-                if (EditFrame.CanGoBack)
-                {
-                    EditFrame.GoBack();
-                }
-            }
-            else
-            {
-                EditFrame.Navigate(typeof(EditButton));
             }
         }
     }

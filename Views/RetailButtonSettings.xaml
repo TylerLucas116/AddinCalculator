@@ -36,7 +36,7 @@
 
         <StackPanel Grid.Row="1">
             <RelativePanel>
-                <ListView Name="lvButton"
+                <ListView Name="Retailers"
                           SelectionMode="Single"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           ScrollViewer.IsVerticalRailEnabled="True"
@@ -45,7 +45,7 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.IsHorizontalRailEnabled="True"
                           Margin="20"
-                          SelectionChanged="LvButton_SelectionChanged">
+                          SelectionChanged="Retailers_OnSelectionChanged_SelectionChanged">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
