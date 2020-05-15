@@ -50,6 +50,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        public void SortByName(List<Retailer> retailList)
+        {
+            retailList.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {
