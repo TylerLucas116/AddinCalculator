@@ -12,9 +12,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     public class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
     {
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
-        private string table = "ButtonInfo";
-        private string fieldname = "Button";
-        private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Button";
+        private string table = "Retailers";
+        private string fieldname = "Retailer";
+        private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
         Type obType = (typeof(Models.AddInCalculator.Button));
 
         public ObservableCollection<RetailButton> RetailButtons
@@ -46,8 +46,24 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             {
                 RetailButton newButton = new RetailButton();
                 newButton.Retailer = item;
+                newButton.Visibility = true;
                 RetailButtons.Add(newButton);
             }
+        }
+        public void AddRetailer(string name, string abbreviation, string percentage, string type)
+        {
+            // add to database, current design is for one single percentage from previous Button design
+            //   there are currently no UI fields for the other percentages
+            Retailer retailer = new Retailer();
+            retailer.Name = name;
+            retailer.OnlineAbbrev = abbreviation;
+            retailer.NonfoodPercentage = double.Parse(percentage);
+
+            // write to database
+            Handlers.Database db = new Handlers.Database();
+            db.WriteRecord<Retailer>(retailer, table, db.BuildFieldObject("nvarchar", fieldname));
+
+            UpdateRetailButtons();
         }
 
         public void SortByName(List<Retailer> retailList)
