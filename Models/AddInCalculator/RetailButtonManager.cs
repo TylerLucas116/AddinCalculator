@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
     {
+        private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
+
+        public ObservableCollection<RetailButton> RetailButtons
+        {
+            get { return retailButtons; }
+            set { retailButtons = value; }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
