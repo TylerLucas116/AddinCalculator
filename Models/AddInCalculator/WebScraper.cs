@@ -168,11 +168,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
                     if (jsonString != "") //If there was text in salePrice
                     {
+                        double price = 0;
                         Found = true;
                         double priceHolder;
                         if (Double.TryParse(jsonString, out priceHolder))
                         {
-                            walmart.OnlinePrice = priceHolder;
+                            price = priceHolder;
                         }
 
                         bool walmartFound = false, walmartInformation = false;
@@ -190,9 +191,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
                         if (walmartInformation)
                         {
-                            walmart.OnlinePrice *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
-                            walmart.OnlinePrice = RoundToNine(walmart.OnlinePrice);
-                            OnlinePrice = "@ " + walmart.OnlineAbbrev + " $" + walmart.OnlinePrice.ToString();
+                            price *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
+                            price = RoundToNine(price);
+                            OnlinePrice = "@ " + walmart.OnlineAbbrev + " $" + price.ToString();
                         }
                         else
                         {
