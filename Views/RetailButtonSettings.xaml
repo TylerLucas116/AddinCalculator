@@ -54,6 +54,7 @@
                                 <Button Content="Food %" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
                                 <Button Content="Nonfood %" Width="90" Background="Transparent" Foreground="Black" Name="NonfoodPercentage"/>
                                 <Button Content="Nonfood DF %" Width="120" Background="Transparent" Foreground="Black" Name="NonfoodDfPercentage"/>
+                                <Button Content="Freezer %" Width="90" Background="Transparent" Foreground="Black" Name="FreezerPercentage"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
