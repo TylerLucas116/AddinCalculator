@@ -50,7 +50,6 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button Content="Retailer" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="bRetailer"/>
-                                <Button Content="Label" Width="250" Background="Transparent" Foreground="Black" Name="bLabel"/>
                                 <Button Content="Abbrev" Width="75" Background="Transparent" Foreground="Black" Name="bAbbrev"/>
                                 <Button Content="Percentage" Width="90" Background="Transparent" Foreground="Black" Name="bPercent"/>
                                 <Button Content="Type" Width="90" Background="Transparent" Foreground="Black" Name="bType"/>
@@ -61,7 +60,6 @@
                         <DataTemplate x:DataType="local1:Button">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Name="tbRetailer" Text="{Binding retailer}" Width="250" TextAlignment="Center"/>
-                                <TextBlock Name="tbLabel" Text="{Binding label}" Width="250" TextAlignment="Center"/>
                                 <TextBlock Name="tbAbbrev" Text="{Binding abbrev}" Width="75" TextAlignment="Center"/>
                                 <TextBlock Name="tbPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
                                 <TextBlock Name="tbType" Text="{Binding type}" Width="90" TextAlignment="Center"/>

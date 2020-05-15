@@ -81,7 +81,6 @@ namespace AddInCalculator2._0.Views
                 {
                     Models.AddInCalculator.Button button = (Models.AddInCalculator.Button)item;
                     ButtonSettingsViewModel.BManager.Retailer = button.retailer;
-                    ButtonSettingsViewModel.BManager.Label = button.label;
                     ButtonSettingsViewModel.BManager.Abbrev = button.abbrev;
                     ButtonSettingsViewModel.BManager.Percentage = button.percentage;
                     ButtonSettingsViewModel.BManager.Type = button.type;
