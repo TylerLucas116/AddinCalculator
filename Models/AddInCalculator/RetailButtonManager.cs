@@ -36,7 +36,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void UpdateRetailButtons()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.ReturnAllRecords<Models.AddInCalculator.Retailer>(table, fieldname, objectPath);
+            var retailerList = db.ReturnAllRetailers<Retailer>(table, fieldname, objectPath);
 
             SortByName(retailerList);
 
