@@ -9,13 +9,18 @@ namespace AddInCalculator2._0.ViewModels
 {
     class RetailButtonSettingsViewModel
     {
-        private static ButtonManager bManager = new ButtonManager();
-        public static ButtonManager BManager { get { return bManager; } }
+        private static RetailButtonManager buttonManager = new RetailButtonManager();
+
+        public static RetailButtonManager ButtonManager
+        {
+            get { return buttonManager; }
+            set { buttonManager = value; }
+        }
 
         public RetailButtonSettingsViewModel()
         {
-            bManager = new ButtonManager();
-            bManager.UpdateButtons();
+            ButtonManager = new RetailButtonManager();
+            ButtonManager.UpdateRetailButtons();
         }
     }
 }
