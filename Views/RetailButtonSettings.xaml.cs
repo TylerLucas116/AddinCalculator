@@ -26,8 +26,8 @@ namespace AddInCalculator2._0.Views
         public RetailButtonSettings()
         {
             this.InitializeComponent();
-            ButtonSettingsViewModel btnViewModel = new ButtonSettingsViewModel();
-            Retailers.ItemsSource = ButtonSettingsViewModel.BManager.allbuttons;
+            RetailButtonSettingsViewModel btnViewModel = new RetailButtonSettingsViewModel();
+            Retailers.ItemsSource = RetailButtonSettingsViewModel.ButtonManager.RetailButtons;
             EditFrame.Navigate(typeof(BlankPage));
         }
 
@@ -40,7 +40,7 @@ namespace AddInCalculator2._0.Views
         }
         private void AddBarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EditFrame.CurrentSourcePageType == typeof(AddButton) || (EditFrame.CurrentSourcePageType == typeof(EditButton)))
+            if (EditFrame.CurrentSourcePageType == typeof(AddRetailer) || (EditFrame.CurrentSourcePageType == typeof(EditRetailer)))
             {
                 if (EditFrame.CanGoBack)
                 {
@@ -49,7 +49,7 @@ namespace AddInCalculator2._0.Views
             }
             else
             {
-                EditFrame.Navigate(typeof(AddButton));
+                EditFrame.Navigate(typeof(AddRetailer));
             }
         }
 
