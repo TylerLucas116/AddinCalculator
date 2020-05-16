@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AddInCalculator2._0.Models.AddInCalculator;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -60,7 +61,7 @@ namespace AddInCalculator2._0.Views
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EditFrame.CurrentSourcePageType == typeof(AddButton) || (EditFrame.CurrentSourcePageType == typeof(EditButton)))
+            if (EditFrame.CurrentSourcePageType == typeof(AddRetailer) || (EditFrame.CurrentSourcePageType == typeof(EditRetailer)))
             {
                 if (EditFrame.CanGoBack)
                 {
@@ -69,7 +70,7 @@ namespace AddInCalculator2._0.Views
             }
             else
             {
-                EditFrame.Navigate(typeof(EditButton));
+                EditFrame.Navigate(typeof(EditRetailer));
             }
         }
 
@@ -79,10 +80,7 @@ namespace AddInCalculator2._0.Views
             {
                 foreach (var item in e.AddedItems)
                 {
-                    Models.AddInCalculator.Button button = (Models.AddInCalculator.Button)item;
-                    ButtonSettingsViewModel.BManager.Retailer = button.retailer;
-                    ButtonSettingsViewModel.BManager.Abbrev = button.abbrev;
-                    ButtonSettingsViewModel.BManager.Percentage = button.percentage;
+                    Retailer selectedRetailer = (Retailer)item;
 
                     if (EditFrame.CurrentSourcePageType == typeof(EditButton))
                     {
