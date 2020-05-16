@@ -50,14 +50,21 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 RetailButtons.Add(newButton);
             }
         }
-        public void AddRetailer(string name, string abbreviation, string percentage, string type)
+        public void AddRetailer(string name, string abbreviation, string foodPercentage, string nonfoodPercentage,
+            string nonfoodDfPercentage, string freezerPercentage, string coolerPercentage)
         {
-            // add to database, current design is for one single percentage from previous Button design
-            //   there are currently no UI fields for the other percentages
-            Retailer retailer = new Retailer();
-            retailer.Name = name;
-            retailer.OnlineAbbrev = abbreviation;
-            retailer.NonfoodPercentage = double.Parse(percentage);
+            // add Retailer object to database
+            Retailer retailer = new Retailer()
+            {
+                Name = name,
+                OnlineAbbrev = abbreviation,
+                FoodPercentage = double.Parse(foodPercentage),
+                NonfoodPercentage = double.Parse(nonfoodPercentage),
+                NonfoodDfPercentage = double.Parse(nonfoodDfPercentage),
+                FreezerPercentage = double.Parse(freezerPercentage),
+                CoolerPercentage = double.Parse(coolerPercentage)
+        };
+            
 
             // write to database
             Handlers.Database db = new Handlers.Database();
