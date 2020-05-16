@@ -81,6 +81,13 @@ namespace AddInCalculator2._0.Views
                 foreach (var item in e.AddedItems)
                 {
                     RetailButton selectedRetailer = (RetailButton)item;
+                    RetailButtonSettingsViewModel.ButtonManager.Name = selectedRetailer.Retailer.Name;
+                    RetailButtonSettingsViewModel.ButtonManager.OnlineAbbrev = selectedRetailer.Retailer.OnlineAbbrev;
+                    RetailButtonSettingsViewModel.ButtonManager.FoodPercentage = selectedRetailer.Retailer.FoodPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.NonfoodPercentage = selectedRetailer.Retailer.NonfoodPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.NonfoodDfPercentage = selectedRetailer.Retailer.NonfoodDfPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.FreezerPercentage = selectedRetailer.Retailer.FreezerPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.CoolerPercentage = selectedRetailer.Retailer.CoolerPercentage;
 
                     if (EditFrame.CurrentSourcePageType == typeof(EditButton))
                     {
