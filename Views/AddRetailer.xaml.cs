@@ -31,12 +31,14 @@ namespace AddInCalculator2._0.Views
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonSettingsViewModel.BManager.AddButton(tbNewRetailer.Text, tbNewLabel.Text, tbNewAbbrev.Text, tbNewPercentage.Text, cbNewType.SelectedItem.ToString());
-            tbNewRetailer.Text = String.Empty;
-            tbNewLabel.Text = String.Empty;
-            tbNewAbbrev.Text = String.Empty;
-            tbNewPercentage.Text = String.Empty;
-            cbNewType.SelectedIndex = -1;
+            RetailButtonSettingsViewModel.ButtonManager.AddRetailer();
+            tbRetailer.Text = String.Empty;
+            tbAbbrev.Text = String.Empty;
+            tbFoodPercentage.Text = String.Empty;
+            tbNonfoodPercentage.Text = String.Empty;
+            tbNonfoodDfPercentage.Text = String.Empty;
+            tbFreezerPercentage.Text = String.Empty;
+            tbCoolerPercentage.Text = String.Empty;
         }
 
         private Models.AddInCalculator.Button buildButtonObject()
