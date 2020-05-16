@@ -6,11 +6,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AddInCalculator2._0.Handlers;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
     public class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
     {
+        public RetailButtonManager()
+        {
+            Database db = new Database();
+            Handlers.DatabaseField myField = db.BuildFieldObject("nvarchar", "Retailer");
+            db.CreateDatabase(table, myField);
+        }
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
         private string table = "Retailers";
         private string fieldname = "Retailer";
