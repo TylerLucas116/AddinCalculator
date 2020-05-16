@@ -225,5 +225,10 @@ namespace AddInCalculator2._0.Views
         {
             Frame.Navigate(typeof(ButtonSettings));
         }
+
+        private void Retailers_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RetailButtonSettings));
+        }
     }
 }

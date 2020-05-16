@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="AddInCalculator2._0.Views.RetailButtonSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AddInCalculator2._0.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:AddInCalculator2._0.Models.AddInCalculator"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3.6*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <CommandBar Grid.Row="0" Grid.ColumnSpan="2" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
+            <AppBarButton Icon="Back" Label="Back" Name="BackBarButton" Click="BackBarButton_Click"/>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Add" Label="Add" Click="AddBarButton_Click"/>
+            <AppBarButton Icon="Edit" Label="Edit" Name="EditButton" Click="EditButton_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="DeleteButton_Click"/>
+
+            <CommandBar.SecondaryCommands>
+            </CommandBar.SecondaryCommands>
+
+            <CommandBar.Content>
+                <TextBlock Text="Button Settings" FontSize="16" Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
+
+        <StackPanel Grid.Row="1">
+            <RelativePanel>
+                <ListView Name="Retailers"
+                          SelectionMode="Single"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ScrollViewer.IsVerticalRailEnabled="True"
+                          ScrollViewer.VerticalScrollMode="Enabled"
+                          ScrollViewer.HorizontalScrollMode="Enabled"
+                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                          ScrollViewer.IsHorizontalRailEnabled="True"
+                          Margin="20"
+                          SelectionChanged="Retailers_OnSelectionChanged_SelectionChanged">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Retailer" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="Name"/>
+                                <Button Content="Abbreviation" Width="100" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
+                                <Button Content="Food %" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
+                                <Button Content="Nonfood %" Width="90" Background="Transparent" Foreground="Black" Name="NonfoodPercentage"/>
+                                <Button Content="Nonfood DF %" Width="120" Background="Transparent" Foreground="Black" Name="NonfoodDfPercentage"/>
+                                <Button Content="Freezer %" Width="90" Background="Transparent" Foreground="Black" Name="FreezerPercentage"/>
+                                <Button Content="Cooler %" Width="90" Background="Transparent" Foreground="Black" Name="CoolerPercentage"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local1:RetailButton">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Name="tbRetailer" Text="{Binding Retailer.Name}" Width="250" TextAlignment="Center"/>
+                                <TextBlock Name="tbAbbreviation" Text="{Binding Retailer.OnlineAbbrev}" Width="75" TextAlignment="Center"/>
+                                <TextBlock Name="tbFoodPercentage" Text="{Binding Retailer.FoodPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodPercentage" Text="{Binding Retailer.NonfoodPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodDfPercentage" Text="{Binding Retailer.NonfoodDfPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbFreezerPercentage" Text="{Binding Retailer.FreezerPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbCoolerPercentage" Text="{Binding Retailer.CoolerPercentage}" Width="90" TextAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RelativePanel>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0">
+            <Frame Name="EditFrame">
+            </Frame>
+        </Grid>
+    </Grid>
+</Page>

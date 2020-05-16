@@ -9,7 +9,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     public class Retailer
     {
         private string name = "";
-        private string websiteUrl = "";
         private string onlineAbbrev = "";
         private double foodPercentage = 0;
         private double nonfoodPercentage = 0;
@@ -21,11 +20,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return name; }
             set { name = value; }
-        }
-        public string WebsiteURL
-        {
-            get { return websiteUrl; }
-            set { websiteUrl = value; }
         }
         public string OnlineAbbrev
         {

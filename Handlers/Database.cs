@@ -133,6 +133,12 @@ namespace AddInCalculator2._0.Handlers
             ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
             cnStatement.Step();
         }
+        public void DeleteRetailer(String tableName, Retailer retailer)
+        {
+            String sSql = String.Format(@"DELETE FROM {0} WHERE Retailer = ('{1}');", tableName, ConvertObjectToString<Retailer>(retailer));
+            ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
+            cnStatement.Step();
+        }
         #endregion
         #endregion
 

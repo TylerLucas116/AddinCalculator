@@ -18,8 +18,8 @@ has a product for $7.99, then a button would have the name Walmart on it, and if
 to create the salvage store price e.g. maybe $4.99. Additionally, there must be different categories for these grocery stores. For example, Walmart
 may have a Cooler, Freezer, Food, and Nonfood category.
 
-The data required would be minimal. Most of the data storage would be grocery store information which includes percentages and names. There isn't a
-current need for a price history or any other type of data storage.
+The data required would be minimal. Most of the data storage would be grocery store information which includes percentages and names, or employee
+information. There isn't a current need for a price history or any other type of data storage.
 
 ## Proposed Design
 
@@ -28,8 +28,18 @@ so that any employee won't be able to edit the databse.
 
 The project will leverage an MVVM design pattern. 
 
-Currently, most of the project functionality resides in NFCalculatorViewModel.cs and NFCalculator.xaml/.xaml.cs.
-
 As an additional note, the original design was sort of a "Build one to throw away" mentality, however instead of
 rebuilding the entire project, I think refactoring and then building from there will work better.
 Ref:https://www.tbray.org/ongoing/When/200x/2008/08/22/Build-One-to-Throw-Away
+
+## Current State of Project
+
+The project has been refactored to use Retailer objects in both the front and back end, however the Settings View that works with these object is not in MVVM yet.
+The previous design of the Settings View that worked with Button objects was not in MVVM, so the most recent refactoring was intended to integrate Retailer 
+objects - not change the whole design. 
+
+## Future Development
+
+The next step in development is to refactor the classes Retailer, RetailButtonManager, and RetailButtonSettingsViewModel to MVVM design with their respective Views.
+During this refactoring, this will mean updating the Views NFCalculator.xaml, RetailButtonSettings.xaml, EditRetailer.xaml, and AddRetailer.xaml to use these
+newly designed classes.

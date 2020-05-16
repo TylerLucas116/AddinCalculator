@@ -74,15 +74,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         private void InitializeRetailers()
         {
-            walmart.WebsiteURL = "http://api.walmartlabs.com/v1/items";
             walmart.Name = "Walmart";
             walmart.OnlineAbbrev = "WM";
 
-            target.WebsiteURL = "https://www.target.com/s?searchTerm=";
             target.Name = "Target";
             target.OnlineAbbrev = "TG";
 
-            cvs.WebsiteURL = "https://www.cvs.com/search?searchTerm=";
             cvs.Name = "CVS";
             cvs.OnlineAbbrev = "CVS";
         }
@@ -152,7 +149,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             try
             {
-                var url = (walmart.WebsiteURL + key.WalmartKey + UPC);
+                var url = ("http://api.walmartlabs.com/v1/items" + key.WalmartKey + UPC);
                 var walmartResponse = await client.GetAsync(new Uri(url));
                 
                 walmartResponse.EnsureSuccessStatusCode();
@@ -224,8 +221,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             try
             {
-                string targetURL = "https://www.target.com/s?searchTerm=";
-                var url = (targetURL + UPC);
+                var url = ("https://www.target.com/s?searchTerm=" + UPC);
 
 
                 webView.Navigate(new Uri(url));
@@ -260,8 +256,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             try
             {
-                string cvsURL = "https://www.cvs.com/search?searchTerm=";
-                var url = (cvsURL + UPC);
+                var url = ("https://www.cvs.com/search?searchTerm=" + UPC);
 
                 webView.Navigate(new Uri(url));
                 await Task.Delay(10000);
