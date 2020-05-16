@@ -15,7 +15,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string table = "Retailers";
         private string fieldname = "Retailer";
         private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
-        Type obType = (typeof(Models.AddInCalculator.Button));
+        Type obType = (typeof(Retailer));
 
         public ObservableCollection<RetailButton> RetailButtons
         {
