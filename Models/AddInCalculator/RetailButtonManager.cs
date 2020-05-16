@@ -65,7 +65,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 CoolerPercentage = double.Parse(coolerPercentage)
         };
             
-
             // write to database
             Handlers.Database db = new Handlers.Database();
             db.WriteRecord<Retailer>(retailer, table, db.BuildFieldObject("nvarchar", fieldname));
