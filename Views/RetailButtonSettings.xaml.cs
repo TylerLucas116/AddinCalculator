@@ -56,7 +56,7 @@ namespace AddInCalculator2._0.Views
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            ButtonSettingsViewModel.BManager.DeleteButton();
+            RetailButtonSettingsViewModel.ButtonManager.DeleteRetailer();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
