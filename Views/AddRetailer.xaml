@@ -29,7 +29,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Abbreviation" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbAbbrev"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbAbbreviation"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="Food %" FontSize="12"/>

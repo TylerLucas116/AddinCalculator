@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AddInCalculator2._0.Models.AddInCalculator;
 using AddInCalculator2._0.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -31,9 +32,9 @@ namespace AddInCalculator2._0.Views
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            RetailButtonSettingsViewModel.ButtonManager.AddRetailer();
+            RetailButtonSettingsViewModel.ButtonManager.AddRetailer(BuildRetailer());
             tbRetailer.Text = String.Empty;
-            tbAbbrev.Text = String.Empty;
+            tbAbbreviation.Text = String.Empty;
             tbFoodPercentage.Text = String.Empty;
             tbNonfoodPercentage.Text = String.Empty;
             tbNonfoodDfPercentage.Text = String.Empty;
@@ -41,23 +42,20 @@ namespace AddInCalculator2._0.Views
             tbCoolerPercentage.Text = String.Empty;
         }
 
-        private Models.AddInCalculator.Button buildButtonObject()
+        private Retailer BuildRetailer()
         {
-            var myButton = new Models.AddInCalculator.Button();
+            var newRetailer = new Retailer()
+            {
+                Name = tbRetailer.Text,
+                OnlineAbbrev = tbAbbreviation.Text,
+                FoodPercentage = double.Parse(tbFoodPercentage.Text),
+                NonfoodPercentage = double.Parse(tbNonfoodPercentage.Text),
+                NonfoodDfPercentage = double.Parse(tbNonfoodDfPercentage.Text),
+                FreezerPercentage = double.Parse(tbFreezerPercentage.Text),
+                CoolerPercentage = double.Parse(tbCoolerPercentage.Text)
+            };
 
-            /*  public int ID { get; set; } //start at 1, 2, 3
-                public string retailer { get; set; }
-                public string label { get; set; } //Walmart, targer
-                public string abbrev { get; set; } //wm, tg, etc (for pasting)
-                public decimal percentage { get; set; } //75, 50, etc
-                public string type { get; set; } //food,*/
-            myButton.retailer = tbNewRetailer.Text;
-            myButton.label = tbNewLabel.Text;
-            myButton.abbrev = tbNewAbbrev.Text;
-            myButton.percentage = Double.Parse(tbNewPercentage.Text);
-            myButton.type = cbNewType.SelectedItem.ToString().ToLower();
-
-            return myButton;
+            return newRetailer;
         }
     }
 }
