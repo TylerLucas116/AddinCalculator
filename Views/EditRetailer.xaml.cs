@@ -32,10 +32,10 @@ namespace AddInCalculator2._0.Views
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            //Delete button first
-            //RetailButtonSettingsViewModel.ButtonManager.DeleteRetailer();
+            // delete retailer first
+            RetailButtonSettingsViewModel.ButtonManager.DeleteRetailer();
 
-            //Add new button based on user-inputted info
+            // add new retailer based on UI fields
             RetailButtonSettingsViewModel.ButtonManager.AddRetailer(BuildRetailer());
             tbRetailer.Text = String.Empty;
             tbAbbreviation.Text = String.Empty;
