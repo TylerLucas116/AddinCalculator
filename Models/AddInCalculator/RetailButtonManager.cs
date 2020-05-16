@@ -67,7 +67,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 NonfoodDfPercentage = double.Parse(nonfoodDfPercentage),
                 FreezerPercentage = double.Parse(freezerPercentage),
                 CoolerPercentage = double.Parse(coolerPercentage)
-        };
+            };
             
             // write to database
             Handlers.Database db = new Handlers.Database();
