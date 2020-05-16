@@ -26,37 +26,65 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
         }
         public string OnlineAbbrev
         {
             get { return onlineAbbrev; }
-            set { onlineAbbrev = value; }
+            set
+            {
+                onlineAbbrev = value;
+                OnPropertyChanged("OnlineAbbrev");
+            }
         }
         public double FoodPercentage
         {
             get { return foodPercentage; }
-            set { foodPercentage = value; }
+            set
+            {
+                foodPercentage = value;
+                OnPropertyChanged("FoodPercentage");
+            }
         }
         public double NonfoodPercentage
         {
             get { return nonfoodPercentage; }
-            set { nonfoodPercentage = value; }
+            set
+            {
+                nonfoodPercentage = value;
+                OnPropertyChanged("NonfoodPercentage");
+            }
         }
         public double NonfoodDfPercentage
         {
             get { return nonfoodDfPercentage; }
-            set { nonfoodDfPercentage = value; }
+            set
+            {
+                nonfoodDfPercentage = value;
+                OnPropertyChanged("NonfoodDfPercentage");
+            }
         }
         public double FreezerPercentage
         {
             get { return freezerPercentage; }
-            set { freezerPercentage = value; }
+            set
+            {
+                freezerPercentage = value;
+                OnPropertyChanged("FreezerPercentage");
+            }
         }
         public double CoolerPercentage
         {
             get { return coolerPercentage; }
-            set { coolerPercentage = value; }
+            set
+            {
+                coolerPercentage = value;
+                OnPropertyChanged("CoolerPercentage");
+            }
         }
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
         private string table = "Retailers";
