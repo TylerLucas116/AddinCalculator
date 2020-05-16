@@ -60,12 +60,15 @@
                         </DataTemplate>
                     </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local1:Button">
+                        <DataTemplate x:DataType="local1:Retailer">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Name="tbRetailer" Text="{Binding retailer}" Width="250" TextAlignment="Center"/>
-                                <TextBlock Name="tbAbbrev" Text="{Binding abbrev}" Width="75" TextAlignment="Center"/>
-                                <TextBlock Name="tbPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbType" Text="{Binding type}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbAbbreviation" Text="{Binding abbrev}" Width="75" TextAlignment="Center"/>
+                                <TextBlock Name="tbFoodPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodDfoodPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbFreezerPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbCoolerPercentage" Text="{Binding percentage}" Width="90" TextAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
