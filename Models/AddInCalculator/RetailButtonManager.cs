@@ -14,9 +14,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         public RetailButtonManager()
         {
-            Database db = new Database();
-            Handlers.DatabaseField myField = db.BuildFieldObject("nvarchar", fieldname);
-            db.CreateDatabase(table, myField);
         }
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
         private string table = "Retailers";
