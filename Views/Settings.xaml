@@ -16,6 +16,7 @@
             <Button Content="Get All Records" Margin="10,20,0,5" x:Name="BtnGetAllRecords" Click="BtnGetAllRecords_Click"/>
             <Button Content="New Add" Margin="10,20,0,5" x:Name="BtnAddRecord" Click="BtnAddRecord_Click"/>
             <Button Content="Buttons" Margin="50,20,0,5" Click="Button_Click_2"/>
+            <Button Content="Retailers" Margin="50,20,0,5" Name="Retailers"  Click="Retailers_OnClick"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,75,0,0">
             <TextBlock Text="Retailer" FontSize="20"/>
