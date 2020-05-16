@@ -80,7 +80,7 @@ namespace AddInCalculator2._0.Views
             {
                 foreach (var item in e.AddedItems)
                 {
-                    Retailer selectedRetailer = (Retailer)item;
+                    RetailButton selectedRetailer = (RetailButton)item;
 
                     if (EditFrame.CurrentSourcePageType == typeof(EditButton))
                     {
