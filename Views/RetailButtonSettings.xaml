@@ -60,15 +60,15 @@
                         </DataTemplate>
                     </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local1:Retailer">
+                        <DataTemplate x:DataType="local1:RetailButton">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="tbRetailer" Text="{Binding Name}" Width="250" TextAlignment="Center"/>
-                                <TextBlock Name="tbAbbreviation" Text="{Binding OnlineAbbrev}" Width="75" TextAlignment="Center"/>
-                                <TextBlock Name="tbFoodPercentage" Text="{Binding FoodPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbNonfoodPercentage" Text="{Binding NonfoodPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbNonfoodDfPercentage" Text="{Binding NonfoodDfPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbFreezerPercentage" Text="{Binding FreezerPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbCoolerPercentage" Text="{Binding CoolerPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbRetailer" Text="{Binding Retailer.Name}" Width="250" TextAlignment="Center"/>
+                                <TextBlock Name="tbAbbreviation" Text="{Binding Retailer.OnlineAbbrev}" Width="75" TextAlignment="Center"/>
+                                <TextBlock Name="tbFoodPercentage" Text="{Binding Retailer.FoodPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodPercentage" Text="{Binding Retailer.NonfoodPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodDfPercentage" Text="{Binding Retailer.NonfoodDfPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbFreezerPercentage" Text="{Binding Retailer.FreezerPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbCoolerPercentage" Text="{Binding Retailer.CoolerPercentage}" Width="90" TextAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
