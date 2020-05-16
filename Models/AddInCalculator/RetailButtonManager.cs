@@ -15,6 +15,49 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public RetailButtonManager()
         {
         }
+        private string name = "";
+        private string onlineAbbrev = "";
+        private double foodPercentage = 0;
+        private double nonfoodPercentage = 0;
+        private double nonfoodDfPercentage = 0;
+        private double freezerPercentage = 0;
+        private double coolerPercentage = 0;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public string OnlineAbbrev
+        {
+            get { return onlineAbbrev; }
+            set { onlineAbbrev = value; }
+        }
+        public double FoodPercentage
+        {
+            get { return foodPercentage; }
+            set { foodPercentage = value; }
+        }
+        public double NonfoodPercentage
+        {
+            get { return nonfoodPercentage; }
+            set { nonfoodPercentage = value; }
+        }
+        public double NonfoodDfPercentage
+        {
+            get { return nonfoodDfPercentage; }
+            set { nonfoodDfPercentage = value; }
+        }
+        public double FreezerPercentage
+        {
+            get { return freezerPercentage; }
+            set { freezerPercentage = value; }
+        }
+        public double CoolerPercentage
+        {
+            get { return coolerPercentage; }
+            set { coolerPercentage = value; }
+        }
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
         private string table = "Retailers";
         private string fieldname = "Retailer";
@@ -80,6 +123,22 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             // add Retailer object to database
             Handlers.Database db = new Handlers.Database();
             db.WriteRecord<Retailer>(retailer, table, db.BuildFieldObject("nvarchar", fieldname));
+
+            UpdateRetailButtons();
+        }
+        public void DeleteRetailer()
+        {
+            //delete button from database
+            Retailer retailer = new Retailer();
+            retailer.Name = Name;
+            retailer.OnlineAbbrev = OnlineAbbrev;
+            retailer.FoodPercentage = FoodPercentage;
+            retailer.NonfoodPercentage = NonfoodPercentage;
+            retailer.NonfoodDfPercentage = NonfoodDfPercentage;
+            retailer.FreezerPercentage = FreezerPercentage;
+            retailer.CoolerPercentage = CoolerPercentage;
+            Handlers.Database db = new Handlers.Database();
+            db.DeleteRetailer(table, retailer);
 
             UpdateRetailButtons();
         }
