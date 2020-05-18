@@ -18,7 +18,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             NFButtonManager.InitializeCollections();
             NFButtonManager.UpdateNFButtons();
             retailButtonManager = new RetailButtonManager();
-            
         }
 
         private ButtonManager nfButtonManager;
