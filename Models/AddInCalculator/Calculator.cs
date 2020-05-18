@@ -17,9 +17,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             nfButtonManager = new ButtonManager();
             NFButtonManager.InitializeCollections();
             NFButtonManager.UpdateNFButtons();
+            retailButtonManager = new RetailButtonManager();
+            
         }
 
         private ButtonManager nfButtonManager;
+        private RetailButtonManager retailButtonManager;
 
         private double price;
         private bool operationClicked;
@@ -35,6 +38,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return nfButtonManager; }
             set { }
+        }
+        public RetailButtonManager RetailButtonManager
+        {
+            get { return retailButtonManager; }
+            set { retailButtonManager = value; }
         }
         public double Price
         {
