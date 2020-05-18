@@ -35,6 +35,7 @@ namespace AddInCalculator2._0.ViewModels
             nfButtonManager = new ButtonManager();
             NFButtonManager.InitializeCollections();
             NFButtonManager.UpdateNFButtons();
+            retailButtonManager = new RetailButtonManager();
         }
 
         private Calculator calculator;
