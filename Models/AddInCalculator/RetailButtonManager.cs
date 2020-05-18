@@ -14,6 +14,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         public RetailButtonManager()
         {
+            UpdateRetailButtons();
         }
         private string name = "";
         private string onlineAbbrev = "";
