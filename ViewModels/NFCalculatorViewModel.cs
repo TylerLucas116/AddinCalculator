@@ -40,6 +40,7 @@ namespace AddInCalculator2._0.ViewModels
         private Calculator calculator;
         private WebScraper scraper;
         private ButtonManager nfButtonManager;
+        private RetailButtonManager retailButtonManager;
 
         public Calculator Calculator
         {
@@ -55,6 +56,11 @@ namespace AddInCalculator2._0.ViewModels
         {
             get { return nfButtonManager; }
             set { }
+        }
+        public RetailButtonManager RetailButtonManager
+        {
+            get { return retailButtonManager; }
+            set { retailButtonManager = value; }
         }
     }
 }
