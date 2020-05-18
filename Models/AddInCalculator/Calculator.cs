@@ -253,7 +253,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
             Price = Double.Parse(DisplayText);
-            DisplayText = RoundToNine(Price * (NFButtonManager.nfCollection[index].percentage / 100)).ToString();
+            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodPercentage / 100)).ToString();
         }
 
         public double RoundToNine(double value)
