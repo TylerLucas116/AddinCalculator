@@ -99,16 +99,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set { retailButtons = value; }
         }
 
-        public void InitializeRetailButtons() //Call at beginning of program once
-        {
-            RetailButton newButton = new RetailButton();//Blank button to initialize each collection
-
-            for (int i = 0; i < 50; ++i) // 50 button limit for UI
-            {
-                RetailButtons.Add(newButton);
-            }
-        }
-
         public void UpdateRetailButtons()
         {
             Handlers.Database db = new Handlers.Database();
