@@ -14,6 +14,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         public RetailButtonManager()
         {
+            InitializeRetailButtons();
             UpdateRetailButtons();
         }
         private string name = "";
@@ -99,6 +100,16 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set { retailButtons = value; }
         }
 
+        public void InitializeRetailButtons() //Call at beginning of program once
+        {
+            RetailButton newButton = new RetailButton();//Blank button to initialize each collection
+
+            for (int i = 0; i < 50; ++i) // 50 button limit for UI
+            {
+                RetailButtons.Add(newButton);
+            }
+        }
+
         public void UpdateRetailButtons()
         {
             Handlers.Database db = new Handlers.Database();
@@ -106,14 +117,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             SortByName(retailerList);
 
-            RetailButtons.Clear();
-
+            int i = 0;
             foreach (Retailer item in retailerList)
             {
                 RetailButton newButton = new RetailButton();
                 newButton.Retailer = item;
                 newButton.Visibility = true;
-                RetailButtons.Add(newButton);
+                RetailButtons.RemoveAt(i);
+                RetailButtons.Insert(i, newButton);
+                ++i;
             }
         }
         public void AddRetailer(string name, string abbreviation, string foodPercentage, string nonfoodPercentage,
