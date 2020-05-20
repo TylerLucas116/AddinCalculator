@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 using AddInCalculator2._0.Handlers;
+using AddInCalculator2._0.ViewModels;
 using AddInCalculator2._0.Views;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
@@ -103,6 +105,17 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             foreach (var retailer in retailerList)
             {
                 Retailers.Add(retailer);
+            }
+        }
+
+        public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                foreach (var item in e.AddedItems)
+                {
+                    Retailer = (Retailer) item;
+                }
             }
         }
 
