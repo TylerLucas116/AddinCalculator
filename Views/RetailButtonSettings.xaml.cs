@@ -27,10 +27,12 @@ namespace AddInCalculator2._0.Views
         public RetailButtonSettings()
         {
             this.InitializeComponent();
-            RetailButtonSettingsViewModel btnViewModel = new RetailButtonSettingsViewModel();
-            DataContext = btnViewModel;
+            viewModel = new RetailButtonSettingsViewModel();
+            DataContext = viewModel;
             EditFrame.Navigate(typeof(BlankPage));
         }
+
+        private RetailButtonSettingsViewModel viewModel;
 
         private void BackBarButton_Click(object sender, RoutedEventArgs e)
         {
