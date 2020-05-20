@@ -24,7 +24,7 @@
             <AppBarSeparator/>
             <AppBarButton Icon="Add" Label="Add" Click="AddBarButton_Click"/>
             <AppBarButton Icon="Edit" Label="Edit" Name="EditButton" Click="EditButton_Click"/>
-            <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="DeleteButton_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="{x:Bind viewModel.RetailManager.DeleteRetailer}"/>
 
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>
@@ -45,8 +45,8 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.IsHorizontalRailEnabled="True"
                           Margin="20"
-                          SelectionChanged="{x:Bind viewModel.ButtonManager.RetailerSelectionChanged}"
-                          ItemsSource="{Binding ButtonManager.Retailers}">
+                          SelectionChanged="{x:Bind viewModel.RetailManager.RetailerSelectionChanged}"
+                          ItemsSource="{Binding RetailManager.Retailers}">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

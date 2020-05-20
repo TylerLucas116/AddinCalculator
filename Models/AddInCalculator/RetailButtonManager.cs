@@ -13,40 +13,25 @@ using AddInCalculator2._0.Views;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    public class RetailButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
+    public class RetailButtonManager
     {
         public RetailButtonManager()
         {
             InitializeRetailButtons();
             UpdateRetailButtons();
-            UpdateRetailers();
-            retailer = new Retailer();
         }
 
-        private Retailer retailer;
-
-        public Retailer Retailer
-        {
-            get { return retailer; }
-            set { retailer = value; }
-        }
-
-        private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
-        private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
         private string table = "Retailers";
         private string fieldname = "Retailer";
         private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
         Type obType = (typeof(Retailer));
 
+        private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
+
         public ObservableCollection<RetailButton> RetailButtons
         {
             get { return retailButtons; }
             set { retailButtons = value; }
-        }
-        public ObservableCollection<Retailer> Retailers
-        {
-            get { return retailers; }
-            set { retailers = value; }
         }
 
         public void InitializeRetailButtons() //Call at beginning of program once
@@ -78,67 +63,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        public void AddRetailer(Retailer retailer)
-        {
-            // add Retailer object to database
-            Handlers.Database db = new Handlers.Database();
-            db.WriteRecord<Retailer>(retailer, table, db.BuildFieldObject("nvarchar", fieldname));
-
-            UpdateRetailButtons();
-        }
-        public void DeleteRetailer()
-        {
-            //delete button from database
-            Handlers.Database db = new Handlers.Database();
-            db.DeleteRetailer(table, Retailer);
-
-            UpdateRetailButtons();
-        }
-
-        public void UpdateRetailers()
-        {
-            Handlers.Database db = new Handlers.Database();
-            var retailerList = db.ReturnAllRetailers<Retailer>(table, fieldname, objectPath);
-
-            SortByName(retailerList);
-
-            foreach (var retailer in retailerList)
-            {
-                Retailers.Add(retailer);
-            }
-        }
-
-        public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0)
-            {
-                foreach (var item in e.AddedItems)
-                {
-                    Retailer = (Retailer) item;
-                }
-            }
-        }
-
         public void SortByName(List<Retailer> retailList)
         {
             retailList.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-        private void OnCollectionChanged(NotifyCollectionChangedEventArgs args)
-        {
-            if (this.CollectionChanged != null)
-            {
-                this.CollectionChanged(this, args);
-            }
         }
     }
 }

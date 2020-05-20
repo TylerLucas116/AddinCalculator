@@ -19,12 +19,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         public WebScraper()
         {
-            nfButtonManager = new ButtonManager();
-            nfButtonManager.InitializeCollections();
-            nfButtonManager.UpdateNFButtons();
+            buttonManager = new RetailButtonManager();
         }
 
-        private ButtonManager nfButtonManager;
+        private RetailButtonManager buttonManager;
         private HttpClient client = new HttpClient();
         private ApiKey key = new ApiKey();
         private WebView webView = new WebView();
@@ -37,10 +35,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string onlinePrice;
         private string upc;
 
-        public ButtonManager NFButtonManager
+        public RetailButtonManager ButtonManager
         {
-            get { return nfButtonManager; }
-            set { }
+            get { return buttonManager; }
+            set { buttonManager = value; }
         }
         public bool Found
         {
@@ -176,10 +174,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                         bool walmartFound = false, walmartInformation = false;
                         int i = 0;
                         // still need to traverse the collection to get correct percentage in case it changes in future
-                        for (i = 0; (i < NFButtonManager.nfCollection.Count() && (walmartFound == false)); ++i)
+                        for (i = 0; (i < ButtonManager.RetailButtons.Count() && (walmartFound == false)); ++i)
                         {
-                            string nfcollection = NFButtonManager.nfCollection[i].retailer;
-                            if (NFButtonManager.nfCollection[i].retailer == "Walmart")
+                            if (ButtonManager.RetailButtons[i].Retailer.Name == "Walmart")
                             {
                                 walmartFound = true;
                                 walmartInformation = true;
@@ -188,7 +185,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
                         if (walmartInformation)
                         {
-                            price *= (NFButtonManager.nfCollection[i - 1].percentage / 100);
+                            price *= (ButtonManager.RetailButtons[i - 1].Retailer.NonfoodPercentage / 100);
                             price = RoundToNine(price);
                             OnlinePrice = "@ " + walmart.OnlineAbbrev + " $" + price.ToString();
                         }

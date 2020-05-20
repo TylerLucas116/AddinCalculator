@@ -32,7 +32,7 @@ namespace AddInCalculator2._0.Views
             EditFrame.Navigate(typeof(BlankPage));
         }
 
-        private RetailButtonSettingsViewModel viewModel;
+        public RetailButtonSettingsViewModel viewModel;
 
         private void BackBarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -56,11 +56,6 @@ namespace AddInCalculator2._0.Views
             }
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            RetailButtonSettingsViewModel.ButtonManager.DeleteRetailer();
-        }
-
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             if (EditFrame.CurrentSourcePageType == typeof(AddRetailer) || (EditFrame.CurrentSourcePageType == typeof(EditRetailer)))
@@ -72,30 +67,7 @@ namespace AddInCalculator2._0.Views
             }
             else
             {
-                EditFrame.Navigate(typeof(EditRetailer));
-            }
-        }
-
-        private void Retailers_OnSelectionChanged_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0)
-            {
-                foreach (var item in e.AddedItems)
-                {
-                    Retailer selectedRetailer = (Retailer)item;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.Name = selectedRetailer.Name;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.OnlineAbbrev = selectedRetailer.OnlineAbbrev;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.FoodPercentage = selectedRetailer.FoodPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.NonfoodPercentage = selectedRetailer.NonfoodPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.NonfoodDfPercentage = selectedRetailer.NonfoodDfPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.FreezerPercentage = selectedRetailer.FreezerPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.Retailer.CoolerPercentage = selectedRetailer.CoolerPercentage;
-
-                    if (EditFrame.CurrentSourcePageType == typeof(EditButton))
-                    {
-                        // Views.EditButton.tbEditRetailer.Text = ButtonSettingsViewModel.BManager.Retailer;
-                    }
-                }
+                EditFrame.Navigate(typeof(EditRetailer), viewModel);
             }
         }
     }
