@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AddInCalculator2._0.Handlers;
+using AddInCalculator2._0.Views;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
@@ -16,6 +17,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             InitializeRetailButtons();
             UpdateRetailButtons();
+            UpdateRetailers();
             retailer = new Retailer();
         }
 
@@ -28,6 +30,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
+        private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
         private string table = "Retailers";
         private string fieldname = "Retailer";
         private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
@@ -37,6 +40,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return retailButtons; }
             set { retailButtons = value; }
+        }
+        public ObservableCollection<Retailer> Retailers
+        {
+            get { return retailers; }
+            set { retailers = value; }
         }
 
         public void InitializeRetailButtons() //Call at beginning of program once
@@ -83,6 +91,19 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             db.DeleteRetailer(table, Retailer);
 
             UpdateRetailButtons();
+        }
+
+        public void UpdateRetailers()
+        {
+            Handlers.Database db = new Handlers.Database();
+            var retailerList = db.ReturnAllRetailers<Retailer>(table, fieldname, objectPath);
+
+            SortByName(retailerList);
+
+            foreach (var retailer in retailerList)
+            {
+                Retailers.Add(retailer);
+            }
         }
 
         public void SortByName(List<Retailer> retailList)
