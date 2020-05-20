@@ -45,7 +45,8 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.IsHorizontalRailEnabled="True"
                           Margin="20"
-                          SelectionChanged="Retailers_OnSelectionChanged_SelectionChanged">
+                          SelectionChanged="Retailers_OnSelectionChanged_SelectionChanged"
+                          ItemsSource="{Binding ButtonManager.Retailers}">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
