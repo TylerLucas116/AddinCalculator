@@ -7,19 +7,19 @@ using AddInCalculator2._0.Models.AddInCalculator;
 
 namespace AddInCalculator2._0.ViewModels
 {
-    class RetailButtonSettingsViewModel
+    public class RetailButtonSettingsViewModel
     {
         public RetailButtonSettingsViewModel()
         {
-            ButtonManager = new RetailButtonManager();
+            retailManager = new RetailerManager();
         }
 
-        private static RetailButtonManager buttonManager = new RetailButtonManager();
+        private RetailerManager retailManager;
 
-        public static RetailButtonManager ButtonManager
+        public RetailerManager RetailManager
         {
-            get { return buttonManager; }
-            set { buttonManager = value; }
+            get { return retailManager; }
+            set { retailManager = value; }
         }
     }
 }

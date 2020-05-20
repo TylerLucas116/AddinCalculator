@@ -25,34 +25,34 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock Text="Retailer" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbRetailer" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbRetailer" Text="{Binding RetailManager.NewRetailer.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Abbreviation" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbAbbreviation" Text="{Binding OnlineAbbrev, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbAbbreviation" Text="{Binding RetailManager.NewRetailer.OnlineAbbrev, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="Food %" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFoodPercentage" Text="{Binding FoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFoodPercentage" Text="{Binding RetailManager.NewRetailer.FoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="3">
             <TextBlock Text="Nonfood %" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodPercentage" Text="{Binding NonfoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodPercentage" Text="{Binding RetailManager.NewRetailer.NonfoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <TextBlock Text="Nonfood Drug Fact %" FontSize="12"/>
-                    <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodDfPercentage" Text="{Binding NonfoodDfPercentage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodDfPercentage" Text="{Binding RetailManager.NewRetailer.NonfoodDfPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="5">
             <TextBlock Text="Freezer %" FontSize="12"/>
-                        <TextBox Width="250" HorizontalAlignment="Left" Name="tbFreezerPercentage" Text="{Binding FreezerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFreezerPercentage" Text="{Binding RetailManager.NewRetailer.FreezerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="6">
             <TextBlock Text="Cooler %" FontSize="12"/>
-                            <TextBox Width="250" HorizontalAlignment="Left" Name="tbCoolerPercentage" Text="{Binding CoolerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbCoolerPercentage" Text="{Binding RetailManager.NewRetailer.CoolerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="7" Margin="0,12,0,0">
-            <Button Content="Submit" BorderBrush="Gray" Width="100" Name="SubmitButton" Click="SubmitButton_Click"/>
+            <Button Content="Submit" BorderBrush="Gray" Width="100" Name="SubmitButton" Click="{x:Bind viewModel.RetailManager.EditRetailer}"/>
         </StackPanel>
     </Grid>
 </Page>

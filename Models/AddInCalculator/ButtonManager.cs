@@ -13,31 +13,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     public class ButtonManager : INotifyCollectionChanged, INotifyPropertyChanged
     {
         #region Declarations
-        private ObservableCollection<Button> CoolerCollection = new ObservableCollection<Button>();
-        public ObservableCollection<Button> coolerCollection
-        {
-            get
-            {
-                return CoolerCollection;
-            }
-            set
-            {
-                CoolerCollection = value;
-            }
-        }
 
-        private ObservableCollection<Button> FreezerCollection = new ObservableCollection<Button>();
-        public ObservableCollection<Button> freezerCollection
-        {
-            get
-            {
-                return FreezerCollection;
-            }
-            set
-            {
-                FreezerCollection = value;
-            }
-        }
         private ObservableCollection<Button> NFCollection = new ObservableCollection<Button>();
         public ObservableCollection<Button> nfCollection
         {
@@ -48,32 +24,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set
             {
                 NFCollection = value;
-            }
-        }
-
-        private ObservableCollection<Button> NFDFCollection = new ObservableCollection<Button>();
-        public ObservableCollection<Button> nfdfCollection
-        {
-            get
-            {
-                return NFDFCollection;
-            }
-            set
-            {
-                NFDFCollection = value;
-            }
-        }
-
-        private ObservableCollection<Button> FoodCollection = new ObservableCollection<Button>();
-        public ObservableCollection<Button> foodCollection
-        {
-            get
-            {
-                return FoodCollection;
-            }
-            set
-            {
-                FoodCollection = value;
             }
         }
 
@@ -102,11 +52,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             for(int i = 0; i < 50; ++i)
             {
-                coolerCollection.Add(newButton);
-                freezerCollection.Add(newButton);
                 nfCollection.Add(newButton);
-                nfdfCollection.Add(newButton);
-                foodCollection.Add(newButton);
             }
         }
 

@@ -24,7 +24,7 @@
             <AppBarSeparator/>
             <AppBarButton Icon="Add" Label="Add" Click="AddBarButton_Click"/>
             <AppBarButton Icon="Edit" Label="Edit" Name="EditButton" Click="EditButton_Click"/>
-            <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="DeleteButton_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="{x:Bind viewModel.RetailManager.DeleteRetailer}"/>
 
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>
@@ -45,7 +45,8 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.IsHorizontalRailEnabled="True"
                           Margin="20"
-                          SelectionChanged="Retailers_OnSelectionChanged_SelectionChanged">
+                          SelectionChanged="{x:Bind viewModel.RetailManager.RetailerSelectionChanged}"
+                          ItemsSource="{Binding RetailManager.Retailers}">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -60,15 +61,15 @@
                         </DataTemplate>
                     </ListView.HeaderTemplate>
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local1:RetailButton">
+                        <DataTemplate x:DataType="local1:Retailer">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="tbRetailer" Text="{Binding Retailer.Name}" Width="250" TextAlignment="Center"/>
-                                <TextBlock Name="tbAbbreviation" Text="{Binding Retailer.OnlineAbbrev}" Width="75" TextAlignment="Center"/>
-                                <TextBlock Name="tbFoodPercentage" Text="{Binding Retailer.FoodPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbNonfoodPercentage" Text="{Binding Retailer.NonfoodPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbNonfoodDfPercentage" Text="{Binding Retailer.NonfoodDfPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbFreezerPercentage" Text="{Binding Retailer.FreezerPercentage}" Width="90" TextAlignment="Center"/>
-                                <TextBlock Name="tbCoolerPercentage" Text="{Binding Retailer.CoolerPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbRetailer" Text="{Binding Name}" Width="250" TextAlignment="Center"/>
+                                <TextBlock Name="tbAbbreviation" Text="{Binding OnlineAbbrev}" Width="75" TextAlignment="Center"/>
+                                <TextBlock Name="tbFoodPercentage" Text="{Binding FoodPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodPercentage" Text="{Binding NonfoodPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbNonfoodDfPercentage" Text="{Binding NonfoodDfPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbFreezerPercentage" Text="{Binding FreezerPercentage}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Name="tbCoolerPercentage" Text="{Binding CoolerPercentage}" Width="90" TextAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -27,39 +27,14 @@ namespace AddInCalculator2._0.Views
         public EditRetailer()
         {
             this.InitializeComponent();
-            this.DataContext = RetailButtonSettingsViewModel.ButtonManager;
+            viewModel = new RetailButtonSettingsViewModel();
+            this.DataContext = viewModel;
         }
+        private RetailButtonSettingsViewModel viewModel;
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // delete retailer first
-            RetailButtonSettingsViewModel.ButtonManager.DeleteRetailer();
-
-            // add new retailer based on UI fields
-            RetailButtonSettingsViewModel.ButtonManager.AddRetailer(BuildRetailer());
-            tbRetailer.Text = String.Empty;
-            tbAbbreviation.Text = String.Empty;
-            tbFoodPercentage.Text = String.Empty;
-            tbNonfoodPercentage.Text = String.Empty;
-            tbNonfoodDfPercentage.Text = String.Empty;
-            tbFreezerPercentage.Text = String.Empty;
-            tbCoolerPercentage.Text = String.Empty;
-        }
-
-        private Retailer BuildRetailer()
-        {
-            var newRetailer = new Retailer()
-            {
-                Name = tbRetailer.Text,
-                OnlineAbbrev = tbAbbreviation.Text,
-                FoodPercentage = double.Parse(tbFoodPercentage.Text),
-                NonfoodPercentage = double.Parse(tbNonfoodPercentage.Text),
-                NonfoodDfPercentage = double.Parse(tbNonfoodDfPercentage.Text),
-                FreezerPercentage = double.Parse(tbFreezerPercentage.Text),
-                CoolerPercentage = double.Parse(tbCoolerPercentage.Text)
-            };
-
-            return newRetailer;
+            viewModel = e.Parameter as RetailButtonSettingsViewModel;
         }
     }
 }
