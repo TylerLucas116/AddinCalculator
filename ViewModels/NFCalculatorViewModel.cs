@@ -32,14 +32,12 @@ namespace AddInCalculator2._0.ViewModels
         {
             calculator = new Calculator();
             scraper = new WebScraper();
-            nfButtonManager = new ButtonManager();
-            NFButtonManager.InitializeCollections();
-            NFButtonManager.UpdateNFButtons();
+            retailButtonManager = new RetailButtonManager();
         }
 
         private Calculator calculator;
         private WebScraper scraper;
-        private ButtonManager nfButtonManager;
+        private RetailButtonManager retailButtonManager;
 
         public Calculator Calculator
         {
@@ -51,10 +49,10 @@ namespace AddInCalculator2._0.ViewModels
             get { return scraper; }
             set { }
         }
-        public ButtonManager NFButtonManager
+        public RetailButtonManager RetailButtonManager
         {
-            get { return nfButtonManager; }
-            set { }
+            get { return retailButtonManager; }
+            set { retailButtonManager = value; }
         }
     }
 }

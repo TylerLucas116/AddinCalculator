@@ -14,7 +14,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         private Retailer retailer;
-        private bool visibility;
+        private bool visibility = false;
 
         public bool Visibility
         {

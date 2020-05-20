@@ -14,6 +14,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         public RetailButtonManager()
         {
+            InitializeRetailButtons();
+            UpdateRetailButtons();
         }
         private string name = "";
         private string onlineAbbrev = "";
@@ -115,14 +117,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             SortByName(retailerList);
 
-            RetailButtons.Clear();
-
+            int i = 0;
             foreach (Retailer item in retailerList)
             {
                 RetailButton newButton = new RetailButton();
                 newButton.Retailer = item;
                 newButton.Visibility = true;
-                RetailButtons.Add(newButton);
+                RetailButtons.RemoveAt(i);
+                RetailButtons.Insert(i, newButton);
+                ++i;
             }
         }
         public void AddRetailer(string name, string abbreviation, string foodPercentage, string nonfoodPercentage,
