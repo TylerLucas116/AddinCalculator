@@ -81,13 +81,13 @@ namespace AddInCalculator2._0.Views
                 foreach (var item in e.AddedItems)
                 {
                     RetailButton selectedRetailer = (RetailButton)item;
-                    RetailButtonSettingsViewModel.ButtonManager.Name = selectedRetailer.Retailer.Name;
-                    RetailButtonSettingsViewModel.ButtonManager.OnlineAbbrev = selectedRetailer.Retailer.OnlineAbbrev;
-                    RetailButtonSettingsViewModel.ButtonManager.FoodPercentage = selectedRetailer.Retailer.FoodPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.NonfoodPercentage = selectedRetailer.Retailer.NonfoodPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.NonfoodDfPercentage = selectedRetailer.Retailer.NonfoodDfPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.FreezerPercentage = selectedRetailer.Retailer.FreezerPercentage;
-                    RetailButtonSettingsViewModel.ButtonManager.CoolerPercentage = selectedRetailer.Retailer.CoolerPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.Name = selectedRetailer.Retailer.Name;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.OnlineAbbrev = selectedRetailer.Retailer.OnlineAbbrev;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.FoodPercentage = selectedRetailer.Retailer.FoodPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.NonfoodPercentage = selectedRetailer.Retailer.NonfoodPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.NonfoodDfPercentage = selectedRetailer.Retailer.NonfoodDfPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.FreezerPercentage = selectedRetailer.Retailer.FreezerPercentage;
+                    RetailButtonSettingsViewModel.ButtonManager.Retailer.CoolerPercentage = selectedRetailer.Retailer.CoolerPercentage;
 
                     if (EditFrame.CurrentSourcePageType == typeof(EditButton))
                     {
