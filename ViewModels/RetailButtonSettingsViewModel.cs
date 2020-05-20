@@ -12,7 +12,6 @@ namespace AddInCalculator2._0.ViewModels
         public RetailButtonSettingsViewModel()
         {
             ButtonManager = new RetailButtonManager();
-            ButtonManager.UpdateRetailButtons();
         }
 
         private static RetailButtonManager buttonManager = new RetailButtonManager();
