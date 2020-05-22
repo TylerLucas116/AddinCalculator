@@ -11,46 +11,7 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-            <Button Content="Add" Margin="20,20,0,5" Click="Button_Click"/>
-            <Button Content="Retrieve" Margin="10,20,0,5" Click="Button_Click_1"/>
-            <Button Content="Get All Records" Margin="10,20,0,5" x:Name="BtnGetAllRecords" Click="BtnGetAllRecords_Click"/>
-            <Button Content="New Add" Margin="10,20,0,5" x:Name="BtnAddRecord" Click="BtnAddRecord_Click"/>
-            <Button Content="Buttons" Margin="50,20,0,5" Click="Button_Click_2"/>
             <Button Content="Retailers" Margin="50,20,0,5" Name="Retailers"  Click="Retailers_OnClick"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,75,0,0">
-            <TextBlock Text="Retailer" FontSize="20"/>
-            <TextBox x:Name="tbRetailer" Margin="20,0,0,0" Width="200"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,150,0,0">
-            <TextBlock Text="Abbreviation" FontSize="20"/>
-            <TextBox x:Name="tbAbbreviation" Margin="20,0,0,0" Width="200"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20,225,0,0">
-            <TextBlock Text="Percentage" FontSize="20"/>
-            <TextBox x:Name="tbPercentage" Margin="20,0,0,0" Width="200"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,300,0,0">
-            <TextBlock Margin ="20,0,0,0" Text="Label" FontSize="20"/>
-            <TextBox x:Name="tbLabel" Margin="20,0,0,0" Width="200"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,350,0,0">
-            <TextBlock Margin ="20,0,0,0" Text="Type" FontSize="20"/>
-            <TextBox x:Name="tbType" Margin="20,0,0,0" Width="200"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="0,425,0,0">
-            <TextBox x:Name="tbResults" Width="600" Height="200"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="0,650,0,0" VerticalAlignment="Top">
-            <ComboBox x:Name="cbSearch" Width="155">
-                <x:String>type</x:String>
-            </ComboBox>
-            <TextBox x:Name="tbSearch" Width="200" Margin="20,0,0,0" Height="30"/>
-            <Button x:Name="BtnSearchRecords" Margin="20,0,0,0" Content="Search" Width="75" Click="BtnSearchRecords_Click"/>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Height="500" Width="500" Margin="0,0,20,0">
-            <ListView x:Name="lvRecords"/>
-
         </StackPanel>
     </Grid>
 </Page>
