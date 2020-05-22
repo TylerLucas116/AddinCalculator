@@ -34,12 +34,28 @@ Ref:https://www.tbray.org/ongoing/When/200x/2008/08/22/Build-One-to-Throw-Away
 
 ## Current State of Project
 
-The project has been refactored to use Retailer objects in both the front and back end, however the Settings View that works with these object is not in MVVM yet.
-The previous design of the Settings View that worked with Button objects was not in MVVM, so the most recent refactoring was intended to integrate Retailer 
-objects - not change the whole design. 
+The project refactoring has been mostly completed, with some work still needing done with the interaction between the ViewModels and the Database.
+
+Users can:
+- Use the nonfood calculator as described in the requirements
+- Customize the retailer's information in the settings page. This includes adding, deleting, and editing retailer's such as name, percentages, and online abbreviation
+- Search Walmart's API for products (still beta)
 
 ## Future Development
-
-The next step in development is to refactor the classes Retailer, RetailButtonManager, and RetailButtonSettingsViewModel to MVVM design with their respective Views.
-During this refactoring, this will mean updating the Views NFCalculator.xaml, RetailButtonSettings.xaml, EditRetailer.xaml, and AddRetailer.xaml to use these
-newly designed classes.
+- Fixing the design between the Settings view and the RetailerManager class. This could mean updating the RetailerManager class to be a static class (doubtful though)
+as it is used across the Settings pages, such as AddRetailer and EditRetailer. Alternatively, AddRetailer and EditRetailer could have their own view that would not be
+visible with the RetailerButtonSettings view. Currently, the design of the Settings for the retailers is a listview that resides in RetailerButtonSettings, and if the add
+or edit button are clicked, new pages pop up to add or edit a retailer on the right side of the RetailerButtonSettings view. This procures a problem in updating the 
+listview when the observablecollection is updated in the add or edit page, because they are separate pages with separate objects. Having separate views that are navigated to
+instead of having separate views that pop up on the right side of the screen would solve this issue, but is not optimal for UX. Another option that I like would be to have 
+grids or stackpanels that have their visibility dependent on the add or edit button being clicked, and having one RetailerManager object that is not static in the page.
+- Adding additional functionality for each retailer category, which includes food, nonfood drug facts, freezer, and cooler.
+- Adding additional support for the web scraper, such as adding more websites to search and how the program responds if a price is found online or not. The biggest challenge
+with the web scraping is waiting for the DOM content of the web pages to load. The current workaround is to wait about 5-6 seconds before trying to scrape the pages, such as Target
+and CVS, but this takes way too long for a single web page scrape. I am currently investigating events that may be able to be raised when the DOM content is loaded.
+The reason the project uses a HttpClient object and not a package such as Selenium is because Chrome Updates could break the program. A possible solution is to
+keep the Walmart API query a HttpClient object, and do the rest of the web scraping with Selenium or another package. As far as I know, most retailer API's are not publicly
+accessable, with the exception of maybe buying an API key.
+- Possibly adding some type of log in functionality. The bare minimum functionality would allow the user to enter in their name and employee ID.
+- Updating the UI and UX in various different ways, such as navigation, backgrounds, how the program responds to resizing, coloring, etc. This will probably be the last step
+as it has a lower priority than functionality.
