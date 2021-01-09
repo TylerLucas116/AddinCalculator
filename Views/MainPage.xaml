@@ -51,7 +51,6 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home" x:Name="Home" Tag="Home"  />
                 <NavigationViewItemSeparator/>
-                <NavigationViewItem Icon="Document" Content="Lists" x:Name="Lists" Tag="Lists"/>
                 <NavigationViewItem Icon="Calculator" Content="Add-In Calculator" x:Name="Calculator" Tag="Calculator" />
                 <NavigationViewItem Icon="Calculator" Content="Test Calculator" x:Name="TestCalculator" Tag="TestCalculator"/>
             </NavigationView.MenuItems>
