@@ -87,20 +87,10 @@ namespace AddInCalculator2._0.ViewModels
                         addinCalculatorClicked = false;
                         listsClicked = false;
                         break;
-                    case "Lists":
-                        NavigateTo(typeof(Lists));
-                        listsClicked = true;
-                        addinCalculatorClicked = false;
-                        break;
                     case "Calculator":
                         NavigateTo(typeof(NewCalculator));
                         listsClicked = false;
                         addinCalculatorClicked = true;
-                        break;
-                    case "TestCalculator":
-                        NavigateTo(typeof(TestCalculator));
-                        listsClicked = false;
-                        addinCalculatorClicked = false;
                         break;
                 }
             }
