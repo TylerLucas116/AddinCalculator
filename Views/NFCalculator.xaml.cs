@@ -38,7 +38,7 @@ namespace AddInCalculator2._0.Views
         {
             this.InitializeComponent();
             nfViewModel = new NFCalculatorViewModel();
-            DataContext = nfViewModel;
+            this.DataContext = nfViewModel;
         }
 
         public NFCalculatorViewModel nfViewModel { get; set; }

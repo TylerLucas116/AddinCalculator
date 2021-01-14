@@ -20,6 +20,7 @@ namespace AddInCalculator2._0.ViewModels
 {
     public class MainViewModel : MainViewModelBase 
     {
+
        /* private static BoolToVisibilityConverter boolConverter;
         public static BoolToVisibilityConverter BoolConverter { get { return boolConverter; } }
 
@@ -95,6 +96,22 @@ namespace AddInCalculator2._0.ViewModels
                 }
             }
         }
+
+        public void calculatorCategoryClicked(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
+
+            if (b.Name == "Food")
+                NavigateTo(typeof(FoodCalculator));
+            else if (b.Name == "Nonfood")
+                NavigateTo(typeof(NewCalculator));
+            else if (b.Name == "NonfoodDF")
+                NavigateTo(typeof(NonfoodDFCalculator));
+            else if (b.Name == "Cooler")
+                NavigateTo(typeof(CoolerCalculator));
+            else if (b.Name == "Freezer")
+                NavigateTo(typeof(FreezerCalculator));
+        }
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (!(value is bool))
@@ -165,7 +182,6 @@ namespace AddInCalculator2._0.ViewModels
                 result.Text = names;
             }
         }
-        */ 
-
+        */
     }
 }
