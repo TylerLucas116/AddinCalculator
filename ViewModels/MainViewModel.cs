@@ -89,7 +89,7 @@ namespace AddInCalculator2._0.ViewModels
                         listsClicked = false;
                         break;
                     case "Calculator":
-                        NavigateTo(typeof(NewCalculator));
+                        NavigateTo(typeof(NFCalculator));
                         listsClicked = false;
                         addinCalculatorClicked = true;
                         break;
@@ -104,7 +104,7 @@ namespace AddInCalculator2._0.ViewModels
             if (b.Name == "Food")
                 NavigateTo(typeof(FoodCalculator));
             else if (b.Name == "Nonfood")
-                NavigateTo(typeof(NewCalculator));
+                NavigateTo(typeof(NFCalculator));
             else if (b.Name == "NonfoodDF")
                 NavigateTo(typeof(NonfoodDFCalculator));
             else if (b.Name == "Cooler")

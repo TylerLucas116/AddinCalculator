@@ -25,7 +25,7 @@ namespace AddInCalculator2._0.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NewCalculator : Page
+    public sealed partial class NFCalculator : Page
     {
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -34,7 +34,7 @@ namespace AddInCalculator2._0.Views
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
         }
 
-        public NewCalculator()
+        public NFCalculator()
         {
             this.InitializeComponent();
             nfViewModel = new NFCalculatorViewModel();
