@@ -30,7 +30,7 @@ namespace AddInCalculator2._0.Views
             viewModel = new RetailButtonSettingsViewModel();
             this.DataContext = viewModel;
         }
-        private RetailButtonSettingsViewModel viewModel;
+        public RetailButtonSettingsViewModel viewModel { get; set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
