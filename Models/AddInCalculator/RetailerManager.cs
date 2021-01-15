@@ -120,7 +120,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             NewRetailer.Name = "";
             NewRetailer.FoodPercentage = 0;
             NewRetailer.NonfoodPercentage = 0;
-            NewRetailer.NonfoodDfPercentage = 0;
+            NewRetailer.NonfoodDFPercentage = 0;
             NewRetailer.FreezerPercentage = 0;
             NewRetailer.CoolerPercentage = 0;
         }
