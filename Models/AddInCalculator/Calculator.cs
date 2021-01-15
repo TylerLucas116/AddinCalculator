@@ -233,7 +233,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 return;
         }
 
-        public void WebsiteClick(object sender, RoutedEventArgs e)
+        public void NFWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
             if (DisplayText == "" || DisplayText == "0" || DisplayText == "." || DisplayText == null)
@@ -244,6 +244,58 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
             Price = Double.Parse(DisplayText);
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodPercentage / 100)).ToString();
+        }
+
+        public void FoodWebsiteClick(object sender, RoutedEventArgs e)
+        {
+            IntermediateText = "";
+            if (DisplayText == "" || DisplayText == "0" || DisplayText == "." || DisplayText == null)
+                return;
+
+            OperationClicked = true;
+            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
+            int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
+            Price = Double.Parse(DisplayText);
+            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.FoodPercentage / 100)).ToString();
+        }
+
+        public void NFDFWebsiteClick(object sender, RoutedEventArgs e)
+        {
+            IntermediateText = "";
+            if (DisplayText == "" || DisplayText == "0" || DisplayText == "." || DisplayText == null)
+                return;
+
+            OperationClicked = true;
+            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
+            int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
+            Price = Double.Parse(DisplayText);
+            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodDFPercentage / 100)).ToString();
+        }
+
+        public void FreezerWebsiteClick(object sender, RoutedEventArgs e)
+        {
+            IntermediateText = "";
+            if (DisplayText == "" || DisplayText == "0" || DisplayText == "." || DisplayText == null)
+                return;
+
+            OperationClicked = true;
+            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
+            int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
+            Price = Double.Parse(DisplayText);
+            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.FreezerPercentage / 100)).ToString();
+        }
+
+        public void CoolerWebsiteClick(object sender, RoutedEventArgs e)
+        {
+            IntermediateText = "";
+            if (DisplayText == "" || DisplayText == "0" || DisplayText == "." || DisplayText == null)
+                return;
+
+            OperationClicked = true;
+            Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
+            int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
+            Price = Double.Parse(DisplayText);
+            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.CoolerPercentage / 100)).ToString();
         }
 
         public double RoundToNine(double value)
