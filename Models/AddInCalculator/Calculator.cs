@@ -236,7 +236,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void WebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
-            if (DisplayText == "" || DisplayText == "0" || DisplayText == ".")
+            if (DisplayText == "" || DisplayText == "0" || DisplayText == "." || DisplayText == null)
                 return;
 
             OperationClicked = true;
