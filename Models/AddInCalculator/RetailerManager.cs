@@ -65,6 +65,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             // delete previous retailer
             Handlers.Database db = new Handlers.Database();
             db.DeleteRetailer(table, Retailer);
+            UpdateRetailers();
 
             // add new retailer
             db.WriteRecord<Retailer>(newRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
