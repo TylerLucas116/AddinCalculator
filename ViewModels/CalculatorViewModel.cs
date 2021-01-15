@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.ViewModels
 {
-    class CalculatorViewModel : MainViewModelBase
+    public class CalculatorViewModel : MainViewModelBase
     {
         public CalculatorViewModel()
         {
