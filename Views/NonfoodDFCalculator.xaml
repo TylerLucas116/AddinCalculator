@@ -5,10 +5,227 @@
     xmlns:local="using:AddInCalculator2._0.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:local1="using:AddInCalculator2._0.Converters"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local1:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </Page.Resources>
 
-    <Grid>
+    <Grid Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}" Margin="7,5,0,0" KeyDown="Grid_KeyDown" KeyUp="Grid_KeyUp">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" Margin="0,0,0,0">
+            <StackPanel HorizontalAlignment="Right" Background="{StaticResource CalculatorBackground}" Margin="0,0,5,0">
+                <TextBlock Name="IntermediateTextBlock" Height="16" Width="320" Text="{Binding Calculator.IntermediateText, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center"
+                           FontWeight="ExtraLight" TextAlignment="Right" Margin="0,0,5,0" />
+            </StackPanel>
+            <StackPanel Background="{StaticResource CalculatorBackground}" Margin="0,0,5,0" HorizontalAlignment="Right">
+                <TextBlock Name="DisplayTextBlock" Height="75" Width="320" Text="{Binding Calculator.DisplayText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" VerticalAlignment="Center"
+                           FontSize="48" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" FontFamily="Segoe MDL2 Assets" FontSize="16"
+                        Name="PercentButton" Margin="5,0,0,0" Content="&#xE94C;"/>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush  }" Content="&#xE94B;" FontSize="16" FontFamily="Segoe MDL2 Assets"
+                        Name="SquareRootButton" Margin="5,0,0,0"/>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush  }" Content="X^2" FontSize="16"
+                        Name="SquareButton" Margin="5,0,0,0"/>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush  }" Content="1/X" FontSize="16"
+                        Name="ReciprocalButton" Margin="5,0,5,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" Content="CE" FontSize="16"
+                        Name="ClearEntryButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.ClearEntry}"/>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" Content="C" FontSize="16"
+                        Name="ClearButtonButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.Clear}"/>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" FontFamily="Segoe MDL2 Assets" Content="&#xE94F;" FontSize="16"
+                        Name="BackspaceButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.BackSpace}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Delete" Invoked="AcceleratorBackspace" />
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush }" FontFamily="Segoe MDL2 Assets" Content="&#xE94A;" FontSize="16"
+                        Name="DivideButton" Margin="5,5,5,0" Click="{x:Bind ViewModel.Calculator.Divide}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Divide" Invoked="AcceleratorDivide" />
+                    </Button.KeyboardAccelerators>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="7" FontSize="24"
+                        Name="SevenButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad7" Invoked="Accelerator7"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="8" FontSize="24"
+                        Name="EightButton" Margin="5,5,0,0" AutomationProperties.AcceleratorKey="NumberPad8" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad8" Invoked="Accelerator8"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="9" FontSize="24"
+                        Name="NineButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad9" Invoked="Accelerator9"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE947;" FontSize="16"
+                        Name="MultiplyButton" Margin="5,5,5,0" Click="{x:Bind ViewModel.Calculator.Multiply}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Multiply" Invoked="AcceleratorMultiply" />
+                    </Button.KeyboardAccelerators>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="4" FontSize="24"
+                        Name="FourButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad4" Invoked="Accelerator4"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="5" FontSize="24"
+                        Name="FiveButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad5" Invoked="Accelerator5"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="6" FontSize="24"
+                        Name="SixButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad6" Invoked="Accelerator6"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE949;" FontSize="16"
+                        Name="SubtractButton" Margin="5,5,5,0" Click="{x:Bind ViewModel.Calculator.Subtract}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Subtract" Invoked="AcceleratorSubtract"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="1" FontSize="24"
+                        Name="OneButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad1" Invoked="KeyboardAccelerator_Invoked"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="2" FontSize="24"
+                        Name="TwoButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad2" Invoked="KeyboardAccelerator_Invoked_1"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="3" FontSize="24"
+                        Name="ThreeButton" Margin="5,5,0,0" Click="{x:Bind ViewModel.Calculator.NumberClicked}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad3" Invoked="Accelerator3"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE948;" FontSize="16"
+                        Name="AddButton" Margin="5,5,5,0" Click="{x:Bind ViewModel.Calculator.Add}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Add" Invoked="AcceleratorAdd"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0" Background="{StaticResource CalculatorBackground}">
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE94D;" FontSize="24"
+                        Name="NegateButton" Margin="5,5,0,5"/>
+                <Button Height="45" Width="75" Click="{x:Bind ViewModel.Calculator.NumberClicked}" Background="{ThemeResource SystemControlAcrylicElementBrush}" Content="0" FontSize="24"
+                        Name="ZeroButton" Margin="5,5,0,5">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="NumberPad0"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" Content="." FontSize="24"
+                        Name="PeriodButton" Margin="5,5,0,5" Click="{x:Bind ViewModel.Calculator.Decimal}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Decimal" Invoked="AcceleratorDecimal" />
+                    </Button.KeyboardAccelerators>
+                </Button>
+                <Button Height="45" Width="75" Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" FontFamily="Segoe MDL2 Assets" Content="&#xE94E;" FontSize="16"
+                        Name="EqualToButton" Margin="5,5,5,5" Click="{x:Bind ViewModel.Calculator.Calculate}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Enter" Invoked="AcceleratorEqualTo"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="1" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="250" HorizontalAlignment="Left" KeyDown="{x:Bind ViewModel.Scraper.UPCSearch}" Name="UPCTextBox" Text="{Binding Scraper.UPC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="150" Margin="100,0,0,0" Text="{Binding Scraper.OnlinePrice, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Name="onlinePrice"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button Name="Button1" Content="{Binding RetailButtonManager.RetailButtons[0].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[0].Visibility, Converter={StaticResource boolToVisibilityConverter}}"/>
+                    <Button Name="Button2" Content="{Binding RetailButtonManager.RetailButtons[1].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[1].Visibility, Converter={StaticResource boolToVisibilityConverter}}"/>
+                    <Button Name="Button3" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[2].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock Text="{Binding RetailButtonManager.RetailButtons[2].Retailer.Name}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                    <Button Name="Button4" Content="{Binding RetailButtonManager.RetailButtons[3].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[3].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button5" Content="{Binding RetailButtonManager.RetailButtons[4].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[4].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Button6" Content="{Binding RetailButtonManager.RetailButtons[5].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[5].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button7" Content="{Binding RetailButtonManager.RetailButtons[6].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[6].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button8" Content="{Binding RetailButtonManager.RetailButtons[7].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[7].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button9" Content="{Binding RetailButtonManager.RetailButtons[8].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[8].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button10" Content="{Binding RetailButtonManager.RetailButtons[9].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[9].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Button11" Content="{Binding RetailButtonManager.RetailButtons[10].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[10].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button12" Content="{Binding RetailButtonManager.RetailButtons[11].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="11" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[11].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button13" Content="{Binding RetailButtonManager.RetailButtons[12].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[12].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button14" Content="{Binding RetailButtonManager.RetailButtons[13].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[13].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button15" Content="{Binding RetailButtonManager.RetailButtons[14].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[14].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Button16" Content="{Binding RetailButtonManager.RetailButtons[15].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[15].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button17" Content="{Binding RetailButtonManager.RetailButtons[16].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[16].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button18" Content="{Binding RetailButtonManager.RetailButtons[17].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[17].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button19" Content="{Binding RetailButtonManager.RetailButtons[18].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[18].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button20" Content="{Binding RetailButtonManager.RetailButtons[19].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[19].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Button21" Content="{Binding RetailButtonManager.RetailButtons[20].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[20].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button22" Content="{Binding RetailButtonManager.RetailButtons[21].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[21].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button23" Content="{Binding RetailButtonManager.RetailButtons[22].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[22].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button24" Content="{Binding RetailButtonManager.RetailButtons[23].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[23].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button25" Content="{Binding RetailButtonManager.RetailButtons[24].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[24].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Button26" Content="{Binding RetailButtonManager.RetailButtons[25].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[25].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button27" Content="{Binding RetailButtonManager.RetailButtons[26].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[26].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button28" Content="{Binding RetailButtonManager.RetailButtons[27].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="10" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[27].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button29" Content="{Binding RetailButtonManager.RetailButtons[28].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[28].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button30" Content="{Binding RetailButtonManager.RetailButtons[29].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[29].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Button31" Content="{Binding RetailButtonManager.RetailButtons[30].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[30].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button32" Content="{Binding RetailButtonManager.RetailButtons[31].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[31].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button33" Content="{Binding RetailButtonManager.RetailButtons[32].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[32].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip="Shift+W"/>
+                    <Button Name="Button34" Content="{Binding RetailButtonManager.RetailButtons[33].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="11" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[33].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Name="Button35" Content="{Binding RetailButtonManager.RetailButtons[34].Retailer.Name}" Style="{StaticResource NFDF1}" Margin="0,0,5,5" FontSize="12" Click="{x:Bind ViewModel.Calculator.WebsiteClick}" Visibility="{Binding RetailButtonManager.RetailButtons[34].Visibility, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
+
 </Page>
