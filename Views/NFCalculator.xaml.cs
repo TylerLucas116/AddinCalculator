@@ -37,11 +37,11 @@ namespace AddInCalculator2._0.Views
         public NFCalculator()
         {
             this.InitializeComponent();
-            nfViewModel = new NFCalculatorViewModel();
-            this.DataContext = nfViewModel;
+            ViewModel = new CalculatorViewModel();
+            this.DataContext = ViewModel;
         }
 
-        public NFCalculatorViewModel nfViewModel { get; set; }
+        public CalculatorViewModel ViewModel { get; set; }
         private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
         {
 
