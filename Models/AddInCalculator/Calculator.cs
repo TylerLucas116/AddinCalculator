@@ -269,7 +269,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Windows.UI.Xaml.Controls.Button b = (Windows.UI.Xaml.Controls.Button)sender;
             int index = Int32.Parse(b.Name.Substring(6)) - 1; //All buttons named - Button1, Button2 - Corresponding to index
             Price = Double.Parse(DisplayText);
-            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodDFPercentage / 100)).ToString();
+            DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodDfPercentage / 100)).ToString();
         }
 
         public void FreezerWebsiteClick(object sender, RoutedEventArgs e)
