@@ -1,13 +1,9 @@
 ﻿using AddInCalculator2._0.ViewModels;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,16 +21,15 @@ namespace AddInCalculator2._0.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NFCalculator : Page
+    public sealed partial class FoodCalculator : Page
     {
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // Set the input focus to ensure that keyboard events are raised.
             this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
         }
 
-        public NFCalculator()
+        public FoodCalculator()
         {
             this.InitializeComponent();
             ViewModel = new CalculatorViewModel();

@@ -10,7 +10,6 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-
     <Page.Resources>
         <local1:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
     </Page.Resources>
@@ -18,7 +17,7 @@
     <Grid Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
         <NavigationView x:Name="NavigationView" Header="" SelectionChanged="{x:Bind mainViewModel.selectionChanged, Mode=OneWay}" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
             <NavigationView.HeaderTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local2:MainViewModel">
                     <StackPanel Margin="20,0,0,0">
                         <StackPanel Visibility="{Binding listsClicked}" Orientation="Horizontal">
                             <Button Content="Food" Style="{StaticResource FoodStyle}" Margin="0,0,5,0" Height="40"/>
@@ -28,11 +27,11 @@
                             <Button Content="Deli" Style="{StaticResource DeliStyle}" Margin="0,0,5,0" Height="40"/>
                         </StackPanel>
                         <StackPanel Visibility="{Binding addinCalculatorClicked}" Orientation="Horizontal">
-                            <Button Content="Food" Style="{StaticResource FoodStyle}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Nonfood" Style="{StaticResource NFRegStyle1}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Nonfood DF" Style="{StaticResource NFDF1}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Freezer" Style="{StaticResource FreezerStyle}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Cooler" Margin="0,0,5,0" Style="{StaticResource CoolerStyle}" Height="40"/>
+                            <Button Content="Food" Name="Food" Style="{StaticResource FoodStyle}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Nonfood" Name="Nonfood" Style="{StaticResource NFRegStyle1}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Nonfood DF" Name="NonfoodDF" Style="{StaticResource NFDF1}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Freezer" Name="Freezer" Style="{StaticResource FreezerStyle}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
+                            <Button Content="Cooler" Name ="Cooler" Margin="0,0,5,0" Style="{StaticResource CoolerStyle}" Click="{x:Bind calculatorCategoryClicked}" Height="40"/>
                         </StackPanel>
                     </StackPanel>
                     <!--<StackPanel Orientation="Horizontal">
@@ -55,8 +54,6 @@
             </NavigationView.MenuItems>
 
             <Grid Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}" VerticalAlignment="Top">
-                
-
                 <Frame x:Name="ContentFrame" Margin="24">
                     <Frame.ContentTransitions>
                         <TransitionCollection>

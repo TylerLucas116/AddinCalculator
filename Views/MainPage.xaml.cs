@@ -25,13 +25,14 @@ namespace AddInCalculator2._0.Views
             this.InitializeComponent();
             mainViewModel = new MainViewModel();
             this.DataContext = mainViewModel;
+
             StackPanel newTitleBar = new StackPanel(); //UI element to allow button's to have full PointerOver VisualState field
             Window.Current.SetTitleBar(newTitleBar);  //Set UI element behavior as defined above as the titlebar
         }
 
+        public MainViewModel mainViewModel { get; set; }
         //Test
         public Frame NavigationFrame => ContentFrame;
-        MainViewModel mainViewModel { get; set; }
 
     }
 }
