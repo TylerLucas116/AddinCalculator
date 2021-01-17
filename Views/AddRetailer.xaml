@@ -5,8 +5,13 @@
     xmlns:local="using:AddInCalculator2._0.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:AddInCalculator2._0.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local1:DoubleConverter x:Key="doubleConverter"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -33,23 +38,28 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="Food %" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFoodPercentage" Text="{Binding RetailManager.NewRetailer.FoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFoodPercentage" Text="{Binding RetailManager.NewRetailer.FoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                                                                                     Converter={StaticResource doubleConverter}}"/>
         </StackPanel>
         <StackPanel Grid.Row="3">
             <TextBlock Text="Nonfood %" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodPercentage" Text="{Binding RetailManager.NewRetailer.NonfoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodPercentage" Text="{Binding RetailManager.NewRetailer.NonfoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                                                                                     Converter={StaticResource doubleConverter}}"/>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <TextBlock Text="Nonfood Drug Fact %" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodDfPercentage" Text="{Binding RetailManager.NewRetailer.NonfoodDfPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodDfPercentage" Text="{Binding RetailManager.NewRetailer.NonfoodDfPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                                                                                     Converter={StaticResource doubleConverter}}"/>
         </StackPanel>
         <StackPanel Grid.Row="5">
             <TextBlock Text="Freezer %" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFreezerPercentage" Text="{Binding RetailManager.NewRetailer.FreezerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbFreezerPercentage" Text="{Binding RetailManager.NewRetailer.FreezerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                                                                                     Converter={StaticResource doubleConverter}}"/>
         </StackPanel>
         <StackPanel Grid.Row="6">
             <TextBlock Text="Cooler %" FontSize="12"/>
-            <TextBox Width="250" HorizontalAlignment="Left" Name="tbCoolerPercentage" Text="{Binding RetailManager.NewRetailer.CoolerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Width="250" HorizontalAlignment="Left" Name="tbCoolerPercentage" Text="{Binding RetailManager.NewRetailer.CoolerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                                                                                     Converter={StaticResource doubleConverter}}"/>
         </StackPanel>
         <StackPanel Grid.Row="7" Margin="0,12,0,0">
             <Button Content="Submit" BorderBrush="Gray" Width="100" Name="SubmitButton" Click="{x:Bind viewModel.RetailManager.AddRetailer}"/>
