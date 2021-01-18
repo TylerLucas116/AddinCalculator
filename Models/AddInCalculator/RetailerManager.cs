@@ -68,7 +68,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             UpdateRetailers();
 
             // add new retailer
-            db.WriteRecord<Retailer>(newRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
+            db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
 
             ClearNewRetailer();
             UpdateRetailers();
