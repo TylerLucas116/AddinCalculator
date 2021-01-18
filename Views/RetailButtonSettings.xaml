@@ -6,9 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local1="using:AddInCalculator2._0.Models.AddInCalculator"
+    xmlns:local2="using:AddInCalculator2._0.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <local2:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -76,7 +80,7 @@
                 </ListView>
             </RelativePanel>
         </StackPanel>
-        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0" >
             <Frame Name="EditFrame">
             </Frame>
         </Grid>
