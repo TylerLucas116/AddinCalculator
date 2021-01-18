@@ -27,7 +27,6 @@ namespace AddInCalculator2._0.Views
         public EditRetailer()
         {
             this.InitializeComponent();
-            viewModel = new RetailButtonSettingsViewModel();
             this.DataContext = viewModel;
         }
         public RetailButtonSettingsViewModel viewModel { get; set; }
