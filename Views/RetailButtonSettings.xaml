@@ -133,5 +133,8 @@
                 <Button Content="Submit" BorderBrush="Gray" Width="100" Name="SubmitButton" Click="{x:Bind viewModel.RetailManager.AddRetailer}"/>
             </StackPanel>
         </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0">
+            
+        </Grid> 
     </Grid>
 </Page>
