@@ -96,6 +96,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void AddRetailer()
         {
+            Debug.WriteLine("New Retailer");
+            Debug.WriteLine(NewRetailer.Name);
+            Debug.WriteLine(NewRetailer.OnlineAbbrev);
+            Debug.WriteLine(NewRetailer.NonfoodPercentage);
+            Debug.WriteLine("Retailer");
+            Debug.WriteLine(Retailer.Name);
+            Debug.WriteLine(Retailer.OnlineAbbrev);
+            Debug.WriteLine(Retailer.NonfoodPercentage);
             // add retailer to database
             Handlers.Database db = new Handlers.Database();
             db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
@@ -157,7 +165,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 }
             }
 
-            NewRetailer = Retailer.DeepCopy();
+
+            NewRetailer = Retailer;
         }
 
         public void SortByName(List<Retailer> retailList)
