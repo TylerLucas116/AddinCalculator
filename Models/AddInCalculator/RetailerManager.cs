@@ -29,7 +29,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
         Type obType = (typeof(Retailer));
 
-        private bool addCommandBarClicked;
+        private bool addCommandBarClicked = false;
 
         public Retailer Retailer
         {
