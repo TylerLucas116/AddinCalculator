@@ -40,7 +40,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public Retailer NewRetailer
         {
             get { return newRetailer; }
-            set { newRetailer = value; }
+            set 
+            { 
+                newRetailer = value;
+                OnPropertyChanged("NewRetailer");
+            }
         }
         public ObservableCollection<Retailer> Retailers
         {
@@ -154,6 +158,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Retailer = (Retailer)item;
                 }
             }
+
+            NewRetailer = Retailer;
         }
 
         public void SortByName(List<Retailer> retailList)
