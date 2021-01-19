@@ -164,9 +164,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Retailer = (Retailer)item;
                 }
             }
-
-
-            NewRetailer = Retailer;
         }
 
         public void SortByName(List<Retailer> retailList)
