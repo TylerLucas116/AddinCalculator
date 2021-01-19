@@ -28,7 +28,7 @@
             <AppBarButton Icon="Back" Label="Back" Name="BackBarButton" Click="BackBarButton_Click"/>
             <AppBarSeparator/>
             <AppBarButton Icon="Add" Label="Add" Name ="AddButton" Click="{x:Bind viewModel.RetailManager.AddRetailerClicked}"/>
-            <AppBarButton Icon="Edit" Label="Edit" Name="EditButton" Click="EditButton_Click"/>
+            <AppBarButton Icon="Edit" Label="Edit" Name="EditButton" Click="{x:Bind viewModel.RetailManager.EditRetailerClicked}"/>
             <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="{x:Bind viewModel.RetailManager.DeleteRetailer}"/>
 
             <CommandBar.SecondaryCommands>
