@@ -30,6 +30,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         Type obType = (typeof(Retailer));
 
         private bool addCommandBarClicked = false;
+        private bool editCommandBarClicked = false;
 
         public Retailer Retailer
         {
@@ -57,6 +58,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        public bool EditCommandBarClicked
+        {
+            get { return editCommandBarClicked; }
+            set
+            {
+                editCommandBarClicked = value;
+                OnPropertyChanged("EditCommandBarClicked");
+            }
+        }
         public void AddRetailerClicked(object sender, RoutedEventArgs e)
         {
             if (AddCommandBarClicked == true)
