@@ -27,7 +27,7 @@
         <CommandBar Grid.Row="0" Grid.ColumnSpan="2" Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}">
             <AppBarButton Icon="Back" Label="Back" Name="BackBarButton" Click="BackBarButton_Click"/>
             <AppBarSeparator/>
-            <AppBarButton Icon="Add" Label="Add" Click="{x:Bind viewModel.RetailManager.AddRetailerClicked}"/>
+            <AppBarButton Icon="Add" Label="Add" Name ="AddButton" Click="{x:Bind viewModel.RetailManager.AddRetailerClicked}"/>
             <AppBarButton Icon="Edit" Label="Edit" Name="EditButton" Click="EditButton_Click"/>
             <AppBarButton Icon="Delete" Label="Delete" Name="DeleteButton" Click="{x:Bind viewModel.RetailManager.DeleteRetailer}"/>
 
@@ -81,7 +81,7 @@
                 </ListView>
             </RelativePanel>
         </StackPanel>
-        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0" Visibility="{Binding RetailManager.AddCommandBarClicked}">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0" Visibility="{Binding RetailManager.AddCommandBarClicked, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
