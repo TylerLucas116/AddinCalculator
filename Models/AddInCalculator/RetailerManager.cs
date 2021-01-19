@@ -75,6 +75,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 AddCommandBarClicked = true;
         }
 
+        public void EditRetailerClicked(object sender, RoutedEventArgs e)
+        {
+            if (EditCommandBarClicked == true)
+                EditCommandBarClicked = false;
+            else if (EditCommandBarClicked == false)
+                EditCommandBarClicked = true;
+        }
+
         public void AddRetailer(object sender, RoutedEventArgs e)
         {
             // add retailer to database
