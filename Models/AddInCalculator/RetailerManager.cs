@@ -101,6 +101,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
 
             UpdateRetailers();
+            ClearNewRetailer();
         }
         public void DeleteRetailer()
         {
@@ -117,8 +118,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             // add new retailer
             AddRetailer();
-
-            //ClearNewRetailer();
         }
 
         public void LoadRetailers()
