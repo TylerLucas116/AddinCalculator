@@ -9,6 +9,20 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     public class Retailer : INotifyPropertyChanged
     {
+        public Retailer() { }
+
+        public Retailer(string name, string onlineAbbrev, double foodPercentage, double nonfoodPercentage,
+            double nonfoodDfPercentage, double freezerPercentage, double coolerPercentage)
+        {
+            this.Name = name;
+            this.OnlineAbbrev = onlineAbbrev;
+            this.FoodPercentage = foodPercentage;
+            this.NonfoodPercentage = nonfoodPercentage;
+            this.NonfoodDfPercentage = nonfoodDfPercentage;
+            this.FreezerPercentage = freezerPercentage;
+            this.CoolerPercentage = coolerPercentage;
+        }
+
         private string name = "";
         private string onlineAbbrev = "";
         private double foodPercentage = 0;
@@ -90,17 +104,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        public Retailer(string name, string onlineAbbrev, double foodPercentage, double nonfoodPercentage,
-            double nonfoodDfPercentage, double freezerPercentage, double coolerPercentage)
-        {
-            this.Name = name;
-            this.OnlineAbbrev = onlineAbbrev;
-            this.FoodPercentage = foodPercentage;
-            this.NonfoodPercentage = nonfoodPercentage;
-            this.NonfoodDfPercentage = nonfoodDfPercentage;
-            this.FreezerPercentage = freezerPercentage;
-            this.CoolerPercentage = coolerPercentage;
-        }
         public Retailer DeepCopy()
         {
             Retailer copyRetailer = new Retailer(this.Name, this.OnlineAbbrev, this.FoodPercentage,
@@ -108,7 +111,5 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             return copyRetailer;
         }
-
-        public Retailer() { }
     }
 }
