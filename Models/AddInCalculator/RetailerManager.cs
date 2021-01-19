@@ -72,7 +72,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             if (AddCommandBarClicked == true)
                 AddCommandBarClicked = false;
             else if (AddCommandBarClicked == false)
+            {
+                EditCommandBarClicked = false;
                 AddCommandBarClicked = true;
+            }
         }
 
         public void EditRetailerClicked(object sender, RoutedEventArgs e)
@@ -80,7 +83,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             if (EditCommandBarClicked == true)
                 EditCommandBarClicked = false;
             else if (EditCommandBarClicked == false)
+            {
+                AddCommandBarClicked = false;
                 EditCommandBarClicked = true;
+            }
         }
 
         public void AddRetailer(object sender, RoutedEventArgs e)
