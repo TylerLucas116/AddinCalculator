@@ -23,10 +23,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer retailer;
         private Retailer newRetailer;
         private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
+
         private string table = "Retailers";
         private string fieldname = "Retailer";
         private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
         Type obType = (typeof(Retailer));
+
+        private bool addCommandBarClicked;
 
         public Retailer Retailer
         {
@@ -42,6 +45,20 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return retailers; }
             set { retailers = value; }
+        }
+
+        public bool AddCommandBarClicked
+        {
+            get { return addCommandBarClicked; }
+            set { addCommandBarClicked = value; }
+        }
+
+        public void AddRetailerClicked(object sender, RoutedEventArgs e)
+        {
+            if (AddCommandBarClicked == true)
+                AddCommandBarClicked = false;
+            else if (AddCommandBarClicked == false)
+                AddCommandBarClicked = true;
         }
 
         public void AddRetailer(object sender, RoutedEventArgs e)
