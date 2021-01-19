@@ -130,7 +130,7 @@
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="7" Margin="0,12,0,0">
-                <Button Content="Submit" BorderBrush="Gray" Width="100" Name="SubmitButton" Click="{x:Bind viewModel.RetailManager.AddRetailer}"/>
+                <Button Content="Add Retailer" BorderBrush="Gray" Width="100" Name="SubmitButton" Click="{x:Bind viewModel.RetailManager.AddRetailer}"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Margin="0,50,0,0" Visibility="{Binding RetailManager.EditCommandBarClicked, Converter={StaticResource boolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
@@ -182,7 +182,7 @@
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="7" Margin="0,12,0,0">
-                <Button Content="Submit" BorderBrush="Gray" Width="100" Name="SubmitButtonEdit" Click="{x:Bind viewModel.RetailManager.EditRetailer}"/>
+                <Button Content="Edit Retailer" BorderBrush="Gray" Width="100" Name="SubmitButtonEdit" Click="{x:Bind viewModel.RetailManager.EditRetailer}"/>
             </StackPanel>
         </Grid> 
     </Grid>
