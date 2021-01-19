@@ -41,20 +41,5 @@ namespace AddInCalculator2._0.Views
                 Frame.GoBack();
             }
         }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            /*if (EditFrame.CurrentSourcePageType == typeof(AddRetailer) || (EditFrame.CurrentSourcePageType == typeof(EditRetailer)))
-            {
-                if (EditFrame.CanGoBack)
-                {
-                    EditFrame.GoBack();
-                }
-            }
-            else
-            {
-                EditFrame.Navigate(typeof(EditRetailer), viewModel);
-            }*/
-        }
     }
 }
