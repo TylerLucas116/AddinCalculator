@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -156,13 +157,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 }
             }
 
-            NewRetailer.Name = Retailer.Name;
-            NewRetailer.OnlineAbbrev = Retailer.OnlineAbbrev;
-            NewRetailer.NonfoodPercentage = Retailer.NonfoodPercentage;
-            NewRetailer.NonfoodDfPercentage = Retailer.NonfoodDfPercentage;
-            NewRetailer.FoodPercentage = Retailer.FoodPercentage;
-            NewRetailer.FreezerPercentage = Retailer.FreezerPercentage;
-            NewRetailer.CoolerPercentage = Retailer.CoolerPercentage;
+            NewRetailer = Retailer.DeepCopy();
         }
 
         public void SortByName(List<Retailer> retailList)
