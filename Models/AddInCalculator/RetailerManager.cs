@@ -93,7 +93,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        public void AddRetailer(object sender, RoutedEventArgs e)
+        public void AddRetailer()
         {
             // add retailer to database
             Handlers.Database db = new Handlers.Database();
@@ -109,18 +109,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             UpdateRetailers();
         }
-        public void EditRetailer(object sender, RoutedEventArgs e)
+        public void EditRetailer()
         {
             // delete previous retailer
-            Handlers.Database db = new Handlers.Database();
-            db.DeleteRetailer(table, Retailer);
-            UpdateRetailers();
+            DeleteRetailer();
 
             // add new retailer
-            db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
+            AddRetailer();
 
-            ClearNewRetailer();
-            UpdateRetailers();
+            //ClearNewRetailer();
         }
 
         public void LoadRetailers()
