@@ -170,6 +170,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private void ClearNewRetailer()
         {
             NewRetailer.Name = "";
+            NewRetailer.OnlineAbbrev = "";
             NewRetailer.FoodPercentage = 0;
             NewRetailer.NonfoodPercentage = 0;
             NewRetailer.NonfoodDfPercentage = 0;
