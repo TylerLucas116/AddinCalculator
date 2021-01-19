@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    public class RetailerManager
+    public class RetailerManager: INotifyPropertyChanged
     {
         public RetailerManager()
         {
@@ -50,7 +50,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public bool AddCommandBarClicked
         {
             get { return addCommandBarClicked; }
-            set { addCommandBarClicked = value; }
+            set 
+            { 
+                addCommandBarClicked = value;
+                OnPropertyChanged("AddCommandBarClicked");
+            }
         }
 
         public void AddRetailerClicked(object sender, RoutedEventArgs e)
@@ -141,6 +145,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             NewRetailer.NonfoodDfPercentage = 0;
             NewRetailer.FreezerPercentage = 0;
             NewRetailer.CoolerPercentage = 0;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }
