@@ -16,12 +16,12 @@ namespace AddInCalculator2._0.Handlers
 
     public class Database
     {
+        private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
         public SQLiteConnection dbcon = new SQLiteConnection((App.Current as App).DatabaseFileName + ".db");
 
         public async void InitializeDatabase()
         {
             await ApplicationData.Current.LocalFolder.CreateFileAsync("Calculator.db", CreationCollisionOption.OpenIfExists);
-            string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
             using (SqliteConnection db = new SqliteConnection ($"Filename={dbPath}"))
             {
                 db.Open();
@@ -40,6 +40,11 @@ namespace AddInCalculator2._0.Handlers
 
                 createTable.ExecuteReader();
             }
+        }
+        
+        public void AddRetailer(Retailer NewRetailer)
+        {
+
         }
         
         public void WriteRecord<objectType>(objectType myObject, String tableName, DatabaseField Field)
