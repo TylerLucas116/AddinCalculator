@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
-    public class RetailerManager
+    public class RetailerManager: INotifyPropertyChanged
     {
         public RetailerManager()
         {
@@ -23,10 +24,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer retailer;
         private Retailer newRetailer;
         private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
+
         private string table = "Retailers";
         private string fieldname = "Retailer";
         private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
         Type obType = (typeof(Retailer));
+
+        private bool addCommandBarClicked = false;
+        private bool editCommandBarClicked = false;
 
         public Retailer Retailer
         {
@@ -36,7 +41,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public Retailer NewRetailer
         {
             get { return newRetailer; }
-            set { newRetailer = value; }
+            set 
+            { 
+                newRetailer = value;
+                OnPropertyChanged("NewRetailer");
+            }
         }
         public ObservableCollection<Retailer> Retailers
         {
@@ -44,13 +53,55 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set { retailers = value; }
         }
 
-        public void AddRetailer(object sender, RoutedEventArgs e)
+        public bool AddCommandBarClicked
+        {
+            get { return addCommandBarClicked; }
+            set 
+            { 
+                addCommandBarClicked = value;
+                OnPropertyChanged("AddCommandBarClicked");
+            }
+        }
+
+        public bool EditCommandBarClicked
+        {
+            get { return editCommandBarClicked; }
+            set
+            {
+                editCommandBarClicked = value;
+                OnPropertyChanged("EditCommandBarClicked");
+            }
+        }
+        public void AddRetailerClicked(object sender, RoutedEventArgs e)
+        {
+            if (AddCommandBarClicked == true)
+                AddCommandBarClicked = false;
+            else if (AddCommandBarClicked == false)
+            {
+                EditCommandBarClicked = false;
+                AddCommandBarClicked = true;
+            }
+        }
+
+        public void EditRetailerClicked(object sender, RoutedEventArgs e)
+        {
+            if (EditCommandBarClicked == true)
+                EditCommandBarClicked = false;
+            else if (EditCommandBarClicked == false)
+            {
+                AddCommandBarClicked = false;
+                EditCommandBarClicked = true;
+            }
+        }
+
+        public void AddRetailer()
         {
             // add retailer to database
             Handlers.Database db = new Handlers.Database();
             db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
 
             UpdateRetailers();
+            ClearNewRetailer();
         }
         public void DeleteRetailer()
         {
@@ -60,17 +111,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             UpdateRetailers();
         }
-        public void EditRetailer(object sender, RoutedEventArgs e)
+        public void EditRetailer()
         {
             // delete previous retailer
-            Handlers.Database db = new Handlers.Database();
-            db.DeleteRetailer(table, Retailer);
+            DeleteRetailer();
 
             // add new retailer
-            db.WriteRecord<Retailer>(newRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
-
-            ClearNewRetailer();
-            UpdateRetailers();
+            AddRetailer();
         }
 
         public void LoadRetailers()
@@ -118,11 +165,21 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private void ClearNewRetailer()
         {
             NewRetailer.Name = "";
+            NewRetailer.OnlineAbbrev = "";
             NewRetailer.FoodPercentage = 0;
             NewRetailer.NonfoodPercentage = 0;
             NewRetailer.NonfoodDfPercentage = 0;
             NewRetailer.FreezerPercentage = 0;
             NewRetailer.CoolerPercentage = 0;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

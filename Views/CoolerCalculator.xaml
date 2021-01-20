@@ -5,7 +5,7 @@
     xmlns:local="using:AddInCalculator2._0.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local1="using:AddInCalculator2._0.Converters"
+    xmlns:local1="using:AddInCalculator2._0.Converters"
     mc:Ignorable="d">
 
     <Page.Resources>

@@ -29,7 +29,7 @@ namespace AddInCalculator2._0.Views
             this.InitializeComponent();
             viewModel = new RetailButtonSettingsViewModel();
             DataContext = viewModel;
-            EditFrame.Navigate(typeof(BlankPage));
+            //EditFrame.Navigate(typeof(BlankPage));
         }
 
         public RetailButtonSettingsViewModel viewModel;
@@ -39,35 +39,6 @@ namespace AddInCalculator2._0.Views
             if (Frame.CanGoBack)
             {
                 Frame.GoBack();
-            }
-        }
-        private void AddBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (EditFrame.CurrentSourcePageType == typeof(AddRetailer) || (EditFrame.CurrentSourcePageType == typeof(EditRetailer)))
-            {
-                if (EditFrame.CanGoBack)
-                {
-                    EditFrame.GoBack();
-                }
-            }
-            else
-            {
-                EditFrame.Navigate(typeof(AddRetailer));
-            }
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (EditFrame.CurrentSourcePageType == typeof(AddRetailer) || (EditFrame.CurrentSourcePageType == typeof(EditRetailer)))
-            {
-                if (EditFrame.CanGoBack)
-                {
-                    EditFrame.GoBack();
-                }
-            }
-            else
-            {
-                EditFrame.Navigate(typeof(EditRetailer), viewModel);
             }
         }
     }
