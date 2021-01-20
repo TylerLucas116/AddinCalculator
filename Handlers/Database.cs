@@ -27,7 +27,7 @@ namespace AddInCalculator2._0.Handlers
                 db.Open();
 
                 string tableCommand = @"CREATE TABLE IF NOT EXISTS Retailers
-                                       (RetailerID INT PRIMARY KEY NOT NULL,
+                                       (RetailerID INTEGER PRIMARY KEY AUTOINCREMENT,
                                         Name VARCHAR(50) NOT NULL,
                                         OnlineAbbrev VARCHAR(50) NOT NULL,
                                         FoodPercentage INT NOT NULL,
@@ -51,14 +51,15 @@ namespace AddInCalculator2._0.Handlers
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Retailers VALUES (NULL, @Name), (NULL, @OnlineAbbrev), (NULL, @FoodPercentage), " +
-                    "(NULL, @NonfoodPercentage), (NULL, @NonfoodDfPercentage), (NULL, @FreezerPercentage), (NULL, @CoolerPercentage);";
-                insertCommand.Parameters.AddWithValue("@OnlineAbbrev", NewRetailer.Name);
-                insertCommand.Parameters.AddWithValue("@FoodPercentage", NewRetailer.FoodPercentage);
-                insertCommand.Parameters.AddWithValue("@NonfoodPercentage", NewRetailer.NonfoodPercentage);
-                insertCommand.Parameters.AddWithValue("@NonfoodDfPercentage", NewRetailer.NonfoodDfPercentage);
-                insertCommand.Parameters.AddWithValue("@FreezerPercentage", NewRetailer.FreezerPercentage);
-                insertCommand.Parameters.AddWithValue("@CoolerPercentage", NewRetailer.CoolerPercentage);
+                insertCommand.CommandText = "INSERT INTO Retailers(Name, OnlineAbbrev, FoodPercentage, NonfoodPercentage, NonfoodDfPercentage, FreezerPercentage, CoolerPercentage) " +
+                    "VALUES ($Name, $OnlineAbbrev, $FoodPercentage, $NonfoodPercentage, $NonfoodDfPercentage, $FreezerPercentage, $CoolerPercentage)";
+                insertCommand.Parameters.AddWithValue("$Name", NewRetailer.Name);
+                insertCommand.Parameters.AddWithValue("$OnlineAbbrev", NewRetailer.OnlineAbbrev);
+                insertCommand.Parameters.AddWithValue("$FoodPercentage", NewRetailer.FoodPercentage);
+                insertCommand.Parameters.AddWithValue("$NonfoodPercentage", NewRetailer.NonfoodPercentage);
+                insertCommand.Parameters.AddWithValue("$NonfoodDfPercentage", NewRetailer.NonfoodDfPercentage);
+                insertCommand.Parameters.AddWithValue("$FreezerPercentage", NewRetailer.FreezerPercentage);
+                insertCommand.Parameters.AddWithValue("$CoolerPercentage", NewRetailer.CoolerPercentage);
 
                 insertCommand.ExecuteReader();
 

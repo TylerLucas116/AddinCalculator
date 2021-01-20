@@ -98,7 +98,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             // add retailer to database
             Handlers.Database db = new Handlers.Database();
-            db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
+            //db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
+            db.AddRetailer(NewRetailer);
 
             UpdateRetailers();
             ClearNewRetailer();
