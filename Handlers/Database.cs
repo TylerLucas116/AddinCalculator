@@ -22,7 +22,7 @@ namespace AddInCalculator2._0.Handlers
         public async void InitializeDatabase()
         {
             await ApplicationData.Current.LocalFolder.CreateFileAsync("Calculator.db", CreationCollisionOption.OpenIfExists);
-            using (SqliteConnection db = new SqliteConnection ($"Filename={dbPath}"))
+            using (SqliteConnection db = new SqliteConnection ($"Filename={ dbPath }"))
             {
                 db.Open();
 
@@ -44,7 +44,26 @@ namespace AddInCalculator2._0.Handlers
         
         public void AddRetailer(Retailer NewRetailer)
         {
+            using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
+            {
+                db.Open();
 
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT INTO Retailers VALUES (NULL, @Name), (NULL, @OnlineAbbrev), (NULL, @FoodPercentage), " +
+                    "(NULL, @NonfoodPercentage), (NULL, @NonfoodDfPercentage), (NULL, @FreezerPercentage), (NULL, @CoolerPercentage);";
+                insertCommand.Parameters.AddWithValue("@OnlineAbbrev", NewRetailer.Name);
+                insertCommand.Parameters.AddWithValue("@FoodPercentage", NewRetailer.FoodPercentage);
+                insertCommand.Parameters.AddWithValue("@NonfoodPercentage", NewRetailer.NonfoodPercentage);
+                insertCommand.Parameters.AddWithValue("@NonfoodDfPercentage", NewRetailer.NonfoodDfPercentage);
+                insertCommand.Parameters.AddWithValue("@FreezerPercentage", NewRetailer.FreezerPercentage);
+                insertCommand.Parameters.AddWithValue("@CoolerPercentage", NewRetailer.CoolerPercentage);
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
         
         public void WriteRecord<objectType>(objectType myObject, String tableName, DatabaseField Field)
