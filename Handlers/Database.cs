@@ -16,11 +16,18 @@ namespace AddInCalculator2._0.Handlers
     {
         public SQLiteConnection dbcon = new SQLiteConnection((App.Current as App).DatabaseFileName + ".db");
 
-        public String CreateDatabase(String tableName, DatabaseField Field)
+        public String CreateDatabase()
         {
-            String sSql = String.Format(@"CREATE TABLE IF NOT EXISTS {0}
-                                       (ID Integer Primary Key AutoIncrement NOT NULL,
-                                         {1} {2} NOT NULL);", tableName, Field.FieldName, Field.FieldType);
+            String sSql = String.Format(@"CREATE TABLE IF NOT EXISTS Retailers
+                                       (RetailerID INT PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                        Name VARCHAR(50) NOT NULL,
+                                        OnlineAbbrev VARCHAR(50) NOT NULL,
+                                        FoodPercentage INT NOT NULL,
+                                        NonfoodPercentage INT NOT NULL,
+                                        NonfoodDfPercentage INT NOT NULL,
+                                        FreezerPercentage INT NOT NULL,
+                                        CoolerPercentage INT NOT NULL);");
+
             ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
             cnStatement.Step();
 
