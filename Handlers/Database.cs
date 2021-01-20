@@ -67,20 +67,6 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
-        public List<objectType> ReturnAllRecords<objectType>(String tableName, String FieldName, String objectPath)
-        {
-            String sSql = String.Format(@"SELECT * FROM {0};", tableName);
-
-            ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
-
-            var objectList = new List<objectType>();
-            while (cnStatement.Step() == SQLiteResult.ROW)
-            {
-                var objectString = cnStatement[FieldName].ToString(); //[FieldName] == Button
-                objectList.Add(ConvertStringToObject<objectType>(objectString, objectPath));
-            }
-            return objectList;
-        }
         public List<objectType> ReturnAllRetailers<objectType>(String tableName, String FieldName, String objectPath)
         {
             String sSql = String.Format(@"SELECT * FROM {0};", tableName);
