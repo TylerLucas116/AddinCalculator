@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using AddInCalculator2._0.Models.AddInCalculator;
+using Windows.Storage;
+using Microsoft.Data.Sqlite;
 using SQLitePCL;
 
 namespace AddInCalculator2._0.Handlers
@@ -33,7 +35,30 @@ namespace AddInCalculator2._0.Handlers
 
             return sSql;
         }
+        public async void InitializeDatabase()
+        {
+            await ApplicationData.Current.LocalFolder.CreateFileAsync("Calculator.db", CreationCollisionOption.OpenIfExists);
+            string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
+            using (SqliteConnection db = new SqliteConnection ($"Filename={dbPath}"))
+            {
+                db.Open();
 
+                string tableCommand = @"CREATE TABLE IF NOT EXISTS Retailers
+                                       (RetailerID INT PRIMARY KEY NOT NULL,
+                                        Name VARCHAR(50) NOT NULL,
+                                        OnlineAbbrev VARCHAR(50) NOT NULL,
+                                        FoodPercentage INT NOT NULL,
+                                        NonfoodPercentage INT NOT NULL,
+                                        NonfoodDfPercentage INT NOT NULL,
+                                        FreezerPercentage INT NOT NULL,
+                                        CoolerPercentage INT NOT NULL);";
+
+                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
+
+                createTable.ExecuteReader();
+            }
+        }
+        
         public void WriteRecord<objectType>(objectType myObject, String tableName, DatabaseField Field)
         {
             String myObjectString = ConvertObjectToString<objectType>(myObject);
