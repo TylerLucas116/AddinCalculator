@@ -66,15 +66,6 @@ namespace AddInCalculator2._0.Handlers
                 db.Close();
             }
         }
-        
-        public void WriteRecord<objectType>(objectType myObject, String tableName, DatabaseField Field)
-        {
-            String myObjectString = ConvertObjectToString<objectType>(myObject);
-
-            String sSql = String.Format(@"INSERT INTO [{0}]([{1}]) VALUES('{2}');", tableName, Field.FieldName, myObjectString);
-
-            dbcon.Prepare(sSql).Step();
-        }
 
         public List<objectType> ReturnAllRecords<objectType>(String tableName, String FieldName, String objectPath)
         {
