@@ -67,7 +67,7 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
-        public List<objectType> ReturnAllRetailers<objectType>(String tableName, String FieldName, String objectPath)
+        public List<objectType> GetAllRetailers<objectType>(String tableName, String FieldName, String objectPath)
         {
             String sSql = String.Format(@"SELECT * FROM {0};", tableName);
 
