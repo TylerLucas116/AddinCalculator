@@ -111,5 +111,23 @@ namespace AddInCalculator2._0.Handlers
                 db.Close();
             }
         }
+
+        public void UpdateRetailer(Retailer Retailer)
+        {
+            using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
+            {
+                db.Open();
+
+                SqliteCommand deleteCommand = new SqliteCommand();
+                deleteCommand.Connection = db;
+
+                deleteCommand.CommandText = String.Format(@"UPDATE RETAILERS SET Name = '{0}', OnlineAbbrev = '{1}', FoodPercentage = '{2}', " +
+                    "NonfoodPercentage = '{3}', NonfoodDfPercentage = '{4}', FreezerPercentage = '{5}', CoolerPercentage = '{6}';", Retailer.Name, Retailer.OnlineAbbrev,
+                    Retailer.FoodPercentage, Retailer.NonfoodPercentage, Retailer.NonfoodDfPercentage, Retailer.FreezerPercentage, Retailer.CoolerPercentage);
+                deleteCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
     }
 }
