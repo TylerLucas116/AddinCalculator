@@ -118,14 +118,14 @@ namespace AddInCalculator2._0.Handlers
             {
                 db.Open();
 
-                SqliteCommand deleteCommand = new SqliteCommand();
-                deleteCommand.Connection = db;
+                SqliteCommand updateCommand = new SqliteCommand();
+                updateCommand.Connection = db;
 
-                deleteCommand.CommandText = String.Format(@"UPDATE RETAILERS SET Name = '{0}', OnlineAbbrev = '{1}', FoodPercentage = '{2}', " +
+                updateCommand.CommandText = String.Format(@"UPDATE RETAILERS SET Name = '{0}', OnlineAbbrev = '{1}', FoodPercentage = '{2}', " +
                     "NonfoodPercentage = '{3}', NonfoodDfPercentage = '{4}', FreezerPercentage = '{5}', CoolerPercentage = '{6}' WHERE " + 
                     "RetailerID = '{7}';", Retailer.Name, Retailer.OnlineAbbrev, Retailer.FoodPercentage, Retailer.NonfoodPercentage, 
                     Retailer.NonfoodDfPercentage, Retailer.FreezerPercentage, Retailer.CoolerPercentage, Retailer.ID);
-                deleteCommand.ExecuteReader();
+                updateCommand.ExecuteReader();
 
                 db.Close();
             }
