@@ -42,14 +42,6 @@ Users can:
 - Search Walmart's API for products (still beta)
 
 ## Future Development
-- Fixing the design between the Settings view and the RetailerManager class. This could mean updating the RetailerManager class to be a static class (doubtful though)
-as it is used across the Settings pages, such as AddRetailer and EditRetailer. Alternatively, AddRetailer and EditRetailer could have their own view that would not be
-visible with the RetailerButtonSettings view. Currently, the design of the Settings for the retailers is a listview that resides in RetailerButtonSettings, and if the add
-or edit button are clicked, new pages pop up to add or edit a retailer on the right side of the RetailerButtonSettings view. This procures a problem in updating the 
-listview when the observablecollection is updated in the add or edit page, because they are separate pages with separate objects. Having separate views that are navigated to
-instead of having separate views that pop up on the right side of the screen would solve this issue, but is not optimal for UX. Another option that I like would be to have 
-grids or stackpanels that have their visibility dependent on the add or edit button being clicked, and having one RetailerManager object that is not static in the page.
-- Adding additional functionality for each retailer category, which includes food, nonfood drug facts, freezer, and cooler.
 - Adding additional support for the web scraper, such as adding more websites to search and how the program responds if a price is found online or not. The biggest challenge
 with the web scraping is waiting for the DOM content of the web pages to load. The current workaround is to wait about 5-6 seconds before trying to scrape the pages, such as Target
 and CVS, but this takes way too long for a single web page scrape. I am currently investigating events that may be able to be raised when the DOM content is loaded.
