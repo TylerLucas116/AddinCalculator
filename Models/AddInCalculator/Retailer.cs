@@ -11,11 +11,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
     {
         private string name = "";
         private string onlineAbbrev = "";
-        private double foodPercentage = 0;
-        private double nonfoodPercentage = 0;
-        private double nonfoodDfPercentage = 0;
-        private double freezerPercentage = 0;
-        private double coolerPercentage = 0;
+        private int foodPercentage = 0;
+        private int nonfoodPercentage = 0;
+        private int nonfoodDfPercentage = 0;
+        private int freezerPercentage = 0;
+        private int coolerPercentage = 0;
 
         public string Name
         {
@@ -35,7 +35,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("OnlineAbbrev");
             }
         }
-        public double FoodPercentage
+        public int FoodPercentage
         {
             get { return foodPercentage; }
             set
@@ -44,7 +44,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("FoodPercentage");
             }
         }
-        public double NonfoodPercentage
+        public int NonfoodPercentage
         {
             get { return nonfoodPercentage; }
             set 
@@ -53,7 +53,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NonfoodPercentage");
             }
         }
-        public double NonfoodDfPercentage
+        public int NonfoodDfPercentage
         {
             get { return nonfoodDfPercentage; }
             set
@@ -62,7 +62,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NonfoodDfPercentage");
             }
         }
-        public double FreezerPercentage
+        public int FreezerPercentage
         {
             get { return freezerPercentage; }
             set
@@ -71,7 +71,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("FreezerPercentage");
             }
         }
-        public double CoolerPercentage
+        public int CoolerPercentage
         {
             get { return coolerPercentage; }
             set 
