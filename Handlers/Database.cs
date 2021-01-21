@@ -95,31 +95,6 @@ namespace AddInCalculator2._0.Handlers
             return RetailerList;
         }
 
-        public objectType SearchRecords<objectType>(String tableName, String FieldName, String objectPath, String FieldToSearch, String SearchString)
-        {
-            String objectString = string.Empty;
-
-            String sSql = String.Format(@"SELECT * FROM {0};", tableName);
-            ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
-
-            while(cnStatement.Step() == SQLiteResult.ROW)
-            {
-                objectString = cnStatement[FieldName].ToString();
-
-                objectType myObject = (objectType)Activator.CreateInstance(Type.GetType(objectPath));
-
-                myObject = ConvertStringToObject<objectType>(objectString, objectPath);
-
-                PropertyInfo propInfo = typeof(objectType).GetProperty(FieldToSearch);
-
-                if(propInfo.GetValue(myObject).ToString() == SearchString)
-                {
-                    return myObject;
-                }
-            }
-            return (objectType)Activator.CreateInstance(Type.GetType(objectPath));
-        }
-
         /// <summary>
         /// Builds a field for the database
         /// </summary>
