@@ -67,19 +67,34 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
-        public List<objectType> GetAllRetailers<objectType>(String tableName, String FieldName, String objectPath)
+        public List<Retailer> GetAllRetailers()
         {
-            String sSql = String.Format(@"SELECT * FROM {0};", tableName);
 
-            ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
+            List<Retailer> RetailerList = new List<Retailer>();
 
-            var objectList = new List<objectType>();
-            while (cnStatement.Step() == SQLiteResult.ROW)
+            using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
             {
-                var objectString = cnStatement[FieldName].ToString(); //[FieldName] == Button
-                objectList.Add(ConvertStringToObject<objectType>(objectString, objectPath));
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT * FROM Retailers;", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    Retailer NewRetailer = new Retailer();
+                    NewRetailer.Name = (String)query["Name"];
+                    NewRetailer.OnlineAbbrev = (String)query["OnlineAbbrev"];
+                    NewRetailer.FoodPercentage = (int)query["FoodPercentage"];
+                    NewRetailer.NonfoodPercentage = (int)query["NonfoodPercentage"];
+                    NewRetailer.NonfoodDfPercentage = (int)query["NonfoodDfPercentage"];
+                    NewRetailer.FreezerPercentage = (int)query["FreezerPercentage"];
+                    NewRetailer.CoolerPercentage = (int)query["CoolerPercentage"];
+
+                    RetailerList.Add(NewRetailer);
+                }
+
             }
-            return objectList;
+
+            return RetailerList;
         }
 
         public objectType SearchRecords<objectType>(String tableName, String FieldName, String objectPath, String FieldToSearch, String SearchString)
