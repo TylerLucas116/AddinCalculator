@@ -80,6 +80,7 @@ namespace AddInCalculator2._0.Handlers
                 while (query.Read())
                 {
                     Retailer NewRetailer = new Retailer();
+                    NewRetailer.ID = Convert.ToInt32(query["RetailerID"]);
                     NewRetailer.Name = (String)query["Name"];
                     NewRetailer.OnlineAbbrev = (String)query["OnlineAbbrev"];
                     NewRetailer.FoodPercentage = Convert.ToInt32(query["FoodPercentage"]);
@@ -97,9 +98,7 @@ namespace AddInCalculator2._0.Handlers
 
         public void DeleteRetailer(Retailer retailer)
         {
-            String sSql = String.Format(@"DELETE FROM {0} WHERE Retailer = ('{1}');", tableName, ConvertObjectToString<Retailer>(retailer));
-            ISQLiteStatement cnStatement = dbcon.Prepare(sSql);
-            cnStatement.Step();
+
         }
         private string ConvertObjectToString<objectType>(objectType myObject)
         {
