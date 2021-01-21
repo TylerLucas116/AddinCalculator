@@ -111,44 +111,5 @@ namespace AddInCalculator2._0.Handlers
                 db.Close();
             }
         }
-        private string ConvertObjectToString<objectType>(objectType myObject)
-        {
-            string content = String.Empty;
-
-            var js = new DataContractJsonSerializer(typeof(objectType));
-
-            var ms = new MemoryStream();
-
-            js.WriteObject(ms, myObject);
-            ms.Position = 0;
-
-            var reader = new StreamReader(ms);
-
-            content = reader.ReadToEnd();
-            return content;
-        }
-        private objectType ConvertStringToObject<objectType>(string objectString, string myObjectPath)
-        {
-            objectType myObject = (objectType)Activator.CreateInstance(Type.GetType(myObjectPath));
-            var js = new DataContractJsonSerializer(typeof(objectType));
-            byte[] byteArray = Encoding.UTF8.GetBytes(objectString);
-            var ms = new MemoryStream(byteArray);
-
-            myObject = (objectType)js.ReadObject(ms);
-
-            return myObject;
-        }
-        
-        //public SQLiteConnection dbcon = new SQLiteConnection("NFButtons.db");
-        //Create Database file
     }
-
-    #region Database Field Object Class
-    public class DatabaseField
-    {
-        public String FieldType { get; set; }
-        public String FieldName { get; set; }
-
-    }
-    #endregion  
 }
