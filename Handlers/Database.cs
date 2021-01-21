@@ -69,7 +69,6 @@ namespace AddInCalculator2._0.Handlers
 
         public List<Retailer> GetAllRetailers()
         {
-
             List<Retailer> RetailerList = new List<Retailer>();
 
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
@@ -83,17 +82,16 @@ namespace AddInCalculator2._0.Handlers
                     Retailer NewRetailer = new Retailer();
                     NewRetailer.Name = (String)query["Name"];
                     NewRetailer.OnlineAbbrev = (String)query["OnlineAbbrev"];
-                    NewRetailer.FoodPercentage = (int)query["FoodPercentage"];
-                    NewRetailer.NonfoodPercentage = (int)query["NonfoodPercentage"];
-                    NewRetailer.NonfoodDfPercentage = (int)query["NonfoodDfPercentage"];
-                    NewRetailer.FreezerPercentage = (int)query["FreezerPercentage"];
-                    NewRetailer.CoolerPercentage = (int)query["CoolerPercentage"];
+                    NewRetailer.FoodPercentage = Convert.ToInt32(query["FoodPercentage"]);
+                    NewRetailer.NonfoodPercentage = Convert.ToInt32(query["NonfoodPercentage"]);
+                    NewRetailer.NonfoodDfPercentage = Convert.ToInt32(query["NonfoodDfPercentage"]);
+                    NewRetailer.FreezerPercentage = Convert.ToInt32(query["FreezerPercentage"]);
+                    NewRetailer.CoolerPercentage = Convert.ToInt32(query["CoolerPercentage"]);
 
                     RetailerList.Add(NewRetailer);
                 }
 
             }
-
             return RetailerList;
         }
 
