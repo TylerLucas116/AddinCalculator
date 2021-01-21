@@ -83,11 +83,11 @@ namespace AddInCalculator2._0.Handlers
                     NewRetailer.ID = Convert.ToInt32(query["RetailerID"]);
                     NewRetailer.Name = (String)query["Name"];
                     NewRetailer.OnlineAbbrev = (String)query["OnlineAbbrev"];
-                    NewRetailer.FoodPercentage = Convert.ToInt32(query["FoodPercentage"]);
-                    NewRetailer.NonfoodPercentage = Convert.ToInt32(query["NonfoodPercentage"]);
-                    NewRetailer.NonfoodDfPercentage = Convert.ToInt32(query["NonfoodDfPercentage"]);
-                    NewRetailer.FreezerPercentage = Convert.ToInt32(query["FreezerPercentage"]);
-                    NewRetailer.CoolerPercentage = Convert.ToInt32(query["CoolerPercentage"]);
+                    NewRetailer.FoodPercentage = Convert.ToDouble(query["FoodPercentage"]);
+                    NewRetailer.NonfoodPercentage = Convert.ToDouble(query["NonfoodPercentage"]);
+                    NewRetailer.NonfoodDfPercentage = Convert.ToDouble(query["NonfoodDfPercentage"]);
+                    NewRetailer.FreezerPercentage = Convert.ToDouble(query["FreezerPercentage"]);
+                    NewRetailer.CoolerPercentage = Convert.ToDouble(query["CoolerPercentage"]);
 
                     RetailerList.Add(NewRetailer);
                 }
@@ -96,9 +96,20 @@ namespace AddInCalculator2._0.Handlers
             return RetailerList;
         }
 
-        public void DeleteRetailer(Retailer retailer)
+        public void DeleteRetailer(Retailer Retailer)
         {
+            using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
+            {
+                db.Open();
 
+                SqliteCommand deleteCommand = new SqliteCommand();
+                deleteCommand.Connection = db;
+
+                deleteCommand.CommandText = String.Format(@"DELETE FROM RETAILERS WHERE RetailerID = '{0}';", Retailer.ID);
+                deleteCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
         private string ConvertObjectToString<objectType>(objectType myObject)
         {
