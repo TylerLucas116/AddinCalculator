@@ -119,7 +119,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void EditRetailer()
         {
             Handlers.Database db = new Handlers.Database();
-            db.UpdateRetailer(Retailer);
+            db.UpdateRetailer(NewRetailer);
 
             UpdateRetailers();
         }
@@ -159,6 +159,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Retailer = (Retailer)item;
                 }
             }
+            Handlers.Database db = new Handlers.Database();
+            NewRetailer = db.LoadRetailer(Retailer);
         }
 
         public void SortByName(List<Retailer> retailList)

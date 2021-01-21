@@ -139,7 +139,7 @@ namespace AddInCalculator2._0.Handlers
                 SqliteCommand selectCommand = new SqliteCommand();
                 selectCommand.Connection = db;
 
-                selectCommand.CommandText = String.Format(@"SELECT FROM RETAILERS WHERE RetailerID = '{0}';", OriginalRetailer.ID);
+                selectCommand.CommandText = String.Format(@"SELECT * FROM RETAILERS WHERE RetailerID = '{0}';", OriginalRetailer.ID);
                 SqliteDataReader query = selectCommand.ExecuteReader();
                 while (query.Read())
                 {
