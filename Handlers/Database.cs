@@ -66,7 +66,7 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
-        public List<Retailer> GetAllRetailers()
+        public List<Retailer> LoadAllRetailers()
         {
             List<Retailer> RetailerList = new List<Retailer>();
 
