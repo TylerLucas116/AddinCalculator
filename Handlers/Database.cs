@@ -95,7 +95,7 @@ namespace AddInCalculator2._0.Handlers
             return RetailerList;
         }
 
-        public void DeleteRetailer(String tableName, Retailer retailer)
+        public void DeleteRetailer(Retailer retailer)
         {
             String sSql = String.Format(@"DELETE FROM {0} WHERE Retailer = ('{1}');", tableName, ConvertObjectToString<Retailer>(retailer));
             ISQLiteStatement cnStatement = dbcon.Prepare(sSql);

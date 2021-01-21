@@ -108,7 +108,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             // delete retailer from database
             Handlers.Database db = new Handlers.Database();
-            db.DeleteRetailer(table, Retailer);
+            db.DeleteRetailer(Retailer);
 
             UpdateRetailers();
         }
