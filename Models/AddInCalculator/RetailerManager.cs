@@ -24,12 +24,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer retailer;
         private Retailer newRetailer;
         private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
-
-        private string table = "Retailers";
-        private string fieldname = "Retailer";
-        private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
-        Type obType = (typeof(Retailer));
-
         private bool addCommandBarClicked = false;
         private bool editCommandBarClicked = false;
 
@@ -119,7 +113,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void EditRetailer()
         {
             Handlers.Database db = new Handlers.Database();
-            db.UpdateRetailer(Retailer);
+            db.UpdateRetailer(NewRetailer);
 
             UpdateRetailers();
         }
@@ -127,7 +121,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.GetAllRetailers();
+            var retailerList = db.LoadAllRetailers();
 
             SortByName(retailerList);
 
@@ -139,7 +133,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void UpdateRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.GetAllRetailers();
+            var retailerList = db.LoadAllRetailers();
 
             SortByName(retailerList);
 
@@ -159,6 +153,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Retailer = (Retailer)item;
                 }
             }
+            Handlers.Database db = new Handlers.Database();
+            NewRetailer = db.LoadRetailer(Retailer);
         }
 
         public void SortByName(List<Retailer> retailList)

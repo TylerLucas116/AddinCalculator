@@ -17,7 +17,6 @@ namespace AddInCalculator2._0.Handlers
     public class Database
     {
         private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
-        public SQLiteConnection dbcon = new SQLiteConnection((App.Current as App).DatabaseFileName + ".db");
 
         public async void InitializeDatabase()
         {
@@ -67,7 +66,7 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
-        public List<Retailer> GetAllRetailers()
+        public List<Retailer> LoadAllRetailers()
         {
             List<Retailer> RetailerList = new List<Retailer>();
 
@@ -91,7 +90,6 @@ namespace AddInCalculator2._0.Handlers
 
                     RetailerList.Add(NewRetailer);
                 }
-
             }
             return RetailerList;
         }
@@ -129,6 +127,33 @@ namespace AddInCalculator2._0.Handlers
 
                 db.Close();
             }
+        }
+
+        public Retailer LoadRetailer(Retailer OriginalRetailer)
+        {
+            Retailer NewRetailer = new Retailer();
+            using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand();
+                selectCommand.Connection = db;
+                selectCommand.CommandText = String.Format(@"SELECT * FROM RETAILERS WHERE RetailerID = '{0}';", OriginalRetailer.ID);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    NewRetailer.ID = Convert.ToInt32(query["RetailerID"]);
+                    NewRetailer.Name = (String)query["Name"];
+                    NewRetailer.OnlineAbbrev = (String)query["OnlineAbbrev"];
+                    NewRetailer.FoodPercentage = Convert.ToDouble(query["FoodPercentage"]);
+                    NewRetailer.NonfoodPercentage = Convert.ToDouble(query["NonfoodPercentage"]);
+                    NewRetailer.NonfoodDfPercentage = Convert.ToDouble(query["NonfoodDfPercentage"]);
+                    NewRetailer.FreezerPercentage = Convert.ToDouble(query["FreezerPercentage"]);
+                    NewRetailer.CoolerPercentage = Convert.ToDouble(query["CoolerPercentage"]);
+                }
+                db.Close();
+            }
+            return NewRetailer;
         }
     }
 }

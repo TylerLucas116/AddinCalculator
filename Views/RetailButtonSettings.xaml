@@ -150,35 +150,35 @@
 
             <StackPanel Grid.Row="0">
                 <TextBlock Text="Retailer" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbRetailerEdit" Text="{Binding RetailManager.Retailer.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbRetailerEdit" Text="{Binding RetailManager.NewRetailer.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <TextBlock Text="Abbreviation" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbAbbreviationEdit" Text="{Binding RetailManager.Retailer.OnlineAbbrev, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbAbbreviationEdit" Text="{Binding RetailManager.NewRetailer.OnlineAbbrev, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <TextBlock Text="Food %" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbFoodPercentageEdit" Text="{Binding RetailManager.Retailer.FoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbFoodPercentageEdit" Text="{Binding RetailManager.NewRetailer.FoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="3">
                 <TextBlock Text="Nonfood %" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodPercentageEdit" Text="{Binding RetailManager.Retailer.NonfoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodPercentageEdit" Text="{Binding RetailManager.NewRetailer.NonfoodPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="4">
                 <TextBlock Text="Nonfood Drug Fact %" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodDfPercentageEdit" Text="{Binding RetailManager.Retailer.NonfoodDfPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbNonfoodDfPercentageEdit" Text="{Binding RetailManager.NewRetailer.NonfoodDfPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="5">
                 <TextBlock Text="Freezer %" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbFreezerPercentageEdit" Text="{Binding RetailManager.Retailer.FreezerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbFreezerPercentageEdit" Text="{Binding RetailManager.NewRetailer.FreezerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="6">
                 <TextBlock Text="Cooler %" FontSize="12"/>
-                <TextBox Width="250" HorizontalAlignment="Left" Name="tbCoolerPercentageEdit" Text="{Binding RetailManager.Retailer.CoolerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
+                <TextBox Width="250" HorizontalAlignment="Left" Name="tbCoolerPercentageEdit" Text="{Binding RetailManager.NewRetailer.CoolerPercentage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  
                                                                                      Converter={StaticResource doubleConverter}}"/>
             </StackPanel>
             <StackPanel Grid.Row="7" Margin="0,12,0,0">
