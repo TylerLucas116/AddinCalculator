@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Data;
 
 namespace AddInCalculator2._0.Converters
 {
-    public class DoubleConverter: IValueConverter
+    public class IntConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
