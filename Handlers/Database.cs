@@ -95,23 +95,6 @@ namespace AddInCalculator2._0.Handlers
             return RetailerList;
         }
 
-        /// <summary>
-        /// Builds a field for the database
-        /// </summary>
-        /// <param name="tp">Type of Value in the field ex. Integer, nvarchar, etc.</param>
-        /// <param name="name">Name of Field</param>
-        /// <returns></returns>
-        public Handlers.DatabaseField BuildFieldObject(String tp, String name)
-        {
-            var myField = new Handlers.DatabaseField()
-            {
-                FieldName = name,
-                FieldType = tp
-            };
-
-            return myField;
-        }
-
         public void DeleteRetailer(String tableName, Retailer retailer)
         {
             String sSql = String.Format(@"DELETE FROM {0} WHERE Retailer = ('{1}');", tableName, ConvertObjectToString<Retailer>(retailer));
