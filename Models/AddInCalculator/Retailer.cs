@@ -9,14 +9,24 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     public class Retailer : INotifyPropertyChanged
     {
+        private int id = 0;
         private string name = "";
         private string onlineAbbrev = "";
-        private double foodPercentage = 0;
-        private double nonfoodPercentage = 0;
-        private double nonfoodDfPercentage = 0;
-        private double freezerPercentage = 0;
-        private double coolerPercentage = 0;
+        private Double foodPercentage = 0;
+        private Double nonfoodPercentage = 0;
+        private Double nonfoodDfPercentage = 0;
+        private Double freezerPercentage = 0;
+        private Double coolerPercentage = 0;
 
+        public int ID
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public string Name
         {
             get { return name; }
@@ -35,7 +45,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("OnlineAbbrev");
             }
         }
-        public double FoodPercentage
+        public Double FoodPercentage
         {
             get { return foodPercentage; }
             set
@@ -44,7 +54,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("FoodPercentage");
             }
         }
-        public double NonfoodPercentage
+        public Double NonfoodPercentage
         {
             get { return nonfoodPercentage; }
             set 
@@ -53,7 +63,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NonfoodPercentage");
             }
         }
-        public double NonfoodDfPercentage
+        public Double NonfoodDfPercentage
         {
             get { return nonfoodDfPercentage; }
             set
@@ -62,7 +72,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NonfoodDfPercentage");
             }
         }
-        public double FreezerPercentage
+        public Double FreezerPercentage
         {
             get { return freezerPercentage; }
             set
@@ -71,7 +81,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("FreezerPercentage");
             }
         }
-        public double CoolerPercentage
+        public Double CoolerPercentage
         {
             get { return coolerPercentage; }
             set 

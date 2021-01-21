@@ -36,7 +36,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public Retailer Retailer
         {
             get { return retailer; }
-            set { retailer = value; }
+            set 
+            { 
+                retailer = value;
+                OnPropertyChanged("Retailer");
+            }
         }
         public Retailer NewRetailer
         {
@@ -98,7 +102,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             // add retailer to database
             Handlers.Database db = new Handlers.Database();
-            db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
+            //db.WriteRecord<Retailer>(NewRetailer, table, db.BuildFieldObject("nvarchar", fieldname));
+            db.AddRetailer(NewRetailer);
 
             UpdateRetailers();
             ClearNewRetailer();
@@ -107,23 +112,22 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             // delete retailer from database
             Handlers.Database db = new Handlers.Database();
-            db.DeleteRetailer(table, Retailer);
+            db.DeleteRetailer(Retailer);
 
             UpdateRetailers();
         }
         public void EditRetailer()
         {
-            // delete previous retailer
-            DeleteRetailer();
+            Handlers.Database db = new Handlers.Database();
+            db.UpdateRetailer(Retailer);
 
-            // add new retailer
-            AddRetailer();
+            UpdateRetailers();
         }
 
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.ReturnAllRetailers<Retailer>(table, fieldname, objectPath);
+            var retailerList = db.GetAllRetailers();
 
             SortByName(retailerList);
 
@@ -135,7 +139,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void UpdateRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.ReturnAllRetailers<Retailer>(table, fieldname, objectPath);
+            var retailerList = db.GetAllRetailers();
 
             SortByName(retailerList);
 

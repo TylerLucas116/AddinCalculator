@@ -16,7 +16,7 @@ namespace AddInCalculator2._0.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            Double.TryParse((string)value, out double result);
+            Double.TryParse((string)value, out Double result);
             return result;
         }
     }
