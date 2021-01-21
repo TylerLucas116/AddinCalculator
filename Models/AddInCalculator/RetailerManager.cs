@@ -114,11 +114,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
         public void EditRetailer()
         {
-            // delete previous retailer
-            DeleteRetailer();
-
-            // add new retailer
-            AddRetailer();
+            Handlers.Database db = new Handlers.Database();
+            db.UpdateRetailer(Retailer);
         }
 
         public void LoadRetailers()
