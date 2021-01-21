@@ -124,7 +124,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.GetAllRetailers<Retailer>(table, fieldname, objectPath);
+            var retailerList = db.GetAllRetailers();
 
             SortByName(retailerList);
 
@@ -136,7 +136,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void UpdateRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.GetAllRetailers<Retailer>(table, fieldname, objectPath);
+            var retailerList = db.GetAllRetailers();
 
             SortByName(retailerList);
 
