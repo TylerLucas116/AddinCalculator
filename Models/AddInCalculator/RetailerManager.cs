@@ -116,6 +116,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             Handlers.Database db = new Handlers.Database();
             db.UpdateRetailer(Retailer);
+
+            UpdateRetailers();
         }
 
         public void LoadRetailers()
