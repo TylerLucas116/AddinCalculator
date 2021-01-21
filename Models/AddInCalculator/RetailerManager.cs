@@ -36,7 +36,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public Retailer Retailer
         {
             get { return retailer; }
-            set { retailer = value; }
+            set 
+            { 
+                retailer = value;
+                OnPropertyChanged("Retailer");
+            }
         }
         public Retailer NewRetailer
         {
