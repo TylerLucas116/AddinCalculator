@@ -19,14 +19,7 @@
             <NavigationView.HeaderTemplate>
                 <DataTemplate x:DataType="local2:MainViewModel">
                     <StackPanel Margin="20,0,0,0">
-                        <StackPanel Visibility="{Binding listsClicked}" Orientation="Horizontal">
-                            <Button Content="Food" Style="{StaticResource FoodStyle}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Nonfood" Style="{StaticResource NFRegStyle1}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Freezer" Style="{StaticResource FreezerStyle}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Cooler" Style="{StaticResource CoolerStyle}" Margin="0,0,5,0" Height="40"/>
-                            <Button Content="Deli" Style="{StaticResource DeliStyle}" Margin="0,0,5,0" Height="40"/>
-                        </StackPanel>
-                        <StackPanel Visibility="{Binding addinCalculatorClicked}" Orientation="Horizontal">
+                        <StackPanel Visibility="{Binding AddinCalculatorClicked}" Orientation="Horizontal">
                             <Button Content="Food" Name="Food" Style="{StaticResource FoodStyle}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
                             <Button Content="Nonfood" Name="Nonfood" Style="{StaticResource NFRegStyle1}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
                             <Button Content="Nonfood DF" Name="NonfoodDF" Style="{StaticResource NFDF1}" Click="{x:Bind calculatorCategoryClicked}" Margin="0,0,5,0" Height="40"/>
@@ -34,16 +27,6 @@
                             <Button Content="Cooler" Name ="Cooler" Margin="0,0,5,0" Style="{StaticResource CoolerStyle}" Click="{x:Bind calculatorCategoryClicked}" Height="40"/>
                         </StackPanel>
                     </StackPanel>
-                    <!--<StackPanel Orientation="Horizontal">
-                        <CommandBar Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}"
-                            Visibility="{Binding listsClicked}">
-                            <AppBarButton Icon="Back" Label="Back"/>
-                        </CommandBar>
-                        <CommandBar Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}"
-                            Visibility="{Binding addinCalculatorClicked}">
-                            <AppBarButton Icon="Forward" Label="Forward"/>
-                        </CommandBar>
-                    </StackPanel>-->
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
 

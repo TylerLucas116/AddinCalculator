@@ -20,32 +20,18 @@ namespace AddInCalculator2._0.ViewModels
 {
     public class MainViewModel : MainViewModelBase 
     {
-        private bool ListsClicked = false;
-        private bool AddinCalculatorClicked = false;
+        private bool addinCalculatorClicked = false;
 
-        public bool listsClicked
+        public bool AddinCalculatorClicked
         {
             get
             {
-                return ListsClicked;
+                return addinCalculatorClicked;
             }
             set
             {
-                ListsClicked = value;
-                OnPropertyChanged("listsClicked");
-            }
-        }
-
-        public bool addinCalculatorClicked
-        {
-            get
-            {
-                return AddinCalculatorClicked;
-            }
-            set
-            {
-                AddinCalculatorClicked = value;
-                OnPropertyChanged("addinCalculatorClicked");
+                addinCalculatorClicked = value;
+                OnPropertyChanged("AddinCalculatorClicked");
             }
         }
 
@@ -54,8 +40,7 @@ namespace AddInCalculator2._0.ViewModels
             if (args.IsSettingsSelected)
             {
                 NavigateTo(typeof(Settings));
-                addinCalculatorClicked = false;
-                listsClicked = false;
+                AddinCalculatorClicked = false;
             }
             else
             {
@@ -65,13 +50,11 @@ namespace AddInCalculator2._0.ViewModels
                 {
                     case "Home":
                         NavigateTo(typeof(Home));
-                        addinCalculatorClicked = false;
-                        listsClicked = false;
+                        AddinCalculatorClicked = false;
                         break;
                     case "Calculator":
                         NavigateTo(typeof(NFCalculator));
-                        listsClicked = false;
-                        addinCalculatorClicked = true;
+                        AddinCalculatorClicked = true;
                         break;
                 }
             }
