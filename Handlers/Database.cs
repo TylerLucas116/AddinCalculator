@@ -17,7 +17,6 @@ namespace AddInCalculator2._0.Handlers
     public class Database
     {
         private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
-        public SQLiteConnection dbcon = new SQLiteConnection((App.Current as App).DatabaseFileName + ".db");
 
         public async void InitializeDatabase()
         {
