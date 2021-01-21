@@ -9,6 +9,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 {
     public class Retailer : INotifyPropertyChanged
     {
+        private int id = 0;
         private string name = "";
         private string onlineAbbrev = "";
         private int foodPercentage = 0;
@@ -17,6 +18,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private int freezerPercentage = 0;
         private int coolerPercentage = 0;
 
+        public int ID
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public string Name
         {
             get { return name; }
