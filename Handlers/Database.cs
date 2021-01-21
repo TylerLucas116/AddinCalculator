@@ -90,7 +90,6 @@ namespace AddInCalculator2._0.Handlers
 
                     RetailerList.Add(NewRetailer);
                 }
-
             }
             return RetailerList;
         }
