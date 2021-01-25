@@ -21,11 +21,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             UpdateRetailButtons();
         }
 
-        private string table = "Retailers";
-        private string fieldname = "Retailer";
-        private string objectPath = "AddInCalculator2._0.Models.AddInCalculator.Retailer";
-        Type obType = (typeof(Retailer));
-
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
 
         public ObservableCollection<RetailButton> RetailButtons
