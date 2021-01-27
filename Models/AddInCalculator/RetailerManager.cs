@@ -211,7 +211,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void SortByFreezer()
         {
-
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.FreezerPercentage));
+            Retailers.Clear();
+            foreach (Retailer i in tmp)
+                Retailers.Add(i);
         }
 
         public void SortByCooler()
