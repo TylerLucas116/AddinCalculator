@@ -195,7 +195,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void SortByNonfood()
         {
-
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.NonfoodPercentage));
+            Retailers.Clear();
+            foreach (Retailer i in tmp)
+                Retailers.Add(i);
         }
 
         public void SortByNonfoodDf()
