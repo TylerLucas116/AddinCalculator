@@ -171,7 +171,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void SortByRetailer()
         {
-
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.Name));
+            Retailers.Clear();
+            foreach (Retailer i in tmp)
+                Retailers.Add(i);
         }
 
         public void SortByAbbreviation()
