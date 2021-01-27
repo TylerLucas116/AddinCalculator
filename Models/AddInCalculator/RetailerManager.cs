@@ -179,7 +179,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void SortByAbbreviation()
         {
-
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.OnlineAbbrev));
+            Retailers.Clear();
+            foreach (Retailer i in tmp)
+                Retailers.Add(i);
         }
 
         public void SortByFood()
