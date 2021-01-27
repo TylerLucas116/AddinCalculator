@@ -130,7 +130,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Handlers.Database db = new Handlers.Database();
             Retailers = db.LoadAllRetailers();
 
-            SortByName();
+            SortRetailersByName();
         }
         public void UpdateRetailers()
         {
@@ -142,7 +142,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             {
                 Retailers.Add(retailer);
             }
-            SortByName();
+            SortRetailersByName();
         }
 
         public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -158,7 +158,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             NewRetailer = db.LoadRetailer(Retailer);
         }
 
-        public void SortByName()
+        public void SortRetailersByName()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.Name));
             Retailers.Clear();
@@ -166,7 +166,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Retailers.Add(i);
         }
 
-        public void SortByAbbreviation()
+        public void SortRetailersByAbbreviation()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.OnlineAbbrev));
             Retailers.Clear();
@@ -174,7 +174,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Retailers.Add(i);
         }
 
-        public void SortByFood()
+        public void SortRetailersByFood()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.FoodPercentage));
             Retailers.Clear();
@@ -182,7 +182,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Retailers.Add(i);
         }
 
-        public void SortByNonfood()
+        public void SortRetailersByNonfood()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.NonfoodPercentage));
             Retailers.Clear();
@@ -190,7 +190,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Retailers.Add(i);
         }
 
-        public void SortByNonfoodDf()
+        public void SortRetailersByNonfoodDf()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.NonfoodDfPercentage));
             Retailers.Clear();
@@ -198,7 +198,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Retailers.Add(i);
         }
 
-        public void SortByFreezer()
+        public void SortRetailersByFreezer()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.FreezerPercentage));
             Retailers.Clear();
@@ -206,7 +206,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Retailers.Add(i);
         }
 
-        public void SortByCooler()
+        public void SortRetailersByCooler()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.CoolerPercentage));
             Retailers.Clear();

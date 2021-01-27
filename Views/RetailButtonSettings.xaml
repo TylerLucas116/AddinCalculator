@@ -56,13 +56,13 @@
                     <ListView.HeaderTemplate>
                         <DataTemplate x:DataType="local3:RetailButtonSettingsViewModel">
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Retailer" Click="{x:Bind RetailManager.SortByName}" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="Name"/>
-                                <Button Content="Abbreviation" Click="{x:Bind RetailManager.SortByAbbreviation}" Width="100" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
-                                <Button Content="Food %" Click="{x:Bind RetailManager.SortByFood}" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
-                                <Button Content="Nonfood %" Click="{x:Bind RetailManager.SortByNonfood}" Width="90" Background="Transparent" Foreground="Black" Name="NonfoodPercentage"/>
-                                <Button Content="Nonfood DF %" Click="{x:Bind RetailManager.SortByNonfoodDf}" Width="120" Background="Transparent" Foreground="Black" Name="NonfoodDfPercentage"/>
-                                <Button Content="Freezer %" Click="{x:Bind RetailManager.SortByFreezer}" Width="90" Background="Transparent" Foreground="Black" Name="FreezerPercentage"/>
-                                <Button Content="Cooler %" Click="{x:Bind RetailManager.SortByCooler}" Width="90" Background="Transparent" Foreground="Black" Name="CoolerPercentage"/>
+                                <Button Content="Retailer" Click="{x:Bind RetailManager.SortRetailersByName}" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="Name"/>
+                                <Button Content="Abbreviation" Click="{x:Bind RetailManager.SortRetailersByAbbreviation}" Width="100" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
+                                <Button Content="Food %" Click="{x:Bind RetailManager.SortRetailersByFood}" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
+                                <Button Content="Nonfood %" Click="{x:Bind RetailManager.SortRetailersByNonfood}" Width="90" Background="Transparent" Foreground="Black" Name="NonfoodPercentage"/>
+                                <Button Content="Nonfood DF %" Click="{x:Bind RetailManager.SortRetailersByNonfoodDf}" Width="120" Background="Transparent" Foreground="Black" Name="NonfoodDfPercentage"/>
+                                <Button Content="Freezer %" Click="{x:Bind RetailManager.SortRetailersByFreezer}" Width="90" Background="Transparent" Foreground="Black" Name="FreezerPercentage"/>
+                                <Button Content="Cooler %" Click="{x:Bind RetailManager.SortRetailersByCooler}" Width="90" Background="Transparent" Foreground="Black" Name="CoolerPercentage"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
