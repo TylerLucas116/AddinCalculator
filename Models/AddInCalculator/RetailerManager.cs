@@ -203,7 +203,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void SortByNonfoodDf()
         {
-
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.NonfoodDfPercentage));
+            Retailers.Clear();
+            foreach (Retailer i in tmp)
+                Retailers.Add(i);
         }
 
         public void SortByFreezer()
