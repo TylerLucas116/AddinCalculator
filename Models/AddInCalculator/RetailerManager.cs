@@ -130,7 +130,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Handlers.Database db = new Handlers.Database();
             var retailerList = db.LoadAllRetailers();
 
-            SortByName(retailerList);
+            SortByName();
 
             foreach (var retailer in retailerList)
             {
@@ -142,7 +142,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Handlers.Database db = new Handlers.Database();
             var retailerList = db.LoadAllRetailers();
 
-            SortByName(retailerList);
+            SortByName();
 
             Retailers.Clear();
             foreach (var retailer in retailerList)
@@ -164,12 +164,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             NewRetailer = db.LoadRetailer(Retailer);
         }
 
-        public void SortByName(List<Retailer> retailList)
-        {
-            retailList.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
-        }
-
-        public void SortByRetailer()
+        public void SortByName()
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.Name));
             Retailers.Clear();

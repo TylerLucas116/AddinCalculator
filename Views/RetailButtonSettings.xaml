@@ -56,7 +56,7 @@
                     <ListView.HeaderTemplate>
                         <DataTemplate x:DataType="local3:RetailButtonSettingsViewModel">
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Retailer" Click="{x:Bind RetailManager.SortByRetailer}" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="Name"/>
+                                <Button Content="Retailer" Click="{x:Bind RetailManager.SortByName}" Margin="8,0" Width="250" Background="Transparent" Foreground="Black" Name="Name"/>
                                 <Button Content="Abbreviation" Click="{x:Bind RetailManager.SortByAbbreviation}" Width="100" Background="Transparent" Foreground="Black" Name="Abbreviation"/>
                                 <Button Content="Food %" Click="{x:Bind RetailManager.SortByFood}" Width="90" Background="Transparent" Foreground="Black" Name="FoodPercentage"/>
                                 <Button Content="Nonfood %" Click="{x:Bind RetailManager.SortByNonfood}" Width="90" Background="Transparent" Foreground="Black" Name="NonfoodPercentage"/>

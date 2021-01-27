@@ -58,9 +58,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        public void SortByName(List<Retailer> retailList)
+        public ObservableCollection<Retailer> SortByName(ObservableCollection<Retailer> retailList)
         {
-            retailList.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(retailList.OrderBy(Retailer => Retailer.Name));
+            retailList.Clear();
+            foreach (Retailer i in tmp)
+                retailList.Add(i);
+            return retailList;
         }
     }
 }

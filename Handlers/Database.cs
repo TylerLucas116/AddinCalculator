@@ -10,6 +10,7 @@ using AddInCalculator2._0.Models.AddInCalculator;
 using Windows.Storage;
 using Microsoft.Data.Sqlite;
 using SQLitePCL;
+using System.Collections.ObjectModel;
 
 namespace AddInCalculator2._0.Handlers
 {
@@ -66,9 +67,9 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
-        public List<Retailer> LoadAllRetailers()
+        public ObservableCollection<Retailer> LoadAllRetailers()
         {
-            List<Retailer> RetailerList = new List<Retailer>();
+            ObservableCollection<Retailer> RetailerList = new ObservableCollection<Retailer>();
 
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
             {
