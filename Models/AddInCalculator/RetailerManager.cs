@@ -128,14 +128,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.LoadAllRetailers();
+            Retailers = db.LoadAllRetailers();
 
             SortByName();
-
-            foreach (var retailer in retailerList)
-            {
-                Retailers.Add(retailer);
-            }
         }
         public void UpdateRetailers()
         {
