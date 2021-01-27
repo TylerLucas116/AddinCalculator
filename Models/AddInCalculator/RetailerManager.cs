@@ -24,6 +24,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer retailer;
         private Retailer newRetailer;
         private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
+        private BindingList<Retailer> retailerList = new BindingList<Retailer>();
         private bool addCommandBarClicked = false;
         private bool editCommandBarClicked = false;
 
@@ -49,6 +50,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         {
             get { return retailers; }
             set { retailers = value; }
+        }
+
+        public BindingList<Retailer> RetailerList
+        {
+            get { return retailerList; }
+            set { retailerList = value; }
         }
 
         public bool AddCommandBarClicked
@@ -160,6 +167,41 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void SortByName(List<Retailer> retailList)
         {
             retailList.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+        }
+
+        public void SortByRetailer()
+        {
+
+        }
+
+        public void SortByAbbreviation()
+        {
+
+        }
+
+        public void SortByFood()
+        {
+
+        }
+
+        public void SortByNonfood()
+        {
+
+        }
+
+        public void SortByNonfoodDf()
+        {
+
+        }
+
+        public void SortByFreezer()
+        {
+
+        }
+
+        public void SortByCooler()
+        {
+
         }
 
         private void ClearNewRetailer()
