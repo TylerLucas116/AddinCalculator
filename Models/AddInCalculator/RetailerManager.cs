@@ -26,6 +26,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private ObservableCollection<Retailer> retailers = new ObservableCollection<Retailer>();
         private bool addCommandBarClicked = false;
         private bool editCommandBarClicked = false;
+        private bool sortedByName = false;
+        private bool sortedByAbbrev = false;
+        private bool sortedByFood = false;
+        private bool sortedByNonfood = false;
+        private bool sortedByNonfoodDf = false;
+        private bool sortedByFreezer= false;
+        private bool sortedByCooler = false;
 
         public Retailer Retailer
         {
@@ -121,27 +128,25 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
-            var retailerList = db.LoadAllRetailers();
+            Retailers = db.LoadAllRetailers();
 
-            SortByName(retailerList);
-
-            foreach (var retailer in retailerList)
-            {
-                Retailers.Add(retailer);
-            }
+            SortRetailersByName();
+            sortedByName = false;
         }
         public void UpdateRetailers()
         {
             Handlers.Database db = new Handlers.Database();
             var retailerList = db.LoadAllRetailers();
 
-            SortByName(retailerList);
-
             Retailers.Clear();
             foreach (var retailer in retailerList)
             {
                 Retailers.Add(retailer);
             }
+
+            sortedByName = false;
+            SortRetailersByName();
+            sortedByName = false;
         }
 
         public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -157,9 +162,144 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             NewRetailer = db.LoadRetailer(Retailer);
         }
 
-        public void SortByName(List<Retailer> retailList)
+        public void SortRetailersByName()
         {
-            retailList.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+            if (sortedByName == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.Name));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByName = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.Name));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByName = false;
+            }        
+        }
+
+        public void SortRetailersByAbbreviation()
+        {
+            if (sortedByAbbrev == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.OnlineAbbrev));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByAbbrev = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.OnlineAbbrev));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByAbbrev = false;
+            } 
+        }
+
+        public void SortRetailersByFood()
+        {
+            if (sortedByFood == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.FoodPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByFood = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.FoodPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByFood = false;
+            }  
+        }
+
+        public void SortRetailersByNonfood()
+        {
+            if (sortedByNonfood == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.NonfoodPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByNonfood = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.NonfoodPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByNonfood = false;
+            }
+        }
+
+        public void SortRetailersByNonfoodDf()
+        {
+            if (sortedByNonfoodDf == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.NonfoodDfPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByNonfoodDf = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.NonfoodDfPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByNonfoodDf = false;
+            }
+        }
+
+        public void SortRetailersByFreezer()
+        {
+            if (sortedByFreezer == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.FreezerPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByFreezer = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.FreezerPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByFreezer = false;
+            }
+        }
+
+        public void SortRetailersByCooler()
+        {
+            if (sortedByCooler == false)
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.CoolerPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByCooler = true;
+            }
+            else
+            {
+                ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderByDescending(Retailer => Retailer.CoolerPercentage));
+                Retailers.Clear();
+                foreach (Retailer i in tmp)
+                    Retailers.Add(i);
+                sortedByCooler = false;
+            }
         }
 
         private void ClearNewRetailer()
