@@ -219,7 +219,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         public void SortByCooler()
         {
-
+            ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(Retailers.OrderBy(Retailer => Retailer.CoolerPercentage));
+            Retailers.Clear();
+            foreach (Retailer i in tmp)
+                Retailers.Add(i);
         }
 
         private void ClearNewRetailer()
