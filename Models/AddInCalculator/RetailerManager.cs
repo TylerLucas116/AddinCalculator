@@ -137,13 +137,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Handlers.Database db = new Handlers.Database();
             var retailerList = db.LoadAllRetailers();
 
-            SortByName();
-
             Retailers.Clear();
             foreach (var retailer in retailerList)
             {
                 Retailers.Add(retailer);
             }
+            SortByName();
         }
 
         public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
