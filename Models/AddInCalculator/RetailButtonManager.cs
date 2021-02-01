@@ -18,7 +18,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         public RetailButtonManager()
         {
             InitializeRetailButtons();
-            UpdateRetailButtons();
         }
 
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
@@ -33,16 +32,25 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         /// Initializes the RetailButtons list which is bound to the 35 UI retail buttons
         /// in the calculators
         /// </summary>
+        /// <seealso cref="RetailButtons"/>
+        /// <seealso cref="UpdateRetailButtons()"/>
         public void InitializeRetailButtons() 
         {
-            RetailButton newButton = new RetailButton();//Blank button to initialize each collection
+            RetailButton newButton = new RetailButton();
 
-            for (int i = 0; i < 35; ++i) // 50 button limit for UI
+            for (int i = 0; i < 35; ++i)
             {
                 RetailButtons.Add(newButton);
             }
+
+            UpdateRetailButtons();
         }
 
+        /// <summary>
+        /// Updates RetailButtons list with retailers from the database
+        /// </summary>
+        /// <seealso cref="RetailButtons"/>
+        /// <seealso cref="SortByName(ObservableCollection{Retailer}))"/>
         public void UpdateRetailButtons()
         {
             Handlers.Database db = new Handlers.Database();
