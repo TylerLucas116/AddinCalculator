@@ -70,6 +70,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <paramref name="retailList"/> in ascending order by name
+        /// </summary>
+        /// <param name="retailList">A list of retailers</param>
+        /// <returns> Sorted <paramref name="retailList"/> in ascending order by name</returns>
         public ObservableCollection<Retailer> SortByName(ObservableCollection<Retailer> retailList)
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(retailList.OrderBy(Retailer => Retailer.Name));
