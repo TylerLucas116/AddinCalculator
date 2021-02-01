@@ -29,11 +29,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set { retailButtons = value; }
         }
 
-        public void InitializeRetailButtons() //Call at beginning of program once
+        /// <summary>
+        /// Initializes the RetailButtons list which is bound to the 35 UI retail buttons
+        /// in the calculators
+        /// </summary>
+        public void InitializeRetailButtons() 
         {
             RetailButton newButton = new RetailButton();//Blank button to initialize each collection
 
-            for (int i = 0; i < 50; ++i) // 50 button limit for UI
+            for (int i = 0; i < 35; ++i) // 50 button limit for UI
             {
                 RetailButtons.Add(newButton);
             }
