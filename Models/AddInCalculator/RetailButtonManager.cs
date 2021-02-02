@@ -22,6 +22,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
 
+        /// <summary>
+        /// The RetailButtons property represents an observable collection for the front end UI calculator buttons
+        /// </summary>
+        /// <value>The RetailButtons property gets/sets the value of the private field retailButtons</value>
         public ObservableCollection<RetailButton> RetailButtons
         {
             get { return retailButtons; }
