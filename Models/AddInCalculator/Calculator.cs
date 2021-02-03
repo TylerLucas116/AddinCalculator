@@ -216,6 +216,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the divide '-' button in the UI calculator
+        /// </summary>
+        /// <param name="sender">The '-' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Subtract(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "" || DisplayText == ".")
