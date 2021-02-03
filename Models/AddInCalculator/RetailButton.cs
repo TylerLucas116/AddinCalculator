@@ -16,12 +16,21 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Retailer retailer;
         private bool visibility = false;
 
+        /// <summary>
+        /// Sets the visibility for the RetailButtons in the UI calculator, such as Walmart, Target, etc. This should always be true 
+        /// if there is data for a retailer
+        /// </summary>
+        /// <value>gets/sets the private field visibility</value>
         public bool Visibility
         {
             get { return visibility; }
             set { visibility = value; }
         }
 
+        /// <summary>
+        /// The Retailer property represents the retailer information for each UI RetailerButton
+        /// </summary>
+        /// <value>gets/sets the private field retailer</value>
         public Retailer Retailer
         {
             get { return retailer; }
