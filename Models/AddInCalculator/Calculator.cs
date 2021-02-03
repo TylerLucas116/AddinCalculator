@@ -161,6 +161,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user deleting a character in the UI calculator
+        /// </summary>
+        /// <param name="sender">The backspace button in the calculator</param>
+        /// <param name="e"></param>
         public void BackSpace(object sender, RoutedEventArgs e)
         {
             string backspaceChar = "";
