@@ -307,7 +307,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         /// <summary>
-        /// Calculates the price of an item by multiplying the display text by the retailer percentage of the button pressed
+        /// Calculates the price of a nonfood item by multiplying the display text by the retailer percentage of the button pressed
         /// </summary>
         /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
         /// <param name="e"></param>
@@ -324,6 +324,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a food item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void FoodWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
