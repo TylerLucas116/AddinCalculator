@@ -13,6 +13,9 @@ using AddInCalculator2._0.Views;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Provides the necessary methods and fields to support the RetailButton class in the UI calculator
+    /// </summary>
     public class RetailButtonManager
     {
         public RetailButtonManager()
