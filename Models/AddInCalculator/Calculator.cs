@@ -378,6 +378,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.FreezerPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a cooler item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void CoolerWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
