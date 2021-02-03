@@ -29,32 +29,60 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string textblockPrice;
         private string operation;
 
+        /// <summary>
+        /// The RetailButtonManager property represents a RetailButtonManager class object  
+        /// </summary>
+        /// <value>The RetailButtonManager property gets/sets the value of the private field retailButtonManager</value>
         public RetailButtonManager RetailButtonManager
         {
             get { return retailButtonManager; }
             set { retailButtonManager = value; }
         }
+
+        /// <summary>
+        /// The Price property represents the price of a retail item
+        /// </summary>
+        /// <value>The Price property gets/sets the value of the private field price</value>
         public double Price
         {
             get { return price; }
             set { price = value; }
         }
+
+        /// <summary>
+        /// The OperationClicked property represents a calculator operation such as +,-,/ that was clicked
+        /// </summary>
+        /// <value>The OperationClicked property gets/sets the value of the private field operationClicked</value>
         public bool OperationClicked
         {
             get { return operationClicked; }
             set { operationClicked = value; }
         }
 
+        /// <summary>
+        /// The Calculated property checks to see if a price has been calculated using the UI calculator
+        /// </summary>
+        /// <value>The Calculated property gets/sets the value of the private field calculated</value>
         public bool Calculated
         {
             get { return calculated; }
             set { calculated = value; }
         }
+
+        /// <summary>
+        /// The HasDecimal property checks to see if a decimal is present in the UI calculator
+        /// </summary>
+        /// <value>The HasDecimal property gets/sets the value of the private field hasDecimal</value>
         public bool HasDecimal
         {
             get { return hasDecimal; }
             set { hasDecimal = value; }
         }
+
+        /// <summary>
+        /// The DisplayText property represents the main text in the UI calculator
+        /// </summary>
+        /// <value>The DisplayText property gets/sets the value of the private field displayText</value>
         public string DisplayText
         {
             get { return displayText; }
@@ -64,6 +92,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("DisplayText");
             }
         }
+
+        /// <summary>
+        /// The IntermediateText property represents the intermediate text in the UI calculator above the DisplayText
+        /// </summary>
+        /// <value>The IntermediateText property gets/sets the value of the private field intermediateText</value>
         public string IntermediateText
         {
             get { return intermediateText; }
@@ -73,24 +106,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("IntermediateText");
             }
         }
-        public string UPC
-        {
-            get { return upc; }
-            set
-            {
-                upc = value;
-                OnPropertyChanged("UPC");
-            }
-        }
-        public string TextblockPrice
-        {
-            get { return textblockPrice; }
-            set
-            {
-                textblockPrice = value;
-                OnPropertyChanged("TextblockPrice");
-            }
-        }
+
+        /// <summary>
+        /// The Operation property represents the actual operation clicked from the UI calculator such as +,-,/
+        /// </summary>
+        /// <value>The Operation property gets/sets the value of the private field operation</value>
         public string Operation
         {
             get { return operation; }
