@@ -342,6 +342,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.FoodPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a nonfood drug fact item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void NFDFWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
