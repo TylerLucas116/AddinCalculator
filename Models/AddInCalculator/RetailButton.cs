@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Provides the functionality for the Retailer UI buttons in the calculator, such as Target, Walmart, etc.
+    /// </summary>
     public class RetailButton
     {
         public RetailButton()
