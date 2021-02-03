@@ -360,6 +360,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodDfPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a freezer item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void FreezerWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
