@@ -306,6 +306,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 return;
         }
 
+        /// <summary>
+        /// Calculates the price of an item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void NFWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
