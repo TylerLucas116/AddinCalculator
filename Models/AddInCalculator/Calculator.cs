@@ -10,6 +10,10 @@ using Windows.UI.Xaml;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Contains all data fields, properties, and methods to support the UI calculators, such as the 
+    /// NFCalculator.xaml calculator
+    /// </summary>
     public class Calculator : INotifyPropertyChanged
     {
         public Calculator()
@@ -25,8 +29,6 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private bool hasDecimal;
         private string displayText;
         private string intermediateText;
-        private string upc;
-        private string textblockPrice;
         private string operation;
 
         /// <summary>
