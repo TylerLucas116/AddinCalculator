@@ -117,7 +117,13 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             set { operation = value; }
         }
 
-
+        /// <summary>
+        /// NumberClicked is called whenever a number is clicked on the UI calculator.
+        /// Updates <see cref="DisplayText"/> to include the number that was clicked, and sets <see cref="OperationClicked"/> and 
+        /// <see cref="Calculated"/> to false.
+        /// </summary>
+        /// <param name="sender">The button that was pressed, such as 1, 2 , 3 etc.</param>
+        /// <param name="e"></param>
         public void NumberClicked(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "0" || (OperationClicked) || (Calculated))
