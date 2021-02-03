@@ -135,6 +135,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Calculated = false;
         }
 
+        /// <summary>
+        /// Clears all text in the UI calculator.
+        /// </summary>
+        /// <param name="sender">The CE or C button in the UI calculator</param>
+        /// <param name="e"></param>
         public void ClearEntry(object sender, RoutedEventArgs e)
         {
             Price = 0;
