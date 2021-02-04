@@ -89,6 +89,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Rounds the parameter <paramref name="value"/> to the nearest 9
+        /// </summary>
+        /// <param name="value">The value to be rounded to the nearest 9</param>
+        /// <returns>The rounded value</returns>
+        /// <remarks> Most grocery stores round to 9's or 5's, so this was intended to be used as a helper function whenever
+        /// a price is calculated using the UI calculator
+        /// </remarks>
         public double RoundToNine(double value)
         {
             double roundedValue = Math.Round(value, 1);
