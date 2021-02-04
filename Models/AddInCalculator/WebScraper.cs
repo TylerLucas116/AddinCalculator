@@ -181,6 +181,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Found = false;
             }
         }
+
+        /// <summary>
+        /// Searches Walmart.com's API for the price
+        /// </summary>
+        /// <returns></returns>
         public async Task searchWalmartNF()
         {
             try
