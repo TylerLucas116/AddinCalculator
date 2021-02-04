@@ -21,6 +21,9 @@ namespace AddInCalculator2._0.Handlers
     {
         private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
 
+        /// <summary>
+        /// Creates the database (if need be) when the program is run for the first time
+        /// </summary>
         public async void InitializeDatabase()
         {
             await ApplicationData.Current.LocalFolder.CreateFileAsync("Calculator.db", CreationCollisionOption.OpenIfExists);
