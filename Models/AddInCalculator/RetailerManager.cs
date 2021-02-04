@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Provides the necessary methods and fields to support the Retailer class's  the UI calculator
+    /// </summary>
     public class RetailerManager: INotifyPropertyChanged
     {
         public RetailerManager()
