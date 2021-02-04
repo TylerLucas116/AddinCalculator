@@ -37,6 +37,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private bool sortedByFreezer= false;
         private bool sortedByCooler = false;
 
+        /// <summary>
+        /// The Retailer property represents any grocery retailer, such as Walmart
+        /// </summary>
+        /// <value>The Retailer property gets/sets the value of the private field retailer</value>
         public Retailer Retailer
         {
             get { return retailer; }
@@ -46,6 +50,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("Retailer");
             }
         }
+
+        /// <summary>
+        /// The NewRetailer property represents any new grocery retailer to be added, such as Walmart
+        /// </summary>
+        /// <value>The NewRetailer property gets/sets the value of the private field newRetailer</value>
         public Retailer NewRetailer
         {
             get { return newRetailer; }
@@ -55,12 +64,21 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NewRetailer");
             }
         }
+
+        /// <summary>
+        /// The Retailers property represents all the retailers available for the users to interact with
+        /// </summary>
+        /// <value>The Retailers property gets/sets the value of the private field retailers</value>
         public ObservableCollection<Retailer> Retailers
         {
             get { return retailers; }
             set { retailers = value; }
         }
 
+        /// <summary>
+        /// The AddCommandBarClicked property is true if the user clicks the '+' in the retailer settings
+        /// </summary>
+        /// <value>The AddCommandBarClicked property gets/sets the value of the private field addCommandBarClicked</value>
         public bool AddCommandBarClicked
         {
             get { return addCommandBarClicked; }
@@ -71,6 +89,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// The EditCommandBarClicked property is true if the user clicks the pencil (edit) icon in the retailer settings
+        /// </summary>
+        /// <value>The EditCommandBarClicked property gets/sets the value of the private field editCommandBarClicked</value>
         public bool EditCommandBarClicked
         {
             get { return editCommandBarClicked; }
@@ -80,6 +102,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("EditCommandBarClicked");
             }
         }
+
+        /// <summary>
+        /// Handles the event that a user clicks on the '+' icon in the retailer settings.
+        /// </summary>
+        /// <param name="sender">The '+' button in the retailer settings</param>
+        /// <param name="e"></param>
         public void AddRetailerClicked(object sender, RoutedEventArgs e)
         {
             if (AddCommandBarClicked == true)
@@ -91,6 +119,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Handles the event that a user clicks on the pencil (edit) icon in the retailer settings.
+        /// </summary>
+        /// <param name="sender">The pencil/edit button in the retailer settings</param>
+        /// <param name="e"></param>
         public void EditRetailerClicked(object sender, RoutedEventArgs e)
         {
             if (EditCommandBarClicked == true)
