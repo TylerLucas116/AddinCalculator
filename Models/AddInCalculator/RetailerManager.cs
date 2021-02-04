@@ -148,6 +148,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             UpdateRetailers();
             ClearNewRetailer();
         }
+
+        /// <summary>
+        /// Deletes a retailer from the database and updates the list of retailers
+        /// </summary>
         public void DeleteRetailer()
         {
             // delete retailer from database
