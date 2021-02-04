@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Searches the web for the price of an item based on the UPC barcode
+    /// </summary>
     public class WebScraper : INotifyPropertyChanged
     {
         public WebScraper()
