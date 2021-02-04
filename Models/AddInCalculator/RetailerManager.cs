@@ -226,10 +226,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Retailer = (Retailer)item;
                 }
             }
+
             Handlers.Database db = new Handlers.Database();
             NewRetailer = db.LoadRetailer(Retailer);
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer name in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByName()
         {
             if (sortedByName == false)
@@ -250,6 +254,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }        
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer online abbreviation in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByAbbreviation()
         {
             if (sortedByAbbrev == false)
@@ -270,6 +277,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             } 
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer food percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByFood()
         {
             if (sortedByFood == false)
@@ -290,6 +300,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }  
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer nonfood percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByNonfood()
         {
             if (sortedByNonfood == false)
@@ -310,6 +323,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer nonfood df percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByNonfoodDf()
         {
             if (sortedByNonfoodDf == false)
@@ -330,6 +346,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer freezer percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByFreezer()
         {
             if (sortedByFreezer == false)
@@ -350,6 +369,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer cooler percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByCooler()
         {
             if (sortedByCooler == false)
