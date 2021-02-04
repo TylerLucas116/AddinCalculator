@@ -47,6 +47,10 @@ namespace AddInCalculator2._0.Handlers
             }
         }
         
+        /// <summary>
+        /// Adds a new retailer to the database
+        /// </summary>
+        /// <param name="NewRetailer">The new retailer to be added</param>
         public void AddRetailer(Retailer NewRetailer)
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
