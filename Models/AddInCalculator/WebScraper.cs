@@ -256,7 +256,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        // search target using agility pack
+        /// <summary>
+        /// Searches Target.com for the price
+        /// </summary>
+        /// <returns></returns>
         public async Task searchTargetNF()
         {
             try
