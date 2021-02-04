@@ -160,6 +160,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             UpdateRetailers();
         }
+
+        /// <summary>
+        /// Edits a retailer from the database and updates the list of retailers
+        /// </summary>
         public void EditRetailer()
         {
             Handlers.Database db = new Handlers.Database();
