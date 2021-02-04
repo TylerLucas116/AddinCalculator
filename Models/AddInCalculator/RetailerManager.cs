@@ -135,6 +135,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Adds a new retailer to the database and updates list of retailers
+        /// </summary>
         public void AddRetailer()
         {
             // add retailer to database
