@@ -392,6 +392,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sets all fields of <see cref="NewRetailer"/> to their empty states
+        /// </summary>
+        /// <remarks>
+        /// This was intended to update the UI when a user adds a new retailer to the database, so that their interaction with the UI is more intuitive
+        /// </remarks>
         private void ClearNewRetailer()
         {
             NewRetailer.Name = "";
