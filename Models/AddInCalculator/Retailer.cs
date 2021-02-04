@@ -119,10 +119,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        /// <summary>
-        /// The CoolerPercentage property represents a Retailer's online cooler % to multiply a price by, such as .56 * 1.99
-        /// </summary>
-        /// <value>The CoolerPercentage property gets/sets the value of the private field coolerPercentage</value>
+   
         public Double CoolerPercentage
         {
             get { return coolerPercentage; }
