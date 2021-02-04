@@ -128,6 +128,10 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
+        /// <summary>
+        /// Updates a retailer in the database by retailer id
+        /// </summary>
+        /// <param name="Retailer">The new information to update the retailer in the database with</param>
         public void UpdateRetailer(Retailer Retailer)
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
