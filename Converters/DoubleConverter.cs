@@ -7,6 +7,9 @@ using Windows.UI.Xaml.Data;
 
 namespace AddInCalculator2._0.Converters
 {
+    /// <summary>
+    /// Converts a string to a double
+    /// </summary>
     public class DoubleConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
