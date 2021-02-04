@@ -21,6 +21,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private Double freezerPercentage = 0;
         private Double coolerPercentage = 0;
 
+        /// <summary>
+        /// The ID property represents a unique Retailer's id number
+        /// </summary>
+        /// <value>The ID property gets/sets the value of the private field id</value>
         public int ID
         {
             get { return id; }
@@ -30,6 +34,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("ID");
             }
         }
+
+        /// <summary>
+        /// The Name property represents a Retailer's name
+        /// </summary>
+        /// <value>The Name property gets/sets the value of the private field name</value>
         public string Name
         {
             get { return name; }
@@ -39,6 +48,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("Name");
             }
         }
+
+        /// <summary>
+        /// The OnlineAbbrev property represents a Retailer's online abbreviation, such as WM for Walmart
+        /// </summary>
+        /// <value>The OnlineAbbrev property gets/sets the value of the private field onlineAbbrev</value>
         public string OnlineAbbrev
         {
             get { return onlineAbbrev; }
@@ -48,6 +62,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("OnlineAbbrev");
             }
         }
+
+        /// <summary>
+        /// The FoodPercentage property represents a Retailer's online food % to multiply a price by, such as .56 * 1.99
+        /// </summary>
+        /// <value>The FoodPercentage property gets/sets the value of the private field foodPercentage</value>
         public Double FoodPercentage
         {
             get { return foodPercentage; }
@@ -57,6 +76,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("FoodPercentage");
             }
         }
+
+        /// <summary>
+        /// The NonfoodPercentage property represents a Retailer's online nonfood % to multiply a price by, such as .56 * 1.99
+        /// </summary>
+        /// <value>The NonfoodPercentage property gets/sets the value of the private field nonfoodPercentage</value>
         public Double NonfoodPercentage
         {
             get { return nonfoodPercentage; }
@@ -66,6 +90,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NonfoodPercentage");
             }
         }
+
+        /// <summary>
+        /// The NonfoodDfPercentage property represents a Retailer's online nonfood df % to multiply a price by, such as .56 * 1.99
+        /// </summary>
+        /// <value>The NonfoodDfPercentage property gets/sets the value of the private field nonfoodDfPercentage</value>
         public Double NonfoodDfPercentage
         {
             get { return nonfoodDfPercentage; }
@@ -75,6 +104,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NonfoodDfPercentage");
             }
         }
+
+        /// <summary>
+        /// The FreezerPercentage property represents a Retailer's online freezer % to multiply a price by, such as .56 * 1.99
+        /// </summary>
+        /// <value>The FreezerPercentage property gets/sets the value of the private field freezerPercentage</value>
         public Double FreezerPercentage
         {
             get { return freezerPercentage; }
@@ -84,6 +118,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("FreezerPercentage");
             }
         }
+
+        /// <summary>
+        /// The CoolerPercentage property represents a Retailer's online cooler % to multiply a price by, such as .56 * 1.99
+        /// </summary>
+        /// <value>The CoolerPercentage property gets/sets the value of the private field coolerPercentage</value>
         public Double CoolerPercentage
         {
             get { return coolerPercentage; }
