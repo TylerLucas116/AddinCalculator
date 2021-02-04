@@ -117,6 +117,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             return roundedValue - 0.01;
         }
 
+        /// <summary>
+        /// Searches online for the price of a grocery product
+        /// </summary>
+        /// <param name="sender">The UPC barcode of the product</param>
+        /// <param name="e"></param>
         public async void UPCSearch(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
