@@ -38,16 +38,33 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private string onlinePrice;
         private string upc;
 
+        /// <summary>
+        /// The ButtonManager property represents a RetailButtonManager
+        /// </summary>
+        /// <value>The ButtonManager property gets/sets the value of the private field buttonManager</value>
+        /// <remarks>
+        /// Is intended to be used for specific retailer information, such as Walmart's percentages
+        /// </remarks>
         public RetailButtonManager ButtonManager
         {
             get { return buttonManager; }
             set { buttonManager = value; }
         }
+
+        /// <summary>
+        /// The Found property represents if a price is found or not online
+        /// </summary>
+        /// <value>The Found property gets/sets the value of the private field found</value>
         public bool Found
         {
             get { return found; }
             set { found = value; }
         }
+
+        /// <summary>
+        /// The UPC property represents the UPC barcode of a grocery product
+        /// </summary>
+        /// <value>The UPC property gets/sets the value of the private field upc</value>
         public string UPC
         {
             get { return upc; }
@@ -57,6 +74,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("UPC");
             }
         }
+
+        /// <summary>
+        /// The OnlinePrice property represents the OnlinePrice found for a grocery product
+        /// </summary>
+        /// <value>The OnlinePrice property gets/sets the value of the private field onlinePrice</value>
         public string OnlinePrice
         {
             get { return onlinePrice; }
