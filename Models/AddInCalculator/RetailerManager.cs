@@ -183,6 +183,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             SortRetailersByName();
             sortedByName = false;
         }
+
+        /// <summary>
+        /// Updates <see cref="Retailers"/> after a retailer is added, edited, or deleted from the database
+        /// </summary>
+        /// <remarks>
+        /// LoadRetailers() can't be used in place of UpdateRetailers() because the list in the settings UI is bound to the 
+        /// observable collection Retailers <see cref="Retailers"/>. LoadRetailers() would break the binding and not update 
+        /// in real time if the user were to make a change
+        /// </remarks>
         public void UpdateRetailers()
         {
             Handlers.Database db = new Handlers.Database();
