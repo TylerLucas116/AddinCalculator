@@ -208,6 +208,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             sortedByName = false;
         }
 
+        /// <summary>
+        /// Handles the event that retailer is selected from the list in the settings UI
+        /// </summary>
+        /// <param name="sender"> The retailer that was selected in the list</param>
+        /// <param name="e"></param>
+        /// <remarks>
+        /// The NewRetailer is loaded from the database instead of being referenced internally for it's information
+        /// to avoid referencing the same address as Retailer or a retailer in Retailers.
+        /// </remarks>
         public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
