@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 namespace AddInCalculator2._0.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The nonfood drug fact calculator
     /// </summary>
     public sealed partial class NonfoodDFCalculator : Page
     {
