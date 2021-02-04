@@ -108,6 +108,10 @@ namespace AddInCalculator2._0.Handlers
             return RetailerList;
         }
 
+        /// <summary>
+        /// Deletes a retailer from the database
+        /// </summary>
+        /// <param name="Retailer">The retailer to be deleted</param>
         public void DeleteRetailer(Retailer Retailer)
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
