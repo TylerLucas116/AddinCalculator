@@ -151,6 +151,11 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
+        /// <summary>
+        /// Loads a retailer from the database by id
+        /// </summary>
+        /// <param name="OriginalRetailer">The retailer to load</param>
+        /// <returns>The loaded retailer</returns>
         public Retailer LoadRetailer(Retailer OriginalRetailer)
         {
             Retailer NewRetailer = new Retailer();
