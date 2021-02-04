@@ -295,6 +295,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Searches CVS.com for the price
+        /// </summary>
+        /// <returns></returns>
         public async Task searchCVSNF()
         {
             try
