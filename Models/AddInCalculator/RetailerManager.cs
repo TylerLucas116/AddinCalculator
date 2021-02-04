@@ -172,6 +172,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             UpdateRetailers();
         }
 
+        /// <summary>
+        /// Loads all retailers from the database into the retailer list
+        /// </summary>
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
