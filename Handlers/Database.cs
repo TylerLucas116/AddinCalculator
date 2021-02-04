@@ -14,7 +14,9 @@ using System.Collections.ObjectModel;
 
 namespace AddInCalculator2._0.Handlers
 {
-
+    /// <summary>
+    /// A SQLite database for all stored information
+    /// </summary>
     public class Database
     {
         private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
