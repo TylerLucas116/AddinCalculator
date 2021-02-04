@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Contains all the necessary information a grocery retailer would have.
+    /// </summary>
     public class Retailer : INotifyPropertyChanged
     {
         private int id = 0;
