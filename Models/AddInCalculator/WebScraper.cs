@@ -30,9 +30,23 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private ApiKey key = new ApiKey();
         private WebView webView = new WebView();
 
-        private Retailer walmart = new Retailer();
-        private Retailer target = new Retailer();
-        private Retailer cvs = new Retailer();
+        private Retailer walmart = new Retailer
+        {
+            Name = "Walmart",
+            OnlineAbbrev = "WM"
+        };
+
+        private Retailer target = new Retailer
+        {
+            Name = "Target",
+            OnlineAbbrev = "TG"
+        };
+
+        private Retailer cvs = new Retailer
+        {
+            Name = "CVS",
+            OnlineAbbrev = "CVS"
+        };
 
         private bool found;
         private string onlinePrice;
@@ -103,22 +117,8 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             return roundedValue - 0.01;
         }
 
-        private void InitializeRetailers()
-        {
-            walmart.Name = "Walmart";
-            walmart.OnlineAbbrev = "WM";
-
-            target.Name = "Target";
-            target.OnlineAbbrev = "TG";
-
-            cvs.Name = "CVS";
-            cvs.OnlineAbbrev = "CVS";
-        }
-
         public async void UPCSearch(object sender, KeyRoutedEventArgs e)
         {
-            InitializeRetailers();
-
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 // search Walmart
