@@ -64,7 +64,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         /// <summary>
-        /// The FoodPercentage property represents a Retailer's online food % to multiply a price by, such as .56 * 1.99
+        /// The FoodPercentage property represents a Retailer's online food % to multiply a price by, such as .56 * $1.99
         /// </summary>
         /// <value>The FoodPercentage property gets/sets the value of the private field foodPercentage</value>
         public Double FoodPercentage
@@ -78,7 +78,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         /// <summary>
-        /// The NonfoodPercentage property represents a Retailer's online nonfood % to multiply a price by, such as .56 * 1.99
+        /// The NonfoodPercentage property represents a Retailer's online nonfood % to multiply a price by, such as .56 * $1.99
         /// </summary>
         /// <value>The NonfoodPercentage property gets/sets the value of the private field nonfoodPercentage</value>
         public Double NonfoodPercentage
@@ -92,7 +92,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         /// <summary>
-        /// The NonfoodDfPercentage property represents a Retailer's online nonfood df % to multiply a price by, such as .56 * 1.99
+        /// The NonfoodDfPercentage property represents a Retailer's online nonfood df % to multiply a price by, such as .56 * $1.99
         /// </summary>
         /// <value>The NonfoodDfPercentage property gets/sets the value of the private field nonfoodDfPercentage</value>
         public Double NonfoodDfPercentage
@@ -106,7 +106,7 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         }
 
         /// <summary>
-        /// The FreezerPercentage property represents a Retailer's online freezer % to multiply a price by, such as .56 * 1.99
+        /// The FreezerPercentage property represents a Retailer's online freezer % to multiply a price by, such as .56 * $1.99
         /// </summary>
         /// <value>The FreezerPercentage property gets/sets the value of the private field freezerPercentage</value>
         public Double FreezerPercentage
