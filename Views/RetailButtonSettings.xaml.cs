@@ -20,7 +20,7 @@ using AddInCalculator2._0.Models.AddInCalculator;
 namespace AddInCalculator2._0.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The retail button settings page
     /// </summary>
     public sealed partial class RetailButtonSettings : Page
     {
@@ -29,7 +29,6 @@ namespace AddInCalculator2._0.Views
             this.InitializeComponent();
             viewModel = new RetailButtonSettingsViewModel();
             DataContext = viewModel;
-            //EditFrame.Navigate(typeof(BlankPage));
         }
 
         public RetailButtonSettingsViewModel viewModel;

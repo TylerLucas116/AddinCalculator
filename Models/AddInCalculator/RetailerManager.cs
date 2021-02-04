@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Provides the necessary methods and fields to support the Retailer class's  the UI calculator
+    /// </summary>
     public class RetailerManager: INotifyPropertyChanged
     {
         public RetailerManager()
@@ -34,6 +37,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private bool sortedByFreezer= false;
         private bool sortedByCooler = false;
 
+        /// <summary>
+        /// The Retailer property represents any grocery retailer, such as Walmart
+        /// </summary>
+        /// <value>The Retailer property gets/sets the value of the private field retailer</value>
         public Retailer Retailer
         {
             get { return retailer; }
@@ -43,6 +50,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("Retailer");
             }
         }
+
+        /// <summary>
+        /// The NewRetailer property represents any new grocery retailer to be added, such as Walmart
+        /// </summary>
+        /// <value>The NewRetailer property gets/sets the value of the private field newRetailer</value>
         public Retailer NewRetailer
         {
             get { return newRetailer; }
@@ -52,12 +64,21 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("NewRetailer");
             }
         }
+
+        /// <summary>
+        /// The Retailers property represents all the retailers available for the users to interact with
+        /// </summary>
+        /// <value>The Retailers property gets/sets the value of the private field retailers</value>
         public ObservableCollection<Retailer> Retailers
         {
             get { return retailers; }
             set { retailers = value; }
         }
 
+        /// <summary>
+        /// The AddCommandBarClicked property is true if the user clicks the '+' in the retailer settings
+        /// </summary>
+        /// <value>The AddCommandBarClicked property gets/sets the value of the private field addCommandBarClicked</value>
         public bool AddCommandBarClicked
         {
             get { return addCommandBarClicked; }
@@ -68,6 +89,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// The EditCommandBarClicked property is true if the user clicks the pencil (edit) icon in the retailer settings
+        /// </summary>
+        /// <value>The EditCommandBarClicked property gets/sets the value of the private field editCommandBarClicked</value>
         public bool EditCommandBarClicked
         {
             get { return editCommandBarClicked; }
@@ -77,6 +102,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("EditCommandBarClicked");
             }
         }
+
+        /// <summary>
+        /// Handles the event that a user clicks on the '+' icon in the retailer settings.
+        /// </summary>
+        /// <param name="sender">The '+' button in the retailer settings</param>
+        /// <param name="e"></param>
         public void AddRetailerClicked(object sender, RoutedEventArgs e)
         {
             if (AddCommandBarClicked == true)
@@ -88,6 +119,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Handles the event that a user clicks on the pencil (edit) icon in the retailer settings.
+        /// </summary>
+        /// <param name="sender">The pencil/edit button in the retailer settings</param>
+        /// <param name="e"></param>
         public void EditRetailerClicked(object sender, RoutedEventArgs e)
         {
             if (EditCommandBarClicked == true)
@@ -99,6 +135,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Adds a new retailer to the database and updates list of retailers
+        /// </summary>
         public void AddRetailer()
         {
             // add retailer to database
@@ -109,6 +148,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             UpdateRetailers();
             ClearNewRetailer();
         }
+
+        /// <summary>
+        /// Deletes a retailer from the database and updates the list of retailers
+        /// </summary>
         public void DeleteRetailer()
         {
             // delete retailer from database
@@ -117,6 +160,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
 
             UpdateRetailers();
         }
+
+        /// <summary>
+        /// Edits a retailer from the database and updates the list of retailers
+        /// </summary>
         public void EditRetailer()
         {
             Handlers.Database db = new Handlers.Database();
@@ -125,6 +172,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             UpdateRetailers();
         }
 
+        /// <summary>
+        /// Loads all retailers from the database into the retailer list
+        /// </summary>
         public void LoadRetailers()
         {
             Handlers.Database db = new Handlers.Database();
@@ -133,6 +183,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             SortRetailersByName();
             sortedByName = false;
         }
+
+        /// <summary>
+        /// Updates <see cref="Retailers"/> after a retailer is added, edited, or deleted from the database
+        /// </summary>
+        /// <remarks>
+        /// LoadRetailers() can't be used in place of UpdateRetailers() because the list in the settings UI is bound to the 
+        /// observable collection Retailers <see cref="Retailers"/>. LoadRetailers() would break the binding and not update 
+        /// in real time if the user were to make a change
+        /// </remarks>
         public void UpdateRetailers()
         {
             Handlers.Database db = new Handlers.Database();
@@ -149,6 +208,15 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             sortedByName = false;
         }
 
+        /// <summary>
+        /// Handles the event that retailer is selected from the list in the settings UI
+        /// </summary>
+        /// <param name="sender"> The retailer that was selected in the list</param>
+        /// <param name="e"></param>
+        /// <remarks>
+        /// The NewRetailer is loaded from the database instead of being referenced internally for it's information
+        /// to avoid referencing the same address as Retailer or a retailer in Retailers.
+        /// </remarks>
         public void RetailerSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
@@ -158,10 +226,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                     Retailer = (Retailer)item;
                 }
             }
+
             Handlers.Database db = new Handlers.Database();
             NewRetailer = db.LoadRetailer(Retailer);
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer name in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByName()
         {
             if (sortedByName == false)
@@ -182,6 +254,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }        
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer online abbreviation in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByAbbreviation()
         {
             if (sortedByAbbrev == false)
@@ -202,6 +277,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             } 
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer food percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByFood()
         {
             if (sortedByFood == false)
@@ -222,6 +300,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }  
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer nonfood percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByNonfood()
         {
             if (sortedByNonfood == false)
@@ -242,6 +323,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer nonfood df percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByNonfoodDf()
         {
             if (sortedByNonfoodDf == false)
@@ -262,6 +346,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer freezer percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByFreezer()
         {
             if (sortedByFreezer == false)
@@ -282,6 +369,9 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <see cref="Retailers"/> by retailer cooler percentage in ascending or descending order (depending on UI interaction)
+        /// </summary>
         public void SortRetailersByCooler()
         {
             if (sortedByCooler == false)
@@ -302,6 +392,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sets all fields of <see cref="NewRetailer"/> to their empty states
+        /// </summary>
+        /// <remarks>
+        /// This was intended to update the UI when a user adds a new retailer to the database, so that their interaction with the UI is more intuitive
+        /// </remarks>
         private void ClearNewRetailer()
         {
             NewRetailer.Name = "";

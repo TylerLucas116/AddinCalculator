@@ -13,32 +13,51 @@ using AddInCalculator2._0.Views;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Provides the necessary methods and fields to support the RetailButton class in the UI calculator
+    /// </summary>
     public class RetailButtonManager
     {
         public RetailButtonManager()
         {
             InitializeRetailButtons();
-            UpdateRetailButtons();
         }
 
         private ObservableCollection<RetailButton> retailButtons = new ObservableCollection<RetailButton>();
 
+        /// <summary>
+        /// The RetailButtons property represents an observable collection for the front end UI calculator buttons
+        /// </summary>
+        /// <value>The RetailButtons property gets/sets the value of the private field retailButtons</value>
         public ObservableCollection<RetailButton> RetailButtons
         {
             get { return retailButtons; }
             set { retailButtons = value; }
         }
 
-        public void InitializeRetailButtons() //Call at beginning of program once
+        /// <summary>
+        /// Initializes the RetailButtons list which is bound to the 35 UI retail buttons
+        /// in the calculators
+        /// </summary>
+        /// <seealso cref="RetailButtons"/>
+        /// <seealso cref="UpdateRetailButtons()"/>
+        public void InitializeRetailButtons() 
         {
-            RetailButton newButton = new RetailButton();//Blank button to initialize each collection
+            RetailButton newButton = new RetailButton();
 
-            for (int i = 0; i < 50; ++i) // 50 button limit for UI
+            for (int i = 0; i < 35; ++i)
             {
                 RetailButtons.Add(newButton);
             }
+
+            UpdateRetailButtons();
         }
 
+        /// <summary>
+        /// Updates RetailButtons list with retailers from the database
+        /// </summary>
+        /// <seealso cref="RetailButtons"/>
+        /// <seealso cref="SortByName(ObservableCollection{Retailer}))"/>
         public void UpdateRetailButtons()
         {
             Handlers.Database db = new Handlers.Database();
@@ -58,6 +77,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Sorts <paramref name="retailList"/> in ascending order by name
+        /// </summary>
+        /// <param name="retailList">A list of retailers</param>
+        /// <returns> Sorted <paramref name="retailList"/> in ascending order by name</returns>
         public ObservableCollection<Retailer> SortByName(ObservableCollection<Retailer> retailList)
         {
             ObservableCollection<Retailer> tmp = new ObservableCollection<Retailer>(retailList.OrderBy(Retailer => Retailer.Name));

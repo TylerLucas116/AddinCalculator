@@ -10,6 +10,10 @@ using Windows.UI.Xaml;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Contains all data fields, properties, and methods to support the UI calculators, such as the 
+    /// NFCalculator.xaml calculator
+    /// </summary>
     public class Calculator : INotifyPropertyChanged
     {
         public Calculator()
@@ -25,36 +29,62 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private bool hasDecimal;
         private string displayText;
         private string intermediateText;
-        private string upc;
-        private string textblockPrice;
         private string operation;
 
+        /// <summary>
+        /// The RetailButtonManager property represents a RetailButtonManager class object  
+        /// </summary>
+        /// <value>The RetailButtonManager property gets/sets the value of the private field retailButtonManager</value>
         public RetailButtonManager RetailButtonManager
         {
             get { return retailButtonManager; }
             set { retailButtonManager = value; }
         }
+
+        /// <summary>
+        /// The Price property represents the price of a retail item
+        /// </summary>
+        /// <value>The Price property gets/sets the value of the private field price</value>
         public double Price
         {
             get { return price; }
             set { price = value; }
         }
+
+        /// <summary>
+        /// The OperationClicked property represents a calculator operation such as +,-,/ that was clicked
+        /// </summary>
+        /// <value>The OperationClicked property gets/sets the value of the private field operationClicked</value>
         public bool OperationClicked
         {
             get { return operationClicked; }
             set { operationClicked = value; }
         }
 
+        /// <summary>
+        /// The Calculated property checks to see if a price has been calculated using the UI calculator
+        /// </summary>
+        /// <value>The Calculated property gets/sets the value of the private field calculated</value>
         public bool Calculated
         {
             get { return calculated; }
             set { calculated = value; }
         }
+
+        /// <summary>
+        /// The HasDecimal property checks to see if a decimal is present in the UI calculator
+        /// </summary>
+        /// <value>The HasDecimal property gets/sets the value of the private field hasDecimal</value>
         public bool HasDecimal
         {
             get { return hasDecimal; }
             set { hasDecimal = value; }
         }
+
+        /// <summary>
+        /// The DisplayText property represents the main text in the UI calculator
+        /// </summary>
+        /// <value>The DisplayText property gets/sets the value of the private field displayText</value>
         public string DisplayText
         {
             get { return displayText; }
@@ -64,6 +94,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("DisplayText");
             }
         }
+
+        /// <summary>
+        /// The IntermediateText property represents the intermediate text in the UI calculator above the DisplayText
+        /// </summary>
+        /// <value>The IntermediateText property gets/sets the value of the private field intermediateText</value>
         public string IntermediateText
         {
             get { return intermediateText; }
@@ -73,31 +108,24 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("IntermediateText");
             }
         }
-        public string UPC
-        {
-            get { return upc; }
-            set
-            {
-                upc = value;
-                OnPropertyChanged("UPC");
-            }
-        }
-        public string TextblockPrice
-        {
-            get { return textblockPrice; }
-            set
-            {
-                textblockPrice = value;
-                OnPropertyChanged("TextblockPrice");
-            }
-        }
+
+        /// <summary>
+        /// The Operation property represents the actual operation clicked from the UI calculator such as +,-,/
+        /// </summary>
+        /// <value>The Operation property gets/sets the value of the private field operation</value>
         public string Operation
         {
             get { return operation; }
             set { operation = value; }
         }
 
-
+        /// <summary>
+        /// NumberClicked is called whenever a number is clicked on the UI calculator.
+        /// Updates <see cref="DisplayText"/> to include the number that was clicked, and sets <see cref="OperationClicked"/> and 
+        /// <see cref="Calculated"/> to false.
+        /// </summary>
+        /// <param name="sender">The button that was pressed, such as 1, 2 , 3 etc.</param>
+        /// <param name="e"></param>
         public void NumberClicked(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "0" || (OperationClicked) || (Calculated))
@@ -109,6 +137,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             Calculated = false;
         }
 
+        /// <summary>
+        /// Clears all text in the UI calculator.
+        /// </summary>
+        /// <param name="sender">The CE or C button in the UI calculator</param>
+        /// <param name="e"></param>
         public void ClearEntry(object sender, RoutedEventArgs e)
         {
             Price = 0;
@@ -116,6 +149,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             IntermediateText = "";
             HasDecimal = false;
         }
+
+        /// <summary>
+        /// Clears all text in the UI calculator.
+        /// </summary>
+        /// <param name="sender">The CE or C button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Clear(object sender, RoutedEventArgs e)
         {
             Price = 0;
@@ -124,6 +163,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user deleting a character in the UI calculator
+        /// </summary>
+        /// <param name="sender">The backspace button in the calculator</param>
+        /// <param name="e"></param>
         public void BackSpace(object sender, RoutedEventArgs e)
         {
             string backspaceChar = "";
@@ -140,6 +184,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the divide '/' button in the UI calculator
+        /// </summary>
+        /// <param name="sender">The '/' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Divide(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "" || DisplayText == ".")
@@ -152,6 +201,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the multiply '*' button in the UI calculator
+        /// </summary>
+        /// <param name="sender">The '*' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Multiply(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "" || DisplayText == ".")
@@ -164,6 +218,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the subtract '-' button in the UI calculator
+        /// </summary>
+        /// <param name="sender">The '-' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Subtract(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "" || DisplayText == ".")
@@ -176,6 +235,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the add '+' button in the UI calculator
+        /// </summary>
+        /// <param name="sender">The '+' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Add(object sender, RoutedEventArgs e)
         {
             if (DisplayText == "" || DisplayText == ".")
@@ -188,6 +252,12 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the equals '=' button in the UI calculator. Uses <see cref="Price"/> as 
+        /// one operand (stored internally), and the <see cref="DisplayText"/> as the other operand
+        /// </summary>
+        /// <param name="sender">The '=' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Calculate(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
@@ -217,6 +287,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             HasDecimal = false;
         }
 
+        /// <summary>
+        /// Logically represents the user pressing the decimal '.' button in the UI calculator
+        /// </summary>
+        /// <param name="sender">The '.' button in the UI calculator</param>
+        /// <param name="e"></param>
         public void Decimal(object sender, RoutedEventArgs e)
         {
             if ((DisplayText == "0") || (OperationClicked) || (Calculated))
@@ -233,6 +308,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 return;
         }
 
+        /// <summary>
+        /// Calculates the price of a nonfood item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void NFWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
@@ -246,6 +326,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a food item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void FoodWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
@@ -259,6 +344,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.FoodPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a nonfood drug fact item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void NFDFWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
@@ -272,6 +362,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.NonfoodDfPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a freezer item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void FreezerWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
@@ -285,6 +380,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.FreezerPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Calculates the price of a cooler item by multiplying the display text by the retailer percentage of the button pressed
+        /// </summary>
+        /// <param name="sender">The Retailer button that was pressed, such as Walmart, Target, etc.</param>
+        /// <param name="e"></param>
         public void CoolerWebsiteClick(object sender, RoutedEventArgs e)
         {
             IntermediateText = "";
@@ -298,6 +398,14 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             DisplayText = RoundToNine(Price * (RetailButtonManager.RetailButtons[index].Retailer.CoolerPercentage / 100)).ToString();
         }
 
+        /// <summary>
+        /// Rounds the parameter <paramref name="value"/> to the nearest 9
+        /// </summary>
+        /// <param name="value">The value to be rounded to the nearest 9</param>
+        /// <returns>The rounded value</returns>
+        /// <remarks> Most grocery stores round to 9's or 5's, so this was intended to be used as a helper function whenever
+        /// a price is calculated using the UI calculator
+        /// </remarks>
         public double RoundToNine(double value)
         {
             double roundedValue = Math.Round(value, 1);

@@ -18,6 +18,9 @@ using AddInCalculator2._0.ViewModels;
 
 namespace AddInCalculator2._0.Views
 {
+    /// <summary>
+    /// The main page for the UI
+    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()

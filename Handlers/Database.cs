@@ -14,11 +14,16 @@ using System.Collections.ObjectModel;
 
 namespace AddInCalculator2._0.Handlers
 {
-
+    /// <summary>
+    /// A SQLite database for all stored information
+    /// </summary>
     public class Database
     {
         private string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Calculator.db");
 
+        /// <summary>
+        /// Creates the database (if need be) when the program is run for the first time
+        /// </summary>
         public async void InitializeDatabase()
         {
             await ApplicationData.Current.LocalFolder.CreateFileAsync("Calculator.db", CreationCollisionOption.OpenIfExists);
@@ -42,6 +47,10 @@ namespace AddInCalculator2._0.Handlers
             }
         }
         
+        /// <summary>
+        /// Adds a new retailer to the database
+        /// </summary>
+        /// <param name="NewRetailer">The new retailer to be added</param>
         public void AddRetailer(Retailer NewRetailer)
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
@@ -67,6 +76,10 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
+        /// <summary>
+        /// Loads all retailers from the database into an ObservableCollection
+        /// </summary>
+        /// <returns>All the retailers in the database</returns>
         public ObservableCollection<Retailer> LoadAllRetailers()
         {
             ObservableCollection<Retailer> RetailerList = new ObservableCollection<Retailer>();
@@ -95,6 +108,10 @@ namespace AddInCalculator2._0.Handlers
             return RetailerList;
         }
 
+        /// <summary>
+        /// Deletes a retailer from the database
+        /// </summary>
+        /// <param name="Retailer">The retailer to be deleted</param>
         public void DeleteRetailer(Retailer Retailer)
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
@@ -111,6 +128,10 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
+        /// <summary>
+        /// Updates a retailer in the database by retailer id
+        /// </summary>
+        /// <param name="Retailer">The new information to update the retailer in the database with</param>
         public void UpdateRetailer(Retailer Retailer)
         {
             using (SqliteConnection db = new SqliteConnection($"Filename={ dbPath }"))
@@ -130,6 +151,11 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
+        /// <summary>
+        /// Loads a retailer from the database by id
+        /// </summary>
+        /// <param name="OriginalRetailer">The retailer to load</param>
+        /// <returns>The loaded retailer</returns>
         public Retailer LoadRetailer(Retailer OriginalRetailer)
         {
             Retailer NewRetailer = new Retailer();

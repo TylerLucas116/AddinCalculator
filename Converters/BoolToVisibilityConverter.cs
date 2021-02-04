@@ -8,6 +8,9 @@ using Windows.UI.Xaml.Data;
 
 namespace AddInCalculator2._0.Converters
 {
+    /// <summary>
+    /// Converts a bool to a visibility property
+    /// </summary>
     public class BoolToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

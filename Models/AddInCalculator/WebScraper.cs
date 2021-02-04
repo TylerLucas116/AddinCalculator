@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 
 namespace AddInCalculator2._0.Models.AddInCalculator
 {
+    /// <summary>
+    /// Searches the web for the price of an item based on the UPC barcode
+    /// </summary>
     public class WebScraper : INotifyPropertyChanged
     {
         public WebScraper()
@@ -27,24 +30,55 @@ namespace AddInCalculator2._0.Models.AddInCalculator
         private ApiKey key = new ApiKey();
         private WebView webView = new WebView();
 
-        private Retailer walmart = new Retailer();
-        private Retailer target = new Retailer();
-        private Retailer cvs = new Retailer();
+        private Retailer walmart = new Retailer
+        {
+            Name = "Walmart",
+            OnlineAbbrev = "WM"
+        };
+
+        private Retailer target = new Retailer
+        {
+            Name = "Target",
+            OnlineAbbrev = "TG"
+        };
+
+        private Retailer cvs = new Retailer
+        {
+            Name = "CVS",
+            OnlineAbbrev = "CVS"
+        };
 
         private bool found;
         private string onlinePrice;
         private string upc;
 
+        /// <summary>
+        /// The ButtonManager property represents a RetailButtonManager
+        /// </summary>
+        /// <value>The ButtonManager property gets/sets the value of the private field buttonManager</value>
+        /// <remarks>
+        /// Is intended to be used for specific retailer information, such as Walmart's percentages
+        /// </remarks>
         public RetailButtonManager ButtonManager
         {
             get { return buttonManager; }
             set { buttonManager = value; }
         }
+
+        /// <summary>
+        /// The Found property represents if a price is found or not online
+        /// </summary>
+        /// <value>The Found property gets/sets the value of the private field found</value>
         public bool Found
         {
             get { return found; }
             set { found = value; }
         }
+
+        /// <summary>
+        /// The UPC property represents the UPC barcode of a grocery product
+        /// </summary>
+        /// <value>The UPC property gets/sets the value of the private field upc</value>
         public string UPC
         {
             get { return upc; }
@@ -54,6 +88,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 OnPropertyChanged("UPC");
             }
         }
+
+        /// <summary>
+        /// The OnlinePrice property represents the OnlinePrice found for a grocery product
+        /// </summary>
+        /// <value>The OnlinePrice property gets/sets the value of the private field onlinePrice</value>
         public string OnlinePrice
         {
             get { return onlinePrice; }
@@ -64,28 +103,27 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Rounds the parameter <paramref name="value"/> to the nearest 9
+        /// </summary>
+        /// <param name="value">The value to be rounded to the nearest 9</param>
+        /// <returns>The rounded value</returns>
+        /// <remarks> Most grocery stores round to 9's or 5's, so this was intended to be used as a helper function whenever
+        /// a price is calculated using the UI calculator
+        /// </remarks>
         public double RoundToNine(double value)
         {
             double roundedValue = Math.Round(value, 1);
             return roundedValue - 0.01;
         }
 
-        private void InitializeRetailers()
-        {
-            walmart.Name = "Walmart";
-            walmart.OnlineAbbrev = "WM";
-
-            target.Name = "Target";
-            target.OnlineAbbrev = "TG";
-
-            cvs.Name = "CVS";
-            cvs.OnlineAbbrev = "CVS";
-        }
-
+        /// <summary>
+        /// Searches online for the price of a grocery product
+        /// </summary>
+        /// <param name="sender">The UPC barcode of the product</param>
+        /// <param name="e"></param>
         public async void UPCSearch(object sender, KeyRoutedEventArgs e)
         {
-            InitializeRetailers();
-
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 // search Walmart
@@ -143,6 +181,11 @@ namespace AddInCalculator2._0.Models.AddInCalculator
                 Found = false;
             }
         }
+
+        /// <summary>
+        /// Searches Walmart.com's API for the price
+        /// </summary>
+        /// <returns></returns>
         public async Task searchWalmartNF()
         {
             try
@@ -213,7 +256,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
-        // search target using agility pack
+        /// <summary>
+        /// Searches Target.com for the price
+        /// </summary>
+        /// <returns></returns>
         public async Task searchTargetNF()
         {
             try
@@ -249,6 +295,10 @@ namespace AddInCalculator2._0.Models.AddInCalculator
             }
         }
 
+        /// <summary>
+        /// Searches CVS.com for the price
+        /// </summary>
+        /// <returns></returns>
         public async Task searchCVSNF()
         {
             try
