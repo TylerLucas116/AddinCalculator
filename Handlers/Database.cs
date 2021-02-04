@@ -76,6 +76,10 @@ namespace AddInCalculator2._0.Handlers
             }
         }
 
+        /// <summary>
+        /// Loads all retailers from the database into an ObservableCollection
+        /// </summary>
+        /// <returns>All the retailers in the database</returns>
         public ObservableCollection<Retailer> LoadAllRetailers()
         {
             ObservableCollection<Retailer> RetailerList = new ObservableCollection<Retailer>();
